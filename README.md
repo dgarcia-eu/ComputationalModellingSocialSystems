@@ -7,9 +7,7 @@ TODO: Two paragraph course description
 
 ## Who am I?
 
-TODO: Is Jana also taking a part in this course?
-
-I am the Professor for Computational Behavioral and Social Sciences the Graz University of Technology, where I lead the [Computational Social Science Lab](http://www.csslab.at). I am also group leader at the Medical University of Vienna and at the Complexity Science Hub Vienna. My background is Computer Science but I worked my whole career with psychologists, sociologists and physicists to learn new ways to understand human behavior. I got my PhD from ETH Zurich in 2012 and a habilitation in 2018, starting to work as full professor TU Graz in 2020. To learn more about my research, check my [publications](https://dgarcia.eu/full-publication-list/). I teach this course in collaboration with [Dr. Jana Lasser](https://janalasser.at/), a postdoctoral reasearcher in the Computational Social Science Lab, and [Dr. Petar Jerčić](https://petarjercic.com/), also a postdoctoral reasearcher in the Computational Social Science Lab.
+I am the Professor for Computational Behavioral and Social Sciences the Graz University of Technology, where I lead the [Computational Social Science Lab](http://www.csslab.at). I am also group leader at the Medical University of Vienna and at the Complexity Science Hub Vienna. My background is Computer Science but I worked my whole career with psychologists, sociologists and physicists to learn new ways to understand human behavior. I got my PhD from ETH Zurich in 2012 and a habilitation in 2018, starting to work as full professor TU Graz in 2020. To learn more about my research, check my [publications](https://dgarcia.eu/full-publication-list/). I teach this course in collaboration with the two postdoctoral reasearcher in the Computational Social Science Lab [Dr. Petar Jerčić](https://petarjercic.com/) and [Dr. Jana Lasser](https://janalasser.at/).
 
 ## Place and time
 
@@ -20,7 +18,7 @@ The main lecture takes place on Thursdays at 14:15 (sharp) in lecture room i3 in
 ## Course Contents
 
 TODO: Check the first paragraph for protocol of the course?
-TODO: Check how will the course *Intro course: ABM basics in Python with Mesa* be held?
+
 TODO: The session #10 doesn't have reading materials?
 
 The course is organized in 12 sessions grouped together in 4 blocks. Each block contains a practical part with exercises for you to apply what you learned. From the third week, the practice session will consist of a discussion of solutions to the exercise corresponding to the previous session. In exercises, you collect your own data and try to answer questions about human behavior and online phenomena. The online materials do not contain the solutions to the exercises, but if you are stuck or want to start from an easier point, in the github folder of the exercise you can find a version of the exercise with hints.
@@ -31,16 +29,17 @@ The course is organized in 12 sessions grouped together in 4 blocks. Each block 
 1.1. Course administration and information  
 1.2. Readings: ([Smith & Conrey, 2007](https://journals.sagepub.com/doi/abs/10.1177/1088868306294789)) (Macy & Willer, 2002?) (Hedström & Ylikoski, 2010?)
 1.3. Game of life paper: ([Gardner, 1970](http://web.stanford.edu/class/sts145/Library/life.pdf))
+- (Practice session 1 start: ABM basics in Python with Mesa)
 *(Please install Jupyter and iPython before the next session takes place)*
-
-**Intro course: ABM basics in Python with Mesa**
 
 2. **Modeling segregation: Schelling’s model**  (10.03.2022)  
 2.1. Readings: ([Schelling, 1971](https://www.uzh.ch/cmsssl/suz/dam/jcr:00000000-68cb-72db-ffff-ffffff8071db/04.02%7B_%7Dschelling%7B_%7D71.pdf)) [[JASS]](https://www.jasss.org/15/1/6.html) 
 2.2. Schelling's Model of Segregation: [[Simulation]] (http://nifty.stanford.edu/2014/mccown-schelling-model-segregation/)
+- (Practice session 2 start: ABM basics in Python with Mesa)
 
 3. **Modelling culture: Axelrod’s model and Latane’s model**  (17.03.2022)  
 3.1. Readings: ([Axelrod’s model](https://ndg.asc.upenn.edu/wp-content/uploads/2016/04/Axelrod-1997-JCR.pdf)) ([Latane’s model](https://pcl.sitehost.iu.edu/rgoldsto/complex/nowak90.pdf))
+- (Practice session 3 start: ABM basics in Python with Mesa)
 
 ### Block 2: Opinion dynamics
 
@@ -50,10 +49,11 @@ The course is organized in 12 sessions grouped together in 4 blocks. Each block 
 
 5. **Modelling consensus, polarization, and fragmentation: The voter model and Bounded confidence models, Information accumulation systems**  (31.03.2022)  
 5.1. Readings: ([Bounded confidence models](https://www.researchgate.net/profile/Frederic-Amblard/publication/312153320_Mixing_beliefs_among_interacting_agents/links/60b5ed8b4585154e5ef5cb8d/Mixing-beliefs-among-interacting-agents.pdf)) [[Information accumulation systems]](https://iopscience.iop.org/article/10.1088/1742-5468/2010/06/P06005/meta) 
-- (Exercise 2 start (20%): Cascade dynamics in threshold models - the role of variance)
+- (Exercise 1 cont.)
 
 6. **Modeling hyperpolarization and cognitive balance**  (07.04.2022)  
 6.1. Readings: ([Schweighofer et al., 2020](https://www.jasss.org/23/3/5.html))
+- (Exercise 2 start (20%): Cascade dynamics in threshold models - the role of variance)
 
 **9.04-23.04 Easter holidays**
 
@@ -66,6 +66,7 @@ The course is organized in 12 sessions grouped together in 4 blocks. Each block 
 8. **Modelling small worlds: The Watts-Strogatz model and cavemen models**  (05.05.2022)  
 8.1. Readings: ([The Watts-Strogatz model](https://www.nature.com/articles/30918)) [[Simulation]](www.netlogoweb.org/launch)
 8.2. Readings: ([The Cavemen models](https://www.jstor.org/stable/10.1086/210318))
+- (Exercise 3 cont.)
 
 9. **Modeling scaling: The Barabasi-Albert model, edge copying**  (12.05.2022)  
 9.1. Readings: ([The Barabasi-Albert model](https://arxiv.org/abs/cond-mat/9910332)) [[Simulation]](https://sarah37.github.io/barabasialbert/)
@@ -73,16 +74,21 @@ The course is organized in 12 sessions grouped together in 4 blocks. Each block 
 
 **26.05. Ascension day**
 
-10. **Growth processes and distribution fitting**  (19.05.2022)  
+10. **Growth processes and distribution fitting**  (19.05.2022)
+- (Exercise 4 cont.)
 
 ### Block 4: Behavior on networks
 
 7. **Modeling spreading in networks: the SIR, SIS, and complex contagion**  (02.06.2022)  
 7.1. Readings: ([Kitsak](https://www.nature.com/articles/nphys1746))
 7.1. Readings: ([Centola, 2007](https://www.jstor.org/stable/10.1086/521848))
+- (Project guidance)
+- (Practice session 4 start: Mesa using Pandas)
 
 8. **Computational modelling applications: the SEIRX model**  (09.06.2022)  
 8.1. Readings: ([Lasser, J., Sorger, J., Richter, L. et al., 2022](https://www.nature.com/articles/s41467-022-28170-6))
+- (Project guidance)
+- (Practice session 5 start: Mesa using Pandas)
 
 **16.06: Corpus Christi**
 
@@ -99,5 +105,4 @@ TODO: Update the course id for the TU Graz Teach Center?
 
 ## Course grading
 
-TODO: extra points?
-The assessment for the course is based on the excercises given throughout the course (grade percetage given in the brackets) and the final group research project (max. 4 students groups). The project grade is a combination of the project presentation (35%) and the excercises (65%). Extra points (max 20%)  can be achieved by delivering two optional exercise solutions: "Division of impact on Twitter" (**new deadline: 1.12.2021**) and "Assortativity among Swiss politicians on Twitter" (deadline 12.1.2022).
+The assessment for the course is based on the excercises given throughout the course (grade percetage given in the brackets) and the final group research project (max. 4 students groups). The project grade is a combination of the project presentation (35%) and the excercises (65%).
