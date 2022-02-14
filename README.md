@@ -75,7 +75,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 ## Where to access materials
 
 - Reading lists, codes, and data can be found on the [Github repository of the course](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems).
-- Students at TU Graz can access the [course at Teach Center](https://tc.tugraz.at/main/course/view.php?id=4072) to get additional information, watch videos, and to participate in the forums.
+- Students at TU Graz can access the [course at Teach Center](https://tc.tugraz.at/main/enrol/index.php?id=4384) to get additional information, watch videos, and to participate in the forums.
 
 
 ## Place and time
