@@ -22,13 +22,13 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 *Tutorial: ABM basics in Python with Mesa (session 2)*
 
 3. **Modelling cultures**  (17.03.2022)  
-*Exercise 1: Schelling's model and pandas (session 1)*
+*Exercise 1: Schelling's model and Pandas (session 1)*
 
 
 ### Block 2: Opinion dynamics
 
 4. **Basics of spreading: Granovetter's threshold model**  (24.03.2022)  
-*Exercise 1: Schelling's model and pandas (session 2)*
+*Exercise 1: Schelling's model and Pandas (session 2)*
 
 5. **Opinion dynamics**  (31.03.2022)  
 *Exercise 2: Threshold models (session 1)*
@@ -47,10 +47,10 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 *Exercise 3: Bounded confidence (session 2)*
 
 9. **Scale-free networks**  (12.05.2022)  
-*Exercise 4: scale-free networks (session 1)*
+*Exercise 4: Scale-free networks and visualization (session 1)*
 
 10. **Growth processes**  (19.05.2022)  
-*Exercise 4: scale-free networks (session 2)*
+*Exercise 4: Scale-free networks and visualization (session 2)*
 
 *No class on 26.05.2022: Ascension day*
 
@@ -97,4 +97,4 @@ The assessment for the course is based on four components:
 
 More details about project report formats and presentation sessions will follow during the course.
 
-Graded exercises need to be submitted on teach center by the deadline (end of day in Graz time). We will provide solution files for ungraded exercises for you to check your progress.
+Graded exercises need to be submitted on teach center by the deadline (end of day in Graz time). We will provide solution files for ungraded exercises for you to check your progress. Nevertheless, we expect to see in your projects the techniques covered in the exercises, both graded and ungraded.
