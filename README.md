@@ -6,12 +6,9 @@ In this course, you will learn how to formulate and analyze computational models
 
 ## Who am I?
 
-I am the Professor for Computational Behavioral and Social Sciences the Graz University of Technology, where I lead the [Computational Social Science Lab](http://www.csslab.at). I am also group leader at the Medical University of Vienna and at the Complexity Science Hub Vienna. My background is Computer Science but I worked my whole career with psychologists, sociologists and physicists to learn new ways to understand human behavior. I got my PhD from ETH Zurich in 2012 and a habilitation in 2018, starting to work as full professor TU Graz in 2020. To learn more about my research, check my [publications](https://dgarcia.eu/full-publication-list/). I teach this course in collaboration with the two postdoctoral reasearcher in the Computational Social Science Lab [Dr. Petar Jerčić](https://petarjercic.com/) and [Dr. Jana Lasser](https://janalasser.at/).
+I am the Professor for Computational Behavioral and Social Sciences the Graz University of Technology, where I lead the [Computational Social Science Lab](http://www.csslab.at). I am also group leader at the Medical University of Vienna and at the Complexity Science Hub Vienna. My background is Computer Science but I worked my whole career with psychologists, sociologists and physicists to learn new ways to understand human behavior. I got my PhD from ETH Zurich in 2012 and a habilitation in 2018, starting to work as full professor TU Graz in 2020. To learn more about my research, check my [publications](https://dgarcia.eu/full-publication-list/). I teach this course in collaboration with the two postdoctoral researcher in the Computational Social Science Lab [Dr. Petar Jerčić](https://petarjercic.com/) and [Dr. Jana Lasser](https://janalasser.at/).
 
 ## Course Contents
-
-TODO: The session #10 doesn't have reading materials?
-
 The course is organized in 12 lectures grouped together in 4 blocks, plus two sessions in the end for project presentations. The course contains lectures and exercises in python to apply what you learned in the lecture. The online materials do not contain the solutions to the exercises, but if you are stuck or want to start from an easier point, in the github folder of the exercise you can find a version of the exercise with hints.
 
 ### Block 1: Fundamentals of agent-based modelling
