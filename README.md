@@ -13,10 +13,10 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ### Block 1: Fundamentals of agent-based modelling
 
+*(Please install Jupyter Notebook before the tutorial sessions takes place, where we can provide help with the installation if something goes wrong.)* The easiest way is using the [Anaconda](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/install.html) distribution, since it is well supported and maintained.
+
 1. **Basics of agent-based modelling: the micro-macro gap**  (03.03.2022)  
 *Tutorial: ABM basics in Python with Mesa (session 1)*
-
-*(Please install Jupyter and iPython before the next session takes place)*
 
 2. **Modelling segregation: Schelling's model**  (10.03.2022)  
 *Tutorial: ABM basics in Python with Mesa (session 2)*
