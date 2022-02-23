@@ -1,0 +1,16 @@
+---
+title: "Basics of agent-based modelling: the micro-macro gap"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Agent-Based Modeling: A New Approach for Theory Building in Social Psychology. Eliot Smith and Frederica Conrey. Personality and Social Psychology Review, 2007.](https://journals.sagepub.com/doi/abs/10.1177/1088868306294789)
+- [The matching hypothesis reexamined. Michael Kalick and Thomas Hamilton. Journal of Personality and Social Psychology, 1986.](https://psycnet.apa.org/record/1987-04005-001)
+
+
+### Additional readings
+- [Causal Mechanisms in the Social Sciences. Peter Hedström and Petri Ylikoski. Annual Review of Sociology, 2010.](https://www.annualreviews.org/doi/abs/10.1146/annurev.soc.012809.102632)
+- [From factors to actors: Computational Sociology and Agent-Based Modeling. Michael  Macy and Robert Willer. Annual Review of Sociology, 2002.](https://www.annualreviews.org/doi/abs/10.1146/annurev.soc.28.110601.141117)
