@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>The Basics of agent-based modeling</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# The Basics of agent-based modeling
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+### Computational Modelling of Social Sytems
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+
+
+# About me
+
+.pull-left[
+.center[
+&lt;img src="Profile.jpg" width="270" /&gt;
+]]
+
+.pull-right[
+&lt;br&gt;
+Website: [dgarcia.eu](https://dgarcia.eu)
+
+Twitter: [@dgarcia_eu](https://twitter.com/dgarcia_eu)
+
+Github: [dgarcia-eu](https://github.com/dgarcia-eu)
+
+Email: dgarcia@tugraz.at
+]
+
+- Professor for Computational Behavioral and Social Sciences at TU Graz
+- Faculty member of the Complexity Science Hub Vienna
+- Group leader at the Medical University of Vienna
+
+---
+
+# Overview
+
+## 1. Complex Social Behavior
+
+## 2. Agent-Based Modelling (ABM)
+
+## 3. ABM Example: Date Choice Model
+
+## 4. About this Course
+
+---
+
+
+# Complex Social Behavior
+
+## *1. Complex Social Behavior*
+
+## 2. Agent-Based Modelling (ABM)
+
+## 3. ABM Example: Date Choice Model
+
+## 4. About this Course
+
+
+---
+
+## Complex social behavior example: Polarization
+&lt;img src="Figures/Polarization.jpg" width="650" style="display: block; margin: auto;" /&gt;
+
+- Two opposing groups can become more extreme due to their perception of the behavior and opinions of the other group. 
+- Individuals in isolation do not naturally tend to opinion extremes.
+---
+
+## Complex social beavior example: Bank runs
+&lt;img src="Figures/BankRun.jpg" width="600" style="display: block; margin: auto;" /&gt;
+- Banks operate without all the savings in their reserves
+- If customers believe that many others withdraw their money, they will do it too
+- The rumor and spreading distrust is necessary, customers in isolation would not create a bank run (tragedy of the commons)
+---
+
+## Complex social beaviors: Activation and inhibition
+
+&lt;img src="Figures/Crowd.jpg" width="900" style="display: block; margin: auto;" /&gt;
+
+- Individuals demonstrating in isolation are peaceful, but in a group a riot can emerge without a clear antecedent
+- People alone in the street offer help, but when many are watching they don't act (bystander effect)
+
+---
+
+# Muli-level social behavior
+
+&lt;img src="Figures/Boat.png" width="900" style="display: block; margin: auto;" /&gt;
+
+*Causal Mechanisms in the Social Sciences. Peter Hedström and Petri Ylikoski. Annual Review of Sociology, 2010.*
+---
+
+## Interdisciplinarity in complex social behavior
+&lt;img src="Figures/Interdisciplinarity.svg" width="1200" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Agent-Based Modelling (ABM)
+
+## 1. Complex Social Behavior
+
+## *2. Agent-Based Modelling (ABM)*
+
+## 3. ABM Example: Date Choice Model
+
+## 4. About this Course
+
+---
+
+# Agent-Based Modelling (ABM)
+
+- Agent-Based Modelling: A computational analogy of a social system that is composed of a set of agents that represent *discrete* individuals
+
+- Agents have internal states, perceive the actions of other agents, and interact with other agents and their environment (*situated*)
+
+- Agents are *active*: they have a behavioral repertoire, are not just particles
+
+- Agents might have access only to *limited informtion* in their environment
+
+- Agents might have *internal goals* that determine their behavior and can *adapt* to the behavior of other agents or the environment
+
+*Agent-Based Modeling: A New Approach for Theory Building in Social Psychology. Eliot Smith and Frederica Conrey, 2007*
+
+---
+
+# Explaining behavior with ABM
+
+- Observed collective behavior or effects are *explananda*: empirical facts that are missing an explanation.
+  - Example: hotter days have higher crime rates
+
+- ABM offer *explanations*: theories that generate the observed behavior and link it to other empirical facts
+  - Example: heat makes people be longer in the street, facilitating crime
+
+- ABM are part of a larger theoretical approach called *Analytical Sociology*, where everything in a model of social behavior must be explicit
+  - Example: coding a simulation of people going out depending on temperature and crimes happening outdoors
+  
+---
+
+# Explaining behavior with ABM
+
+**ABM do not provide empirical evidence**
+  - Simulation results alone are not evidence that humans behave in one way or another. Beware of causal arguments based on ABM alone!
+
+  - They can **generate hypotheses**, for example on the consequences of policies in simulations or formulate predictions
+
+  - They can **reconcile empirical observations** across individual behavior and collective behavior levels
+
+  - They are a way to **analyze theory**, showing necessary or sufficient conditions for some collective behavior to emerge
+  
+---
+
+## Computational theory instead of exploration
+
+**ABM are for analysis, not just exploration**
+
+- Exploring what happens in a simulation is fine, but ABM can do much more!
+
+- **Behavior calibration** of individual agents with experiments or surveys: integrating social and behavioral findings in an ABM
+
+- **Analysis of observable outcomes** versus parameters of behavior or alternative mechanisms/policies
+
+- **Testing outcomes** with large-scale data (e.g. digital traces from computational social systems), across conditions and over time
+
+*From factors to actors: Computational Sociology and Agent-Based Modeling. Michael Macy and Robert Willer. Annual Review of Sociology, 2002.*
+
+---
+
+# Properties of good ABM
+
+- They **model causation**: agent actions and conditions have counterfactuals and dynamics are not ad hoc to get an outcome
+
+
+- They have **measureable outcomes:** collective behavior can be aggregated into one or more quantities that can be measured in many simulations and across conditions
+
+- They have **quantifiable designs:** individual dynamics are based on metrics that can be tested with empirical methods (e.g. experiments, surveys)
+
+- Are **minimal and modular:** you can test the sensitivity of outcomes with different blocks of dynamics and include only what is necessary
+
+---
+
+# ABM Example: Date Choice Model
+
+## 1. Complex Social Behavior
+
+## 2. Agent-Based Modelling (ABM)
+
+## *3. ABM Example: Date Choice Model*
+
+## 4. About this Course
+---
+
+# The question of attractiveness matching
+
+- Example: Kalick and Hamilton (1986) date choice model
+
+-   Question: do people seek dating mates that are as attractive as possible or matching their own perceived attractiveness?
+  
+- Conflicting evidence: 
+  - In experiments (micro), participants seek to maximize partner attractiveness, participant attractiveness is barely relevant
+  - In observational data (macro), attractiveness of couples are   correlated  
+  ( `\(r \sim 0.6\)` ) and correlation is stronger for more committed couples
+
+*The matching hypothesis reexamined. Michael Kalick and Thomas Hamilton. Journal of Personality and Social Psychology, 1986.*
+---
+
+# The Kalick and Hamilton dating model
+
+- Start with N male and N female agents, all are uncoupled
+
+- Each agent has a constant attractiveness number randomly sampled between 1 and 10 at the beginning of the simulation
+
+- Repeat while there are uncoupled agents:
+
+  - All male and female agents are randomly paired for a date
+
+  - Dates consist on each individual accepting or rejecting their     partner. Probability of accept is based on a rule taking into account their attractiveness levels (e.g. matching or seeking attractiveness)
+
+  - Dates with both agents accepting form a couple and leave the dating pool
+
+
+
+---
+
+# Model metrics
+
+1. Model "time" `\(t\)`: Percentage of agents that are in a couple
+  - It grows with simulation iterations, starting from `\(0\)` and approaching `\(100\)`
+  
+2. Correlation coefficient between paired couples ( `\(r_t\)` ) at time `\(t\)`:
+  - `\(r_t = r(M_t, F_t) = \frac{\sum_{c \in C_t}(m_c - \mu_{M_t})(f_c - \mu_{F_t})}{\sqrt{\sum_{c \in C_t}(m_c - \mu_{M_t})^2(f_c - \mu_{F_t})^2}}\)`
+  - `\(M_t\)` and `\(F_t\)` are the vectors of male and female attractiveness in couples formed up to time `\(t\)`, denoted as `\(C_t\)` 
+
+3. Mean attractiveness of the `\(N_t\)` paired couples at time `\(t\)`: 
+  - `\(\mu_t = \mu_{M_t} + \mu_{F_t} = \sum_{c \in C_t}  (m_c+f_c) / N_t\)`
+
+
+
+---
+
+# Seeking similar match: outcomes
+
+.pull-left[
+&lt;img src="Figures/matching.png" width="550" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- Outcomes over simulation time (\% matched couples) for the case of seeking similar partners
+
+- Correlation starts very high (0.8)
+
+- No real trend in correlation
+
+- Mean couple attractiveness is around the average the whole simulation
+
+
+]
+
+---
+
+# Maximizing partner attractiveness
+
+.pull-left[
+&lt;img src="Figures/preference.png" width="550" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- Outcomes over simulation time (\% matched couples) for the case of preferring attractive partners regardless of own attractiveness
+
+- Correlation starts low but raises pretty fast up to about 0.55
+
+- Mean couple attractiveness starts much above average and approaches average
+
+- Attractive agents couple earlier
+]
+
+---
+
+# Results of dating model
+
+- **Main result:** matching is not necessary for observed correlations, they can be produced by attractiveness seeking alone.
+
+- ABM reconciles apparently conflicting empirical results
+
+- **Comparison with empirical data:** observed empirical correlation is closer to 0.55 than to 0.9
+  - This could also be due to measurement error in attractiveness 
+  
+- **Simplifications:** no other factor than attractiveness, no couple breaking, heterosexual relationships, formulas for probabilities (see paper)
+
+
+*The matching hypothesis reexamined. Michael Kalick and Thomas Hamilton. Journal of Personality and Social Psychology, 1986.*
+
+---
+
+# About this Course 
+
+## 1. Complex Social Behavior
+
+## 2. Agent-Based Modelling (ABM)
+
+## 3. ABM Example: Date Choice Model
+
+## *4. About this Course*
+---
+
+# Course objectives
+
+&lt;/br&gt;
+
+1. Understanding how to **formulate and analyze** computational models of social systems. 
+
+2. **Integrating knowledge** about social dynamics and analytic tools to understand the **complex behavior** of social systems. 
+
+3. Acquiring programming skills to **implement, simulate, and visualize** computational models of social systems
+
+---
+
+# Course topics
+
+### Block 1: Fundamentals of agent-based modelling
+
+1- **Basics of agent-based modelling: the micro-macro gap**  (03.03.2022)  
+*Tutorial: ABM basics in Python with Mesa (session 1)*
+
+*(Please install Jupyter and iPython before the next session takes place)*
+
+2- **Modelling segregation: Schelling's model**  (10.03.2022)  
+*Tutorial: ABM basics in Python with Mesa (session 2)*
+
+3- **Modelling cultures**  (17.03.2022)  
+*Exercise 1: Schelling's model and Pandas (session 1)*
+
+---
+
+# Block 2: Opinion dynamics
+
+4- **Basics of spreading: Granovetter's threshold model**  (24.03.2022)  
+*Exercise 1: Schelling's model and Pandas (session 2)*
+
+5- **Opinion dynamics**  (31.03.2022)  
+*Exercise 2: Threshold models (session 1)*
+
+6- **Modelling hyperpolarization and cognitive balance**  (07.04.2022)  
+Guest lecture by Simon Schweighofer (Online)    
+*Exercise 2: Threshold models (session 2)*
+
+*No class between 9.04.2022 and 23.04.2022: Easter holidays*
+
+---
+
+# Block 3: Network formation
+
+7- **Basic network models**  (28.04.2022)  
+*Exercise 3: Bounded confidence (session 1)*
+
+8- **Modelling small worlds**  (05.05.2022)  
+*Exercise 3: Bounded confidence (session 2)*
+
+9- **Scale-free networks**  (12.05.2022)  
+*Exercise 4: Scale-free networks and visualization (session 1)*
+
+10- **Growth processes**  (19.05.2022)  
+*Exercise 4: Scale-free networks and visualization (session 2)*
+
+*No class on 26.05.2022: Ascension day*
+
+---
+
+# Block 4: Behavior on networks
+
+11- **Modelling spreading in networks**  (02.06.2022)   
+*Project guidance*  
+
+12- **Modelling epidemics: the SEIRX model** (09.06.2022)  
+*Project guidance*  
+
+*No class on 16.06.2022: Corpus Christi*
+
+13- **Project presentations**  (23.06.2022)
+
+14- **Project presentations**  (30.06.2022)
+
+---
+
+# Time, place, online
+
+- Lecture time:  Thursdays at 16:15 (sharp)
+  - Lecture place: HS F (Kopernicusgasse 24) 
+- Exercise group 1 time: Thursdays after Lecture (approx. 18:00)
+  - Exercise group 1 place: Same room (HS F)
+- Online exercise support group 2: Wednesdays at 13:00 (sharp)
+  - Online in Webex
+
+Handouts, codes, and data can be found on the Github repository of the course: https://github.com/dgarcia-eu/ComputationalModellingSocialSytems
+
+**1-2 readings for each lecture:** Links on github and PDF on Teach Center
+
+Computational Modelling of Social Systems Discord (only this course): https://discord.com/invite/VSE9r9GtR8 Use it to ask for help!
+
+
+---
+
+# Course assessment
+
+Exercises done in groups of **one or two** students
+- Exercise 1: ungraded
+- Exercise 2: 25% of final grade. Deadline: 20.04.2022
+- Exercise 3: 25% of final grade. Deadline: 18.05.2022
+- Exercise 4: ungraded
+
+Final group project in groups of **up to four students**:
+- Participation in group presentation sessions: 25% of final grade
+  - All group members **must participate** in their presentation
+  - Each group is assigned as a **discussant** for another group
+  - **Attending both presentation sessions is mandatory**
+- Project report and codes: 25% of final grade
+- More details on project topics and reporting will follow later in the course
+
+---
+
+# Summary
+
+1. **Complex Social Behavior**
+  - Humans behave differently in groups as in isolation: collective behavior
+  - Interdisciplinary approach to explain macro dynamics from micro behavior
+2. **Agent-Based Modelling (ABM)**
+  - A computational approach to formalize and analyze social systems
+  - Agent properties and model objectives and assumptions
+3. **ABM Example: Date Choice Model**
+  - Mismatch in empirical results: observations contradict experiments
+  - A simple model shows that seeking attractiveness in a finite dating pool also generates the observed correlations in couples
+4. **About this Course**
+  - ABM basics, opinion dynamics, network models, behavior on networks
+  - Readings-base
+  - Following: Introduction to Mesa for ABM
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
