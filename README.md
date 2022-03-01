@@ -80,6 +80,8 @@ The course takes place on Thursdays at 16:15 (sharp), with a **lecture followed 
 
 When attending in person, proof of 2G status might be required and seating space is limited depending on varying policies. Seating will be given in a first-come-first-served basis each session and students that do not fit will have to follow the lecture online from another place.
 
+There is an extra online exercise support group on Wednesdays at 13:00 (sharp). Check TeachCenter for the webex link.
+
 
 ## Course grading
 
