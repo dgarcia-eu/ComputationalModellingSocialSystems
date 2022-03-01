@@ -76,7 +76,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ## Place and time
 
-The course takes place on Thursdays at 16:15 (sharp), with a **lecture followed by an exercise session**. If the COVID traffic light of TU Graz is yellow or green, the course will take place in room [HS F (Kopernicusgasse 24)](https://online.tugraz.at/tug_online/ris.ris?pOrgNr=37&pQuellGeogrBTypNr=5&pZielGeogrBTypNr=5&pZielGeogrBerNr=350003&pRaumNr=568&pActionFlag=A&pShowEinzelraum=J) with live streaming and recording of the lecture and exercises. If the traffic light is orange or red, it will take place fully online on Webex. We know this is the case from the beginning of the semester but we will change mode when the traffic light changes to yellow or green.
+The course takes place on Thursdays at 16:15 (sharp), with a **lecture followed by an exercise session**. If the COVID traffic light of TU Graz is yellow or green, the course will take place in room [HS F (Kopernicusgasse 24)](https://online.tugraz.at/tug_online/ris.ris?pOrgNr=37&pQuellGeogrBTypNr=5&pZielGeogrBTypNr=5&pZielGeogrBerNr=350003&pRaumNr=568&pActionFlag=A&pShowEinzelraum=J) with live streaming and recording of the lecture and exercises. If the traffic light is orange or red, it will take place fully online on Webex. The semester starts with a yellow light, so we will start in hybrid mode with limited occupancy in person.
 
 When attending in person, proof of 2G status might be required and seating space is limited depending on varying policies. Seating will be given in a first-come-first-served basis each session and students that do not fit will have to follow the lecture online from another place.
 
