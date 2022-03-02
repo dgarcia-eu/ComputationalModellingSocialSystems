@@ -76,9 +76,9 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ## Place and time
 
-The course takes place on Thursdays at 16:15 (sharp), with a **lecture followed by an exercise session**. If the COVID traffic light of TU Graz is yellow or green, the course will take place in room [HS F (Kopernicusgasse 24)](https://online.tugraz.at/tug_online/ris.ris?pOrgNr=37&pQuellGeogrBTypNr=5&pZielGeogrBTypNr=5&pZielGeogrBerNr=350003&pRaumNr=568&pActionFlag=A&pShowEinzelraum=J) with live streaming and recording of the lecture and exercises. If the traffic light is orange or red, it will take place fully online on Webex. The semester starts with a yellow light, so we will start in hybrid mode with limited occupancy in person.
+The course takes place on Thursdays at 16:15 (sharp), with a **lecture followed by an exercise session**. The first session of the course will take place in room [HS F (Kopernicusgasse 24)](https://online.tugraz.at/tug_online/ris.ris?pOrgNr=37&pQuellGeogrBTypNr=5&pZielGeogrBTypNr=5&pZielGeogrBerNr=350003&pRaumNr=568&pActionFlag=A&pShowEinzelraum=J) with live streaming over Webex (see TeachCenter for the link). From the second week of the course, the course will take place in [HS i7 (Inffeldgasse)](https://online.tugraz.at/tug_online/ris.ris?pOrgNr=37&pQuellGeogrBTypNr=5&pZielGeogrBTypNr=5&pZielGeogrBerNr=240001&pRaumNr=4030&pActionFlag=A&pShowEinzelraum=J) and streaming will take place through the standard TU Graz streaming system. 
 
-When attending in person, proof of 2G status might be required and seating space is limited depending on varying policies. Seating will be given in a first-come-first-served basis each session and students that do not fit will have to follow the lecture online from another place.
+The semester starts with a yellow light, so we will start in hybrid mode with limited occupancy in person. When attending in person, proof of 2G status might be required and seating space is limited depending on varying policies. Seating will be given in a first-come-first-served basis each session and students that do not fit will have to follow the lecture online from another place.
 
 There is an extra online exercise support group on Wednesdays at 13:00 (sharp). Check TeachCenter for the webex link.
 
