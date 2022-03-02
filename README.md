@@ -83,6 +83,7 @@ The semester starts with a yellow light, so we will start in hybrid mode with li
 There is an extra online exercise support group on Wednesdays at 13:00 (sharp). Check TeachCenter for the webex link.
 
 
+
 ## Course grading
 
 The assessment for the course is based on four components:
