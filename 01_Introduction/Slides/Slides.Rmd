@@ -120,7 +120,7 @@ knitr::include_graphics("Figures/Crowd.jpg")
 
 ---
 
-# Muli-level social behavior
+# The macro-micro gap
 
 ```{r, echo=FALSE, out.width=900, fig.align='center'}
 knitr::include_graphics("Figures/Boat.png")
