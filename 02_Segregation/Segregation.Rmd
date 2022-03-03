@@ -1,0 +1,15 @@
+---
+title: "Modelling segregation: Schelling's model"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Dynamic Models of Segregation. Thomas Schelling. Journal of Mathematical Sociology, 1971 (pages 143 to 166)](https://www.uzh.ch/cmsssl/suz/dam/jcr:00000000-68cb-72db-ffff-ffffff8071db/04.02%7B_%7Dschelling%7B_%7D71.pdf)
+- [The fantastic combinations of John Conway's new solitaire game "life". Martin Gardner. Scientific American, 1970 ](https://web.stanford.edu/class/sts145/Library/life.pdf)
+
+
+### Additional readings
+- [The Schelling Model of Ethnic Residential Dynamics: Beyond the Integrated - Segregated Dichotomy of Patterns. Erez Hatnaa and Itzhak Benenson. Journal of Artificial Societies and Social Simulation, 2012](https://www.jasss.org/15/1/6.html)
