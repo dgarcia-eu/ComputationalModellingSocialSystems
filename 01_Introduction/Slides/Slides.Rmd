@@ -150,7 +150,7 @@ knitr::include_graphics("Figures/Interdisciplinarity.svg")
 
 # Agent-Based Modelling (ABM)
 
-- Agent-Based Modelling: A computational analogy of a social system that is composed of a set of agents that represent *discrete* individuals
+- Agent-Based Model: A computational analogy of a social system that is composed of a set of agents that represent *discrete* individuals
 
 - Agents have internal states, perceive the actions of other agents, and interact with other agents and their environment (*situated*)
 
@@ -167,7 +167,7 @@ knitr::include_graphics("Figures/Interdisciplinarity.svg")
 # Explaining behavior with ABM
 
 - Observed collective behavior or effects are *explananda*: empirical facts that are missing an explanation.
-  - Example: hotter days have higher crime rates
+  - Example: hotter days have higher average crime rates
 
 - ABM offer *explanations*: theories that generate the observed behavior and link it to other empirical facts
   - Example: heat makes people be longer in the street, facilitating crime
@@ -180,7 +180,7 @@ knitr::include_graphics("Figures/Interdisciplinarity.svg")
 # Explaining behavior with ABM
 
 **ABM do not provide empirical evidence**
-  - Simulation results alone are not evidence that humans behave in one way or another. Beware of causal arguments based on ABM alone!
+  - Simulation results alone are not evidence that humans behave in one way or another. Beware of causal conclusions based on ABM alone!
 
   - They can **generate hypotheses**, for example on the consequences of policies in simulations or formulate predictions
 
@@ -228,6 +228,18 @@ knitr::include_graphics("Figures/Interdisciplinarity.svg")
 ## *3. ABM Example: Date Choice Model*
 
 ## 4. About this Course
+---
+## Date choice in computational social systems
+
+.pull-left[![](Figures/Tinder1.png)]
+
+---
+
+## Date choice in computational social systems
+
+.pull-left[![](Figures/Tinder1.png)]
+
+.pull-right[</br></br></br>![](Figures/tinder-tender.gif)]
 ---
 
 # The question of attractiveness matching
@@ -287,7 +299,7 @@ knitr::include_graphics("Figures/matching.png")
 ]
 .pull-right[
 
-- Outcomes over simulation time (\% matched couples) for the case of seeking similar partners
+- Outcomes over simulation time (% matched couples) for the case of seeking similar partners
 
 - Correlation starts very high (0.8)
 
@@ -309,7 +321,7 @@ knitr::include_graphics("Figures/preference.png")
 ]
 .pull-right[
 
-- Outcomes over simulation time (\% matched couples) for the case of preferring attractive partners regardless of own attractiveness
+- Outcomes over simulation time (% matched couples) for the case of preferring attractive partners regardless of own attractiveness
 
 - Correlation starts low but raises pretty fast up to about 0.55
 
@@ -322,19 +334,20 @@ knitr::include_graphics("Figures/preference.png")
 
 # Results of dating model
 
-- **Main result:** matching is not necessary for observed correlations, they can be produced by attractiveness seeking alone.
+- **Main result:** attractiveness matching is not necessary for observed correlations, they can be produced by attractiveness seeking alone.
 
 - ABM reconciles apparently conflicting empirical results
 
 - **Comparison with empirical data:** observed empirical correlation is closer to 0.55 than to 0.9
   - This could also be due to measurement error in attractiveness 
   
-- **Simplifications:** no other factor than attractiveness, no couple breaking, heterosexual relationships, formulas for probabilities (see paper)
+- **Many simplifications** 
 
 
 *The matching hypothesis reexamined. Michael Kalick and Thomas Hamilton. Journal of Personality and Social Psychology, 1986.*
 
 ---
+
 
 # About this Course 
 
@@ -366,7 +379,7 @@ knitr::include_graphics("Figures/preference.png")
 1- **Basics of agent-based modelling: the micro-macro gap**  (03.03.2022)  
 *Tutorial: ABM basics in Python with Mesa (session 1)*
 
-*(Please install Jupyter and iPython before the next session takes place)*
+*(Please install Jupyter and iPython as soon a possible)*
 
 2- **Modelling segregation: Schelling's model**  (10.03.2022)  
 *Tutorial: ABM basics in Python with Mesa (session 2)*
@@ -429,9 +442,9 @@ Guest lecture by Simon Schweighofer (Online)
 # Time, place, online
 
 - Lecture time:  Thursdays at 16:15 (sharp)
-  - Lecture place: HS F (Kopernicusgasse 24) 
+  - Lecture place: HS F today, from next week in HS i7
 - Exercise group 1 time: Thursdays after Lecture (approx. 18:00)
-  - Exercise group 1 place: Same room (HS F)
+  - Exercise group 1 place: Same room 
 - Online exercise support group 2: Wednesdays at 13:00 (sharp)
   - Online in Webex
 
