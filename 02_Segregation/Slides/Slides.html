@@ -496,7 +496,7 @@ With a loop over the cells, we can iteratively calculate `\(C\)`, `\(W\)`, and `
 `$$\sigma \leftarrow \sigma + (x_i-\bar x)^2 \leftarrow \sigma + (0-0.5)^2$$`
 - Contribution to `\(W\)`: 2 neighbors
 
-`$$M \leftarrow M + 2$$`
+`$$W \leftarrow W + 2$$`
 - Empty neighborhood cell doesn't count!
 
 ]
@@ -582,10 +582,10 @@ $$ C \leftarrow C + 0.25 $$
 
 - Second cell: red  ( `\(x_2=1\)` )
 
-- Contribution to `\(\sigma\)` and M
+- Contribution to `\(\sigma\)` and W
 
 `$$\sigma \leftarrow \sigma + (x_i-\bar x)^2 \leftarrow \sigma + (1-0.5)^2$$`
-`$$M \leftarrow M + 4$$`
+`$$W \leftarrow W + 4$$`
 - Four contributions to `\(C\)`:
 
 
@@ -650,7 +650,7 @@ $$ C \leftarrow C + 0.25 + 0.25 - 0.25 -  0.25$$
 ]
 .pull-right[
 
-- 9x9 neighborhood (up to 8 neighbors), torus edges
+- 3x3 neighborhood (up to 8 neighbors), torus edges
 
 - Boxplots of I after convergence in several simulations
 
