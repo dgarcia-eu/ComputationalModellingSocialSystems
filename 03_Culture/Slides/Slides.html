@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modelling cultures</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Modelling cultures
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+### Computational Modelling of Social Sytems
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+# Recap: The macro-micro gap
+
+&lt;img src="Figures/Boat.png" width="900" style="display: block; margin: auto;" /&gt;
+
+*Causal Mechanisms in the Social Sciences. Peter Hedström and Petri Ylikoski. Annual Review of Sociology, 2010.*
+
+---
+
+# Recap: Schelling's Segregation Model
+
+.pull-left[
+
+&lt;img src="Figures/40.png" width="350" style="display: block; margin: auto;" /&gt;
+
+]
+.pull-right[
+
+&lt;img src="Figures/IvsF.png" width="900" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+- [Dynamic Models of Segregation. Thomas Schelling. Journal of Mathematical Sociology, 1971](https://www.uzh.ch/cmsssl/suz/dam/jcr:00000000-68cb-72db-ffff-ffffff8071db/04.02%7B_%7Dschelling%7B_%7D71.pdf)
+---
+
+# Overview
+
+## 1. Measuring culture
+
+## 2. Axelrod's culture model
+
+## 3. Analyzing Axelrod's model
+
+## 4. Empirical analysis of culture dynamics
+
+---
+
+
+# Measuring culture
+
+## *1. Measuring culture*
+
+## 2. Axelrod's culture model
+
+## 3. Analyzing Axelrod's model
+
+## 4. Empirical analysis of culture dynamics
+
+---
+
+# Cultural values and norms
+
+
+
+"Culture is the collective programming of the mind that distinguishes the members of one group or
+category of people from others" - Geert Hofstede
+
+[Dimensionalizing Cultures: The Hofstede Model in Context (2011)](http://mchmielecki.pbworks.com/w/file/fetch/64591689/hofstede_dobre.pdf)
+
+For example:
+
+- Shared values and beliefs: tolerance of suicide, gender equality at home, importance of individual versus nation, strength of authority
+
+- Artistic and symbolic norms: popular and folk music, dressing style, food consumption differences, literature genres
+
+- Customs and other norms: walking speed, gender segregation norms, tolerance to nudity, public displays of affection or bodily functions
+
+
+---
+
+# Work cultures: Hofstede's model
+
+Model based on questionnaires of IBM workers around the world: captures cultural differences but is incomplete.
+
+- **Power distance:** Norm of acceptance that power is distributed unequally
+
+- **Individualism - collectivism:** Degree of interdependence among members of a society
+
+- **Masculinity:** Society is driven by competition and achievement or by well-being and care for others
+
+- **Uncertainty avoidance:** the extent to which people feel threatened by ambiguous or unknown situations and try to avoid these
+
+
+---
+
+# Work cultures: Hofstede's model
+
+
+&lt;img src="Figures/Hofstede.png" width="800" style="display: block; margin: auto;" /&gt;
+
+https://www.hofstede-insights.com/product/compare-countries/
+---
+
+# World Values: Schwartz's model
+
+.pull-left[
+&lt;img src="Figures/Schwartz.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Theoretical formulation of the basic shared values that differentiate cultures
+
+- Measurable through survey questionnaires
+
+- Organized in larger dimensions
+
+- Basis of World Values Survey
+
+[An Overview of the Schwartz Theory of Basic Values (2012)](https://www.researchgate.net/profile/Shalom-Schwartz/publication/271231569_An_Overview_of_the_Schwartz_Theory_of_Basic_Values/links/54cba1430cf24601c0881058/An-Overview-of-the-Schwartz-Theory-of-Basic-Values.pdf)
+
+]
+
+
+---
+
+# The Ingelhart-Welzel map
+
+.pull-left[
+
+- Factor analysis of World Values Survey
+
+- Two factors explain ~70% of variance:
+  - Traditional-Secular values
+  - Survival-Self expression values
+  
+- Clustering based on clutural history
+  
+[The WVS Cultural Map of the World, Inglehart &amp; Welzel (2010) ](https://web.archive.org/web/20131019112321/http://www.worldvaluessurvey.org/wvs/articles/folder_published/article_base_54)
+
+]
+.pull-right[
+&lt;img src="Figures/I-W-2008.png" width="480" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+
+# Axelrod's culture model
+
+## 1. Measuring culture
+
+## *2. Axelrod's culture model*
+
+## 3. Analyzing Axelrod's model
+
+## 4. Empirical analysis of culture dynamics
+
+---
+
+# Questions about cultural dynamics
+
+.pull-left[
+- Cultures influence each other, sometimes forcefully and sometimes willingly. 
+
+- Why do different cultures persist under the presence of this kind of convergence dynamics? Is differentiation necessary?
+
+- What is the role of diversity of cultural options, number of cultural features, and physical space in the coexistence of cultures?
+]
+.pull-right[
+&lt;img src="Figures/Europe.png" width="550" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Cultural vectors in Axelrod's model
+
+.pull-left[
+
+- Cultures are composed of a vector of `\(F\)` features
+- Each feature can have a distinct value out of `\(k\)` possible traits
+- Traits can only be equal or different (0/1 similarity)
+
+
+- Features can be language, shared values, display norms, food...
+- Traits are the possible values of the feature and can be copied
+
+]
+
+.pull-right[
+&lt;img src="Figures/AxelrodVectors.png" width="700" style="display: block; margin: auto;" /&gt;
+]
+
+
+- [The Dissemination of Culture: A Model with Local Convergence and Global Polarization. Robert Axelrod, Journal of Conflict Resolution 41(20), 1997](https://journals.sagepub.com/doi/pdf/10.1177/0022002797041002001)
+---
+
+# Cultural similarity in Axelrod's model
+
+.pull-left[
+
+- Cultural similarity is calculated as fraction of features with the same trait over total number of features:
+
+`$$sim(u,v) =  \sum_i \delta(u_i, v_i) / F$$`
+- `\(u\)` and `\(v\)` are two cultures with cultural vectors `\(u_i\)` and `\(v_i\)`
+
+- `\(\delta(x,y)=1\)` if and only if `\(x=y\)`
+
+- `\(F\)` is the number of features
+]
+
+.pull-right[
+&lt;img src="Figures/AxelrodVectors.png" width="700" style="display: block; margin: auto;" /&gt;
+`$$sim(u,v)=2/5$$`
+]
+---
+
+# Grid space in Axelrod's model
+
+
+.pull-left[
+
+- Model is a cellular automaton in a 2D grid
+
+- Von-Neumann neighbourhood: four neighbors in a cross
+
+- Visualization shows similarity as edges between cells: lighter is more similar
+
+- Example: 10x10, `\(F=5\)`, `\(k=10\)`
+
+]
+
+.pull-right[
+&lt;img src="Figures/Grid1.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+---
+
+
+# Model dynamics
+
+1. Choose a cell (agent) uniformly at random to be the active agent
+
+2. Choose at random one of its neighbors
+
+3. With probability equal to their cultural similarity:
+  
+  - Active agent copies a random feature of its neighbor in which they differed
+
+Notes:
+- Agents with zero similarity do not interact
+- Coping only applies to features with different traits
+- If they only differ in one, the active agent copies that one
+- Model converges if all similarities are zero or one
+
+---
+
+# Simulating Axelrod's model
+
+.pull-left[
+
+- Simulate yourself: https://rf.mokslasplius.lt/axelrod-culture-dissemination-model/
+
+- Color code according to values of features (1 to 3 features)
+
+- Key parameters: size, `\(F\)` and `\(k\)`
+
+- Try increasing `\(k\)` and size
+
+]
+.pull-right[
+&lt;img src="Figures/AxelrodSim.png" width="420" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Analyzing Axelrod's model
+
+## 1. Measuring culture
+
+## 2. Axelrod's culture model
+
+## 3. *Analyzing Axelrod's model*
+
+## 4. Empirical analysis of culture dynamics
+
+---
+
+# Outcome: number of different cultures
+
+.pull-left[
+&lt;img src="Figures/12.png" width="420" style="display: block; margin: auto;" /&gt;
+Result with 12 different cultures
+]
+.pull-right[
+&lt;img src="Figures/4.png" width="420" style="display: block; margin: auto;" /&gt;
+Result with 4 different cultures
+]
+
+---
+
+# Role of `\(F\)` and `\(k\)`
+
+
+&lt;img src="Figures/Params.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+- More features, less cultures
+- More traits per feature, more cultures
+
+---
+
+# The role of grid size
+
+&lt;img src="Figures/Size.png" width="850" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Culture assimilation as a random walk
+
+&lt;img src="Figures/Absorb.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Observations on Axelrod's model
+
+- No hardwired advantage of majority: hegemony emerges even though agents are equally likely to switch to minority option in cultural feature. 
+  - Opposite of functionalist theories of culture: the majority doesn't have to be better in any particular application or competition
+
+- Heterogeneity is stable even though only imitation dynamics exist. There is no repulsion, not even spontaneous innovation.
+
+- Empirical predictions: larger territories have more homogeneous cultures than moderate-sized ones. Some evidence among small territories in the Solomon islands but hard to validate.
+
+
+
+---
+
+## One prediction for computational social systems
+
+&gt; "In the near future, electronic communications will allow us to develop patterns of interaction that are chosen rather than imposed by geography. If individuals are linked together at random, one could expect substantial convergence over time. In the more likely case that the interactions will be based on self-selection, people will tend to interact with others who are already quite similar to them on relevant dimensions (Resnick et al. 1994; Abramson, Arterton, and Orren 1988). An implication of the model is that such self-selection could result in an even stronger tendency toward both "local" convergence and global polarization. Only then the "local" convergence will be based not on geography but on emergent patterns of more or less like-minded communication. The implications for resolving the tensions inherent in a multicultural society are problematic."
+
+Robert Axelrod, 1997
+
+---
+
+# Empirical analysis of culture dynamics
+
+## 1. Measuring culture
+
+## 2. Axelrod's culture model
+
+## 3. Analyzing Axelrod's model
+
+## *4. Empirical analysis of culture dynamics*
+
+---
+
+# Cultural affinity and asymmetry
+
+&lt;img src="Figures/affinity.png" width="700" style="display: block; margin: auto;" /&gt;
+
+---
+
+## The Eurovision song contest: Eurovipsephology
+
+&lt;img src="Figures/Eurovision.png" width="800" style="display: block; margin: auto;" /&gt;
+
+
+- [Measuring cultural dynamics through the Eurovision song contest. David Garcia and Dorian Tanase. Advances in Complex Systems, 16 (2013)](https://www.worldscientific.com/doi/abs/10.1142/S0219525913500379)
+
+---
+
+# The Friend or Foe coefficient
+
+- Can we use Eurovision results to measure cultural affinity between voting and participating countries?
+
+- Friend or Foe coefficient between a voting `\(c_v\)` and a competing country  `\(c_c\)` :
+
+`$$FoF(c_v, c_c) = \frac{p_{v,c}}{12} - \frac{s_c - p_{v,c}}{12(N-2)}$$`
+
+- `\(p_{v,c}\)` is the number of points that `\(c_v\)` gives to `\(c_c\)`
+
+- `\(s_c\)` is the final score of `\(c_c\)` in the contest
+
+- `\(N\)` is the number of competing countries
+
+
+---
+
+# Example of positive `\(FoF\)`
+
+&lt;img src="Figures/GreeceCyprus.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Example of negative `\(FoF\)`
+
+&lt;img src="Figures/ArmeniaAzerbaijan.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Asymmetry in `\(FoF\)`
+
+&lt;img src="Figures/GreeceNorway.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Asymmetry in `\(FoF\)`
+
+&lt;img src="Figures/ArmeniaTurkey.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Mean `\(FoF\)` network
+
+&lt;img src="Figures/FoFNet.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# `\(FoF\)` distribution
+
+&lt;img src="Figures/FoFDist.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Baseline models
+
+
+&lt;img src="Figures/Models.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Validation: `\(FoF\)` distribution of baseline models
+
+&lt;img src="Figures/ModelsFoF.png" width="600" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Cultural affinity model
+
+&lt;img src="Figures/AffinityModel.png" width="850" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Validation: `\(FoF\)` distribution in affinity model
+
+&lt;img src="Figures/AffinityFoF.png" width="850" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## Relationship between `\(FoF\)` and cultural distance
+
+.pull-left[
+&lt;img src="Figures/FoFvsHofstede.png" width="600" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+- Cultures measured with Hofstede's values
+
+- Cultural distance measured as sum of absolute differences in four dimensions
+
+- Linear regression: `\(R^2 = 0.1946\)`, `\(p &lt; 10^{-10}\)`
+
+]
+---
+
+# Polarization in `\(FoF\)`
+
+- The fit of the `\(FoF\)` distribution by the cultural affinity model is not always very good: e.g. 2010 and 2011
+
+- Mean of cultural affinity in the model ( `\(\mu\)` ) is irrelevant due to rank transformation when voting
+
+- The standard deviation of cultural affinity can be more informative:
+  - stdev of `\(FoF\)` to measure polarization due to **non-cultural factors**
+  - Focus on EU-15 countries (Core EU since 1995)
+
+`$$Pol(t) = \sqrt{ \frac{1}{E_t} \sum_{v,c} (FoF_t(c_v, c_c) - \langle FoF_t \rangle)^2}$$`
+
+
+---
+
+# The EU-15 subnetwork
+
+&lt;img src="Figures/EU15.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Polarization and bond interest rates
+
+
+&lt;img src="Figures/Interest.png" width="1100" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Summary
+
+- Dimensional models to measure culture
+  - Approaches based on questionnaires in surveys
+  - Hofstede and Schwartz combinations: cultural distance can be measured
+
+
+- Axelrod's culture model
+  - Cellular automaton with culture vectors and copying dynamics
+  - More traits per feature lead to more cultures
+  - Grid size fosters culture homogeneity
+  - Different cultures can coexist even with only convergence dynamics
+
+
+- Measuring cultural affinity dynamics with Eurovision
+  - Validating a model that links cultural affinity to `\(FoF\)`
+  - When the model starts failing: other factors
+  - Non-cultural part as a proxy for political/economic polarization
+---
+
+# Quiz
+
+- Which culture do you think is higher in individualism in Hofstede's model, Spain or Switzerland?
+
+- What are the furthest cultures in the 2008 Inglehart-Welzel map?
+
+- What are implausible assumptions of Axelrod's model?
+
+- What would happen if neighborhoods are larger in Axelrod's model?
+
+- What country has the highest mean `\(FoF\)` to any other country?
+
+- What else can influence the `\(FoF\)` coefficient?
+
+- Do you think that EU-15 `\(FoF\)` polarization kept on predicting interest rates?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
