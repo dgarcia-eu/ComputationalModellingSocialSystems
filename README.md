@@ -21,9 +21,8 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 2. [**Modelling segregation: Schelling's model**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/02_Segregation/Segregation.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/02_Segregation/Slides/Slides.html) (10.03.2022)  
 - [**Tutorial: ABM basics in Python with Mesa (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_00_Tut/Exercise_Tutorial.md)
 
-3. **Modelling cultures**  (17.03.2022)  
+3. [**Modelling cultures**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/03_Culture/Culture.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/03_Culture/Slides/Slides.html) (10.03.2022)  (17.03.2022)  
 *Exercise 1: Schelling's model and Pandas (session 1)*
-
 
 ### Block 2: Opinion dynamics
 
