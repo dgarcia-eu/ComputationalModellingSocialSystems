@@ -353,15 +353,14 @@ Result with 4 different cultures
 
 ---
 
-# Role of $F$ and $k$
+# Role of the number of traits per feature $k$
 
 
-```{r, echo=FALSE, out.width=1000, fig.align='center'}
-knitr::include_graphics("Figures/Params.png")
+```{r, echo=FALSE, out.width=650, fig.align='center'}
+knitr::include_graphics("Figures/Traits.png")
 ```
 
-- More features, less cultures
-- More traits per feature, more cultures
+10x10 space, $F=5$: More traits per feature, more cultures
 
 ---
 
@@ -593,7 +592,7 @@ knitr::include_graphics("Figures/Interest.png")
 - Axelrod's culture model
   - Cellular automaton with culture vectors and copying dynamics
   - More traits per feature lead to more cultures
-  - Grid size fosters culture homogeneity
+  - Nonlinear relationship between grid size and culture homogeneity
   - Different cultures can coexist even with only convergence dynamics
 
 
