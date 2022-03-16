@@ -22,12 +22,12 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 - [**Tutorial: ABM basics in Python with Mesa (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_00_Tut/Exercise_Tutorial.md)
 
 3. [**Modelling cultures**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/03_Culture/Culture.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/03_Culture/Slides/Slides.html) (17.03.2022)  
-*Exercise 1: Schelling's model and Pandas (session 1)*
+- [**Exercise 1: Schelling's model and Pandas (session 1)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/Excercise_Schelling.md)
 
 ### Block 2: Opinion dynamics
 
 4. **Basics of spreading: Granovetter's threshold model**  (24.03.2022)  
-*Exercise 1: Schelling's model and Pandas (session 2)*
+- [**Exercise 1: Schelling's model and Pandas (session 2**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/Excercise_Schelling.md)
 
 5. **Opinion dynamics**  (31.03.2022)  
 *Exercise 2: Threshold models (session 1)*
