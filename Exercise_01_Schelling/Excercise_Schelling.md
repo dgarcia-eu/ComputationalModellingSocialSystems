@@ -14,8 +14,8 @@ Schelling's Model of Segregation: [[Simulation]] (http://nifty.stanford.edu/2014
 
 In this tutorial, we will walk through creating a simple model and progressively add functionality which will illustrate Mesa’s core features.
 
-The content of the tutorials is as follows: [[Download material]](https://downgit.github.io/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_00_Tut/mesa_introduction)
+The content of the tutorials is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_01_Schelling)
 
-2.1. [Schelling’s model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_00_Tut/mesa_introduction/mesa_setup_tutorial.ipynb): Introduction to setup Mesa package [[Hints]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_00_Tut/mesa_introduction/mesa_introductory_tutorial_complete_solution.ipynb)
+2.1. [Schelling’s model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/schelling-example.ipynb): Schelling’s model in Python with Mesa [[Hints]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/schelling-example-hints.ipynb)
 
 # Appendix
