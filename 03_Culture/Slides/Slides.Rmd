@@ -173,7 +173,7 @@ knitr::include_graphics("Figures/Schwartz.png")
   - Traditional-Secular values
   - Survival-Self expression values
   
-- Clustering based on clutural history
+- Clustering based on cultural history
   
 [The WVS Cultural Map of the World, Inglehart & Welzel (2010) ](https://web.archive.org/web/20131019112321/http://www.worldvaluessurvey.org/wvs/articles/folder_published/article_base_54)
 
@@ -297,7 +297,7 @@ knitr::include_graphics("Figures/Grid1.png")
 
 Notes:
 - Agents with zero similarity do not interact
-- Coping only applies to features with different traits
+- Copying only applies to features with different traits
 - If they only differ in one, the active agent copies that one
 - Model converges if all similarities are zero or one
 
