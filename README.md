@@ -27,7 +27,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 ### Block 2: Opinion dynamics
 
 4. **Basics of spreading: Granovetter's threshold model**  (24.03.2022)  
-- [**Exercise 1: Schelling's model and Pandas (session 2**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/Excercise_Schelling.md)
+- [**Exercise 1: Schelling's model and Pandas (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/Excercise_Schelling.md)
 
 5. **Opinion dynamics**  (31.03.2022)  
 *Exercise 2: Threshold models (session 1)*
