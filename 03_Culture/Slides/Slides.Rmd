@@ -299,7 +299,7 @@ Notes:
 - Agents with zero similarity do not interact
 - Copying only applies to features with different traits
 - If they only differ in one, the active agent copies that one
-- Model converges if all similarities are zero or one
+- Simulation ends if all similarities are zero or one
 
 ---
 
