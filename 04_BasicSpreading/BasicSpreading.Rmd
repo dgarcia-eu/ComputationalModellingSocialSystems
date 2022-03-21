@@ -1,0 +1,14 @@
+---
+title: "Basics of spreading: Granovetter's threshold model"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Threshold Models of Collective Behavior. Mark Granovetter. American Journal of Sociology (1978)](https://www.jstor.org/stable/2778111)
+
+### Additional readings
+
+- [The dynamics of emotions in online interaction. David Garcia, Arvid Kappas, Dennis Küster and Frank Schweitzer. Royal Society Open Science (2016)](https://royalsocietypublishing.org/doi/10.1098/rsos.160059)

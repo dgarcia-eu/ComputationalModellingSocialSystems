@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Basics of spreading: Granovetter’s threshold model</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Basics of spreading: Granovetter’s threshold model
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+### Computational Modelling of Social Sytems
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+# So far
+
+**Block 1: Fundamentals of agent-based modelling**
+  
+- Basics of agent-based modelling: the micro-macro gap
+  - Tutorial: ABM basics in Python with Mesa (session 1)
+- Modelling segregation: Schelling's model
+  - Tutorial: ABM basics in Python with Mesa (session 2)
+- Modelling cultures
+  - Exercise 1: Schelling's model and Pandas (session 1)
+
+**Block 2: Opinion dynamics**
+- **Today:** Basics of spreading: Granovetter's threshold model
+ - Exercise 1: Schelling's model and Pandas (session 2)
+- Opinion dynamics
+  - Exercise 2: Threshold models (session 1) **Deadline: 20.04.2022**
+
+---
+
+# Overview
+
+## 1. Collective behavior
+
+## 2. Granovetter's threshold model
+
+## 3. Modelling online collective emotions
+
+---
+
+# Collective behavior
+
+## *1. Collective behavior*
+
+## 2. Granovetter's threshold model
+
+## 3. Modelling online collective emotions
+
+---
+
+# More is different
+
+&lt;img src="Figures/MoreIsDifferent.png" width="750" style="display: block; margin: auto;" /&gt;
+[More is different: broken symmetry and the nature of the hierarchical structure of science. Philip Anderson, Science (1972)](https://cse-robotics.engr.tamu.edu/dshell/cs689/papers/anderson72more_is_different.pdf)
+
+---
+
+## Complexity Science: Complicated versus complex
+
+.pull-left[
+&lt;img src="Figures/Cogs.jpg" width="750" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="Figures/network-ge2bd7754a_1920.png" width="750" style="display: block; margin: auto;" /&gt;
+]
+
+- A **complicated system** has many pieces with specific functions and well-defined relationships. It has been carefully **engineered or designed**.  
+- A **complex system** is composed of many particles that interact following some forces or dynamics. Its behavior follows from **natural principles**.
+
+---
+
+# Complexity in pop culture
+.pull-left[
+&lt;img src="Figures/JurassicPark.png" width="290" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="Figures/Matrix.jpg" width="310" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Collective behavior in complex systems
+
+&lt;img src="Figures/animals.jpg" width="600" style="display: block; margin: auto;" /&gt;
+[Challenges and solutions for studying collective animal behaviour in the wild. Lacey Hughey et al. Philosophical Transactions of the Royal Society B (2018)](https://royalsocietypublishing.org/doi/10.1098/rstb.2017.0005)
+---
+
+# Collective behavior in social systems
+
+**Interaction-induced collective behavior:** when the strength of interaction between individuals generates macro behavior
+  - Schelling's model: low tolerance triggers moves that lead to segregation
+  - Alxelrod's model: cultural exchange leads to larger cultures or supports coexistence of few cultures
+
+**Diversity-induced collective behavior:** when the differences between individuals create the environment for macro behavior to emerge
+  - Today's case: interaction strength and average agent stays the same, only variance between agents is the driver
+  - More on network models: different positions in a social network are a way to induce cascades
+
+---
+
+# Granovetter's threshold model
+
+## 1. Collective behavior
+
+## *2. Granovetter's threshold model*
+
+## 3. Modelling online collective emotions
+
+---
+
+# Binary decisions and collective behavior
+
+.pull-left[The riot toy example:
+- A group of individuals is part of a demonstration
+- Individuals have a threshold of how many others have to be rioting to join the riot
+- If enough people are in the riot, individuals with lower threshold join too]
+.pull-right[
+&lt;img src="Figures/Riot.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+
+- Proto-opinion: just participate / not participate
+- Other examples with binary decisions depending on size: Diffusion of innovations, rumors, strikes, voting, leaving a party, migration
+
+---
+
+# Diversity in collective behavior
+
+&lt;img src="Figures/CollBeh.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+- How does the distribution of preferences (thresholds) in a population affect its collective behavior? 
+- Knowing the preferences does not directly tell you how the population will behave, you need to analyze how the population behaves
+- Aim: understanding groups beyond the representative "mean" member
+
+---
+
+# Rational agents in collective action
+
+Assumption: the decision to join the collective action depends on:
+
+- Risk or cost of participating.
+- Examples of risks and costs:
+  - Risk of being jailed in riot
+  - Wage loss in strike
+  - Cost of technology adoption
+
+
+- The benefit (potential or sure) of the action taking place.
+- Examples of benefits:
+  - Political change after demonstration
+  - Profit out of adopting innovation
+  - Political party winning an election
+
+---
+
+# Net benefit and thresholds
+
+.pull-left[
+Net benefit =  benefit - costs
+
+- Threshold to join: Net benefit is &gt;0
+
+- benefits increase and costs decrease with more people in the action (monotonic net benefit)
+
+- weaker assumption: there is only one crossing of zero in the function of net benefit vs people in action
+
+]
+
+.pull-right[
+&lt;img src="Figures/Benefit.png" width="800" style="display: block; margin: auto;" /&gt;
+Example of net benefit function from Granovetter (1978)
+]
+
+---
+
+# Toy example of Granovetter's model
+
+&lt;img src="Figures/Riot1.svg" width="950" style="display: block; margin: auto;" /&gt;
+
+- 100 Agents
+- Uniform sequence of thresholds with integer values `\([0,99]\)`
+- First agent activates, then second, and so on
+- One agent joins per iteration and all agents are active in the end
+
+---
+
+## Toy example of Granovetter's model version 2
+
+&lt;img src="Figures/Riot2.svg" width="925" style="display: block; margin: auto;" /&gt;
+
+- Same example as before but agents with thresholds `\(1\)` and `\(3\)` now have threshold `\(2\)`
+- First agent activates and simulation ends
+- Radically different outcome for minimal change in thresholds!
+- Deducing preference distributions from collective outcomes is risky
+
+---
+
+# Analyzing the distribution of thresholds
+.pull-left[
+- `\(F(x)\)` is the cummulative density function of thresholds:
+
+$$F(x) = P(\Theta_i &lt; x) $$
+- `\(r(t)\)` is the number of active agents at time `\(t\)`
+- `\(r(0)\)`: number of "instigators"
+- Simulation reaches an equilibrium:
+$$ r_e = F(r_e)$$
+]
+
+.pull-right[
+&lt;img src="Figures/CDF.png" width="600" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# `\(r_e\)` versus `\(\sigma\)`
+
+.pull-left[
+&lt;img src="Figures/STD.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- Assumption: Thresholds follow normal distribution with `\(\mu\)` and `\(\sigma\)`
+- `\(r_e\)`: equilibrium number of active agents (simulation ended)
+- `\(\sigma\)`: standard deviation of distribution of thresholds
+- Number of agents is constant: 100
+- `\(\mu\)` is constant: 25
+
+
+- Sharp increase in `\(r_e\)` at a critical `\(\sigma\)` value: phase transition
+- Diversity-induced collective behavior
+]
+
+
+---
+
+# Equlibrium in thresholds with `\(\sigma=1\)`
+
+&lt;img src="Figures/s1.svg" width="600" style="display: block; margin: auto;" /&gt;
+
+Low variance: thresholds concentrated around 25, no collective action
+---
+
+# Equlibrium in thresholds with `\(\sigma=10\)`
+
+&lt;img src="Figures/s10.svg" width="600" style="display: block; margin: auto;" /&gt;
+
+Higher variance but equilibrium is still at low value
+
+---
+
+# Equlibrium in thresholds with `\(\sigma=12\)`
+
+&lt;img src="Figures/s12.svg" width="600" style="display: block; margin: auto;" /&gt;
+
+Equilibrium starts to grow to small values
+---
+
+
+# Equlibrium in thresholds with `\(\sigma=13\)`
+
+&lt;img src="Figures/s13.svg" width="600" style="display: block; margin: auto;" /&gt;
+
+Sharp change to upper equilibrium with very high value
+---
+
+
+# Equlibrium in thresholds with `\(\sigma=60\)`
+
+&lt;img src="Figures/s60.svg" width="600" style="display: block; margin: auto;" /&gt;
+
+Slow decrease of equilibrium point towards very high variances
+---
+
+## Granovetter's model: take home messages
+
+- **Modelling action as rational choice:** thresholds as points where benefits outweigh costs or risks
+
+- **Diversity matters:** Two populations with the same average threshold have very different behaviors even if mean threholds are the same
+
+- **Tipping point or phase transition:** behavior changes dramatically at a narrow range of standard deviation of thresholds
+
+- **Size effects:** small changes in threshold sequences can be important. When the population is small, you have a probability of very different outcomes. Inferring the preferences from the outcome is very hard and/or misleading
+
+---
+
+# Modelling online collective emotions
+
+## 1. Collective behavior
+
+## 2. Granovetter's threshold model
+
+## *3. Modelling online collective emotions*
+
+---
+
+# Collective emotions
+
+&lt;img src="Figures/ColectiveEmotions.png" width="900" style="display: block; margin: auto;" /&gt;
+
+**Collective emotions:** Emotional states shared by a large amount of people at the same time  
+
+[Collective Emotions, Christian von Scheve and Mikko Salmela, Oxford University Press (2013)](https://global.oup.com/academic/product/collective-emotions-9780199659180?cc=at&amp;lang=en&amp;)
+---
+
+# Collective emotions on social media
+
+&lt;img src="Figures/kony-2012-infographic.png" width="825" style="display: block; margin: auto;" /&gt;
+
+[Kony 2012 Timeline [Infographic], Chris Holden, The Huffington Post](https://www.huffpost.com/entry/kony-2012-timeline_b_1387729)
+
+---
+
+## Quantifying emotions: valence and arousal
+
+.pull-left[![](Figures/circumplex.png)]
+.pull-right[
+
+- **Valence:** the degree of pleasure experienced in an emotion 
+  - Explains the most variance from positive/pleasant to negative/unpleasant
+
+- **Arousal:** the level of activity associated with an emotion  
+  - Explains less variance than valence but it is informative to differentiate emotions  
+
+]
+
+---
+
+## The Cyberemotions modelling framework
+
+&lt;img src="Figures/Cyberemotions.png" width="500" style="display: block; margin: auto;" /&gt;
+
+- Horizontal: agent design
+  - `\(v\)`, `\(a\)`: internal valence and arousal emotional state of the agent
+  - `\(s\)`: visible emotional expression as measured (e.g. pos/neg/neu)
+- Vertical: interaction between agents
+  - `\(h\)` is a communication field averaging recent expression of agents
+  - Agent's emotions change with time and the value of `\(h\)`
+---
+
+# Valence and arousal dynamics
+
+&lt;img src="Figures/Dynamics1.png" width="900" style="display: block; margin: auto;" /&gt;
+
+- `\(b,d\)`: baselines of valence and arousal
+- `\(\gamma_v\)`, `\(\gamma_a\)`: relaxation tendency of valence and arousal towards baselines
+- `\(\xi_v\)`, `\(\xi_a\)`: stochastic components of valence and arousal dynamics
+
+[The dynamics of emotions in online interaction. David Garcia, Arvid Kappas, Dennis Küster and Frank Schweitzer. Royal Society Open Science (2016)](https://royalsocietypublishing.org/doi/10.1098/rsos.160059)
+
+---
+# Examples of field influence functions
+
+&lt;img src="Figures/Dynamics2.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+- Field influence functions as products of a polynomial of valence and arousal
+
+- Approximation to some unknown function to fit empirically
+
+- Valence depends on `\(h\)` (pos/neg) and arousal on `\(|h|\)` (absolute value)
+
+---
+
+# Activation function
+
+`$$\large s_i(t) = f_s(v_i(t)) \Theta [a_i(t) - \tau_i]$$`
+- `\(s_i(t)\)` is the visible emotional expression of agent `\(i\)` aggregated in field `\(h\)`
+
+- `\(f_s(v)\)` is a function of how valence is expressed through text
+  - For example only sign or an approximation of internal valence
+
+- `\(\tau_i\)` is agent `\(i\)`'s arousal threshold to expression
+
+- `\(\Theta[x]\)` is the Heaviside step function: it has value 1 if `\(x&gt;0\)`, and 0 otherwise
+
+- After expression: reset of arousal to baseline ( `\(a_i(t) \leftarrow d\)` )
+---
+
+# Behavior in simulations
+
+&lt;img src="Figures/Colemodyn.png" width="750" style="display: block; margin: auto;" /&gt;
+
+[An agent-based model of collective emotions in online communities. Frank Schweitzer, David Garcia. The European Physical Journal B, 2010](http://www.springerlink.com/index/10.1140/epjb/e2010-00292-1)
+
+---
+
+# Calibration experiment setup
+
+&lt;img src="Figures/Post.png" width="750" style="display: block; margin: auto;" /&gt;
+
+- Study 1: reading pos/neg/neu threads and self-reports at home
+- Study 2: reading pos/neg/neu threads and self-reports in the lab
+- Study 3: reply to pos/neg/neu threads and self-reports before/after
+- Self-reports include valence and arousal ratings and intention to participate in discussion and to continue reading the thread
+
+---
+
+# Valence result
+
+
+&lt;img src="Figures/ValenceExp.png" width="900" style="display: block; margin: auto;" /&gt;
+
+- Dynamics well fitted by a linear function with intercept shift depending on thread polarity ( `\(h\)` ). Natural decay of valence with `\(\gamma_v = 0.37 \quad  [min^{-1}]\)`
+---
+
+# Arousal trigger results
+
+&lt;img src="Figures/ArousalExp.png" width="900" style="display: block; margin: auto;" /&gt;
+
+- Dynamics well fitted by a linear function with intercept shift depending on thread abs value ( `\(|h|\)` ). Natural decay of arousal with `\(\gamma_a = 0.41 \quad  [min^{-1}]\)`
+---
+
+# Empirical expression function
+
+&lt;img src="Figures/SentiExp.png" width="850" style="display: block; margin: auto;" /&gt;
+
+- Probability of post being classified as positive vs not positive and negative vs not negative in logistic regression (SentiStrength output with threshold)
+- Function of valence but independent of arousal
+---
+
+# Expression trigger and effects
+
+&lt;img src="Figures/ExpExp.png" width="900" style="display: block; margin: auto;" /&gt;
+
+- Probability to participate is flat up to a threshold of arousal, then it grows
+- Effect of expression of arousal is a linear approach to baseline, not a resert
+
+---
+
+# Summary
+
+- Collective behavior in social systems
+  - Complex versus complicated systems
+  - Interaction versus diversity-induced collective behavior
+
+
+- Granovetter's threshold model
+  - Interaction in a well-mixed system given preferences or thresholds
+  - Macro outcomes can vary a lot for small changes in threshold values
+  - Variance in thresholds leads to aggregated activation
+
+
+- Modelling online collective emotions
+  - The Cyberemotions modelling framework 
+  - Activation dynamics based on arousal thresholds
+  - Calibrating an emotions model with experiments
+
+
+---
+
+# Quiz
+
+- Which of these is complex and which is complicated?
+  - An airplane
+  - The Internet
+  - The Web
+  - A deep neural network
+- For a given `\(\sigma\)`, does `\(\mu\)` change the outcome in Granovetter's model?
+- How can you find the fraction of active agents at `\(t=0\)` in Granovetter's model?
+- In experiments, what does sentiment on text depend on: valence or arousal?
+
+**Please give us feedback!** Answers are anonymous and private
+.center[
+&lt;div style="font-size:40pt"&gt;
+&lt;a href=https://fbr.io/CMSS1&gt;https://fbr.io/CMSS1&lt;/a&gt;
+&lt;/div&gt;
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
