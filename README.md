@@ -30,10 +30,10 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 - [**Exercise 1: Schelling's model and Pandas (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_01_Schelling/Excercise_Schelling.md)
 
 5. **Opinion dynamics**  (31.03.2022)  
-*Exercise 2: Threshold models (session 1)*
+- [**Exercise 2: Threshold models (session 1)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/Excercise_Granovetter.md)
 
 6. **Modelling hyperpolarization and cognitive balance**  (07.04.2022) - Guest lecture by Simon Schweighofer    
-*Exercise 2: Threshold models (session 2)*
+- [**Exercise 2: Threshold models (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/Excercise_Granovetter.md)
 
 *No class between 9.04.2022 and 23.04.2022: Easter holidays*
 
