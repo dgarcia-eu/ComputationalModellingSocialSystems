@@ -1,0 +1,14 @@
+---
+title: "Opinion Dynamics"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Mixing beliefs among interacting agents. Guillaume Deffuant, David Neau, Frederic Amblard and Gerard Weisbuch. Advances in Complex Systems (2000)](https://www.worldscientific.com/doi/abs/10.1142/S0219525900000078)
+
+### Additional readings
+
+- [Tipping diffusivity in information accumulation systems: more links, less consensus. Jae K Shin and Jan Lorenz Journal of Statistical Mechanics: Theory and Experiment (2010)](https://iopscience.iop.org/article/10.1088/1742-5468/2010/06/P06005)

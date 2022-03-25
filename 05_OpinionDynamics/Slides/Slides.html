@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Opinion Dynamics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Opinion Dynamics
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+### Computational Modelling of Social Sytems
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+# So far
+
+**Block 1: Fundamentals of agent-based modelling**
+  
+- Basics of agent-based modelling: the micro-macro gap
+- Modelling segregation: Schelling's model
+- Modelling cultures
+
+**Block 2: Opinion dynamics**
+- Basics of spreading: Granovetter's threshold model
+ - Exercise 1: Schelling's model and Pandas (session 2)
+- **Today: Opinion dynamics**
+  - Exercise 2: Threshold models (session 1)
+- Modelling hyperpolarization and cognitive balance: Guest lecture by Simon Schweighofer (Webex)
+  - Exercise 2: Threshold models (session 2) **Deadline: 20.04.2022**
+
+---
+
+# Overview
+
+## 1. The voter model
+
+## 2. Bounded confidence
+
+## 3. Modeling polarization in the digital society
+
+---
+
+# The voter model
+
+## *1. The voter model*
+
+## 2. Bounded confidence
+
+## 3. Modeling polarization in the digital society
+
+---
+
+# Opinion dynamics outcomes
+
+- **Consensus**:
+  - Distribution of opinions in which the vast majority of agents agree on the same opinion
+
+
+- **Chaos:**
+  - Distribution of opinions in a population in which no apparent agreement group or structure can be identified (fully random)
+
+
+- **Polarization:**
+  - Bimodal distribution of opinions in a population towards the extremes of an opinion spectrum
+
+
+- **Fragmentation:**
+  - Multimodal distribution of opinions in a population into groups of high internal agreement and high external disagreement (multipolarization)
+
+---
+
+# Opinion dynamics modelling principles
+
+- Agent-based modelling approach: 
+  - internal state include (at least) the agent's opinion
+  - interaction rules between agents are specified
+  - these interactions cause emergent system properties
+
+
+- No central authority: 
+  - collective opinions, consensus, polarisation, cultural traits emerge without central coordination results depend on control parameters
+
+
+- Reactive rather than reflective agents: 
+  - no advanced cognitive process, only adaptation to environment (neighbourhood) by following simple rules
+
+---
+
+# Voter models of opinion dynamics
+
+- Rate to change opinion depends on other agents:
+  - neighbors (networks, spatial models)
+  - randomly chosen agents (also called mean-field interaction)
+
+
+
+- Principle: *frequency* dependent dynamics. Opinion change based on:
+
+`$$P(1-\theta_{i}|\theta_{i})=\kappa(f)\; f_{i}^{1-\theta_{i}}$$`
+
+- `\(\theta_{i}\)`: opinion of agent `\(i\)`
+- `\(0\leq f_{i}^{1-\theta_{i}} \leq 1\)`: frequency of agents with *opposite* opinions in "neighborhood" of agent `\(i\)`
+-  `\(\kappa(f)\)`: response function to frequency of other opinions
+- Analysis question: How does the outcome depend on `\(\kappa(f)\)`?
+
+
+---
+
+# Linear voter model
+
+
+- Dynamics: `\(P(1-\theta|\theta)=f^{1-\theta}\)`
+- Stochastic simulation agents update at random on a grid
+- Initially `\(f=0.5\)`, random distribution
+- Results:
+  - coordination of decisions on medium time scales
+  - outcome: consensus as an equilibrium
+  - How long does it take to reach consensus?
+  - Simulation at: `\(t=10^{1}\)`, `\(10^{2}\)`, `\(10^{3}\)`, `\(10^{4}\)`
+&lt;img src="Figures/voter.svg" width="900" style="display: block; margin: auto;" /&gt;
+
+---
+# Observations on linear voter model
+
+- In the time limit, always only one opinion exists
+  - Consensus always appears
+  - There are two "absorbing" states: all agents are either 0 or 1
+  - The probability to reach an all 0 or all 1 consensus equals initial frequency `\(f(0)\)`
+
+  
+- Model limitations/drawbacks
+  - very limited social/biological interpretation (remember Social Impact Theory)
+  - what about coexistence of opinions? The reality is not always consensus
+
+
+- Some interesting features for analysis:
+  - Time to reach consensus (TTC)
+  - Intermediate dynamics or dependence on grid topology/network
+
+
+---
+
+# Nonlinear voter model functions
+
+- Nonlinear response examples for `\(\kappa(f) f_{i}^{1-\theta_{i}}\)` 
+
+&lt;img src="Figures/voter2.svg" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Coexistence of opinions?
+
+
+- Coexistence can happen for some nonlinear `\(\kappa(f)\)`
+- Absorbing states can be destabilized with small random component in the linear case
+  - small pertubation for `\(f^{1-\theta}=1\)` ( for example `\(\epsilon=10^{-4}\)`)
+  - coordination of decisions on long time scales
+  - asymptotically: coexistence but non-equilibrium
+  - Simulation at: `\(t=10^{1}\)`, `\(10^{2}\)`, `\(10^{3}\)`, `\(10^{4}\)`
+  
+&lt;img src="Figures/voternl.svg" width="900" style="display: block; margin: auto;" /&gt;
+---
+
+# Including memory effects
+
+
+- `\(\nu_{i}(\tau_{i})\)`: reluctance of agent `\(i\)` to change opinion `\(\theta_{i}\)`
+  -  persistence time `\(\tau_{i}\)` (opinion was *not* changed) `\(\to\)` "history"
+  - reflects local experience with agents in neighborhood
+
+`$$\frac{d \nu}{d \tau}=\mu\, \nu(1-\nu) \quad \to \quad \nu_{i}= \frac{1}{1+ e^{-\mu \tau_{i}}}$$`
+
+- Decision dynamics: 
+
+`$$w(\theta_{i}^{\prime}|\theta_{i})=\left[1- \nu_{i}(\tau_{i})\right] f_{i}^{\theta_{i}^{\prime}}$$`
+
+- `\(\mu&gt;0\)`: slowing down of opinion dynamics
+- What is the role of `\(\mu\)` in time to consensus (TTC)?
+  
+---
+
+# Effect of memory in TTC
+
+&lt;img src="Figures/ttc2.svg" width="525" style="display: block; margin: auto;" /&gt;
+
+*Heterogeneity* of agents important when memory is present:  
+local groups of "confident" agents convince an indifferent neighborhood 
+
+---
+
+# Bounded confidence
+
+## 1. The voter model
+
+## *2. Bounded confidence*
+
+## 3. Modeling polarization in the digital society
+
+---
+
+## Discrete versus continuous opinion models
+
+.pull-left[
+- **Voter models:**
+  - agents are characterized by a discrete opinion (e.g. binary)
+  - adopt other opinions according to their frequency in the agent's neighborhood
+
+
+- **Bounded confidence models:**
+  - *continuous opinions* `\(x_i\)` (e.g. real number between 0 and 1)
+  - agent interactions are randomised and conditional on the difference of their opinions
+]
+
+
+.pull-right[
+
+&lt;img src="Figures/vote.png" width="525" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="Figures/likert.png" width="525" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+## The baseline model: pairwise bounded confidence
+
+- Consider a population of `\(N\)` agents `\(i\)` with continuous opinions `\(x_i\)`
+- At each time step any two randomly chosen agents meet
+- Re-adjust opinion if absolute opinion difference is smaller than a threshold `\(\epsilon\)`
+  - In other words: agents `\(i\)` and `\(j\)` with opinions `\(x_i\)` and `\(x_j\)` interact if:
+`$$|x_i-x_j|&lt;\epsilon$$`
+- New opinions are adjusted according to
+`$$x_i(t+1)=x_i(t)+ \zeta \cdot (x_j(t)-x_{i}(t))$$`
+`$$x_j(t+1)=x_j(t)+ \zeta \cdot (x_i(t)-x_j(t))$$`
+
+- `\(\zeta\)` is the convergence parameter: measures speed of opinions approaching
+
+---
+
+# Simulation examples
+
+.pull-left[
+&lt;img src="Figures/basic1.png" width="400" style="display: block; margin: auto;" /&gt;
+`\(\epsilon=0.5, \zeta=0.5, N=2000\)`
+ ]
+
+.pull-right[
+&lt;img src="Figures/basic2.png" width="400" style="display: block; margin: auto;" /&gt;
+`\(\epsilon=0.2, \zeta=0.5, N=1000\)`
+ ]
+
+**Consensus, polarization, and fragmentation are possible outcomes**  
+[Mixing beliefs among interacting agents. Guillaume Deffuant, David Neau, Frederic Amblard and Gerard Weisbuch. Advances in Complex Systems (2000)](https://www.worldscientific.com/doi/abs/10.1142/S0219525900000078)
+
+---
+
+# Final opinions vs initial opinions
+
+.pull-left[
+&lt;img src="Figures/basic3.svg" width="500" style="display: block; margin: auto;" /&gt;
+*(Deffuant et al. (2000))*
+]
+
+.pull-right[
+- qualitative dynamics mostly depend on the threshold `\(\epsilon\)`:
+  - controls the number of peaks of the final distribution of opinions
+  - The final expected number of groups is `\(\frac{1}{2\epsilon}\)`
+
+
+- `\(\zeta\)` and `\(N\)` only influence convergence time and width of the
+  distribution of final opinions
+
+- Sometimes you can get "wings" of agents at the edges or stuck between major groups
+]
+
+---
+
+# Asymmetric confidence model
+
+- **symmetric:** `\(|x_i - x_j| &lt; \epsilon\)`
+- **asymmetric:** `\(-\epsilon_l &lt; x_i - x_j &lt; \epsilon_r\)`
+
+&lt;img src="Figures/Hegselmann-1.svg" width="700" style="display: block; margin: auto;" /&gt;
+Confidence can extend further on one side than on the other
+---
+
+# Opinion-independent asymmetry
+
+&lt;img src="Figures/Hegselmann-10.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+**Collective opinion drifts in the direction favoured by the asymmetry**
+
+---
+
+# One-sided splits
+
+&lt;img src="Figures/Hegselmann-13.png" width="700" style="display: block; margin: auto;" /&gt;
+**Asymmetric bounded confidence generates temporary fragmentation!**
+
+---
+
+
+# Modeling polarization in the digital society
+
+## 1. The voter model
+
+## 2. Bounded confidence
+
+## *3. Modeling polarization in the digital society*
+
+---
+
+## The question of connectivity in the digital society
+
+&lt;img src="Figures/network.jpg" width="700" style="display: block; margin: auto;" /&gt;
+
+**Could more links create polarization?** (see Axelrod's conjecture)
+
+[Tipping diffusivity in information accumulation systems: more links, less consensus. Jae K Shin and Jan Lorenz Journal of Statistical Mechanics: Theory and Experiment (2010)](https://iopscience.iop.org/article/10.1088/1742-5468/2010/06/P06005)
+
+---
+
+# The Information Accumulation Model
+
+- n agents with continuous opinions `\(y_i\)` and the following opinion dynamics:
+`$$y_i^{t+1} = (1-\Delta) y_i^ t + \sum_{j \in \Gamma_i} \omega y_j^t (1- |y_i^t|)$$`
+- `\(\Delta\)`: measures how much agents opinions relax over time
+  - In absence of interaction `\(y \to 0\)` 
+
+
+&lt;img src="Figures/Relaxation.gif" width="700" style="display: block; margin: auto;" /&gt;
+
+- Diffusivity `\(\omega\)`: coupling of opinions between agents
+    - Agents approach the opinions of others in their neighborhood
+- Saturation `\(1-|y_i^t|\)`: limits opinions to interval `\((-1,1)\)`
+
+---
+
+
+# The Information Accumulation Model
+
+- n agents with continuous opinions `\(y_i\)` and the following opinion dynamics:
+`$$y_i^{t+1} = (1-\Delta) y_i^ t + \sum_{j \in \Gamma_i} \omega y_j^t (1- |y_i^t|)$$`
+- `\(\Delta\)`: measures how much agents opinions relax over time
+  - In absence of interaction `\(y \to 0\)` 
+
+
+- Diffusivity `\(\omega\)`: coupling of opinions between agents
+    - Agents approach the opinions of others in their neighborhood
+
+
+- Saturation `\(1-|y_i^t|\)`: limits opinions to interval `\((-1,1)\)`
+
+---
+
+# Interaction in echo chambers
+
+.pull-left[
+&lt;img src="Figures/IASCommunities.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Neighborhood `\(\Gamma_i\)` contains:
+  - `\(m_O\)` connections to neighbors in same community
+  - `\(m_X\)` connections to neighbors in the other community
+- Weak inter-community interaction (filter bubble effects):
+  `$$m_O&gt;m_X$$`
+- Intra-community diffusivity: `\(\Omega_O = m_o \omega\)`
+- Inter-community diffusivity: `\(\Omega_x = m_x \omega\)`
+
+]
+
+
+---
+# Community dynamics
+
+
+Agent dynamics simplifies to community-level variables:
+`\begin{eqnarray*}
+y_{1}^{t+1}&amp;=(1-\Delta) y_{1}^{t}+(\Omega_0 y_{1}^{t}+\Omega_X y_{2}^{t})(1-|y_{1}^{t}|)
+\nonumber \\
+y_{2}^{t+1}&amp;=(1-\Delta) y_{2}^{t}+(\Omega_X y_{1}^{t}+\Omega_0 y_{2}^{t})(1-|y_{2}^{t}|).
+\end{eqnarray*}`
+
+- **00**: no opinion in both communities
+- **PP**, **NN**: consensus (both same sign)
+- **PN**, **NP**: polarization (differn signs)
+
+When `\(t \to \infty\)` in **PN** mode, opinions follow this system of equations:
+`\begin{eqnarray*}
+Y_1&amp;=(1-\Delta)Y_1+(\Omega_0Y_1+\Omega_XY_2)(1-Y_1) \nonumber \\
+Y_2&amp;=(1-\Delta)Y_2+(\Omega_XY_1+\Omega_0Y_2)(1+Y_2). 
+\end{eqnarray*}`
+
+---
+
+# Solutions of model dynamics (I)
+
+1.  Trivial: **00** mode:
+  - Exists for any combination of parameter values
+  - Only stable if `\(\Omega_O + \Omega_x &lt; \Delta\)` (relaxation `\(&gt;\)` total diffusivity)
+
+2. Consensus: **PP** and **NN** modes:
+    - `\(Y_1 = Y_2 = 1-\frac{\Delta}{\Omega_0+\Omega_X}\)`
+    - Exists when `\(\Omega_0+\Omega_X\geq\Delta\)` (total diffusivity `\(&gt;\)` relaxation)
+    - Always stable
+
+3.  Polarization: **PN** and **NP** modes
+
+---
+
+# Solutions of model dynamics (II)
+
+1.  Trivial: **00** mode
+
+2. Consensus: **PP** and **NN** modes
+
+3.  Polarization: **PN** and **NP** modes:
+  
+   - `\(-Y_2 = Y_1 = 1-\frac{\Delta}{\Omega_0-\Omega_X}\)`
+   
+    - Exists when `\(\Omega_0-\Omega_X \geq \Delta\)` (difference in diffusivities `\(&gt;\)` relaxation)
+   
+    - Polarization can only be stable if: 
+`$$\Omega_X^T &lt; \Omega_0+\frac{1}{2}\Delta-\frac{1}{2}\sqrt{\Delta^2+8\Omega_0\Delta}$$`
+
+
+---
+
+# Opinion Attractors ( `\(\Delta=0.2\)` )
+
+&lt;img src="Figures/IAS-A.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+- Total diffusivity below `\(\Delta\)` ( `\(\Omega_O=0.14\)`, `\(\Omega_X=0.04\)` )
+- Trivial **00** solution
+
+---
+
+# Consensus Attractors ( `\(\Delta=0.2\)` )
+
+&lt;img src="Figures/IAS-B.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+- `\(\Omega_0-\Omega_X &lt; \Delta\)`  ( `\(\Omega_O=0.24\)`, `\(\Omega_X=0.08\)` )
+- **00** marginally stable, **PP** and **NN** stable
+---
+
+
+# Existence of Polarization  ( `\(\Delta=0.2\)` )
+
+&lt;img src="Figures/IAS-C.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+
+- `\(\Omega_0-\Omega_X &gt; \Delta\)`  ( `\(\Omega_O=0.34\)`, `\(\Omega_X=0.08\)` )
+- **00** unstable, **PN** and **NP** marginally stable, **PP** and **NN** stable
+---
+
+# Stable Polarization  ( `\(\Delta=0.2\)` )
+
+&lt;img src="Figures/IAS-D.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+- `\(\Omega_0-\Omega_X &gt; \Delta\)`  ( `\(\Omega_O=0.44\)`, `\(\Omega_X=0.06\)` )
+- **00** unstable, **PN** , **NP**, **PP**, and **NN** stable
+---
+
+
+# Tipping diffusivity ratio
+
+
+.pull-left[
+
+**Tipping diffusivity ratio:**
+  Fraction of inter- and intra-diffusivity above which two polarized
+  communities would reach a consensus
+
+`$$\Phi^T=\frac{\Omega_X^T}{\Omega_0}$$`
+Green arrow: fostering consensus by increasing inter-community diffusivity (creating links between groups)
+
+]
+
+.pull-right[
+
+&lt;img src="Figures/TippingRatio2.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Connectivity can increase polarization
+
+
+.pull-left[
+
+**More links, less consensus effect:**
+For low `\(\frac{\Omega_X}{\Omega_0}\)` there is a level of total diffusivity that creates
+polarization
+
+Red arrow: echo chamber effect is constant (fixed `\(\frac{\Omega_X}{\Omega_0}\)` ), increase in total connectivity (thus increase in `\(\Omega_0\)` ):
+**Polarization appears!**
+
+Only for low `\(\frac{\Omega_X}{\Omega_0}\)`: weakening echo chamber effect fosters consensus above a threshold
+
+]
+
+.pull-right[
+
+&lt;img src="Figures/TippingRatio3.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+---
+
+# Summary
+
+- The voter model: binary opinions model
+  - Probability to change opinion based on opinions of neighbors
+  - Linear voter model: consensus. Nonlinear model can have coexistence
+  - Adding reluctance to change can speed up consensus
+  
+  
+- Bounded confidence: continuous opinions
+  - Interaction only when opinions are close enough
+  - Generates consensus, polarization, and fragmentation
+  - Asymmetry of thresholds creates one-sided splits
+
+
+- Information accumulation systems
+  - Interaction in echo chambers with relaxation towards zero
+  - Polarization depends on intra- and inter-community diffusivity
+  - Tipping ratio shows that more links can generate polarization
+
+---
+
+# Quiz
+
+-  The memory effect in the voter model makes you more or less susceptible to change your opinion?
+
+- Is the Information Accumulation System a model of binary or continuous opinions?
+
+- If `\(\epsilon=0.2\)`, how many opinion groups can you expect in the bounded confidence model?
+
+- In the base version of the bounded confidence model, can the number of groups increase during the simulation?
+
+- In our online society, do you expect `\(\Omega_X/\Omega_O\)` to be above or below 1?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
