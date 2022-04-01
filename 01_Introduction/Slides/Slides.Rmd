@@ -1,7 +1,7 @@
 ---
 title: "The Basics of agent-based modeling"
 author: "David Garcia, Petar Jerčić, Jana Lasser <br><br> *TU Graz*"
-date: "Computational Modelling of Social Sytems"
+date: "Computational Modelling of Social Systems"
 output:
   xaringan::moon_reader:
     lib_dir: libs 
