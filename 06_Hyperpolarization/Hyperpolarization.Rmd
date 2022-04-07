@@ -1,0 +1,11 @@
+---
+title: "Modelling Hyperpolarization"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić -- Guest Lecture by Simon Schweighofer, 2022"
+output: html_document
+---
+
+### Readings
+
+- [A Weighted Balance Model of Opinion Hyperpolarization. Simon Schweighofer, Frank Schweitzer, David Garcia. Journal of Artificial Societies and Social Simulation (2020)](https://www.jasss.org/23/3/5.html)
+
