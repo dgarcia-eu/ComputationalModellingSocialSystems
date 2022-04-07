@@ -16,6 +16,6 @@ In this Excercise, we will walk through creating a Granovetter’s threshold mod
 
 The content of the excercise is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_02_Granovetter)
 
-2.1. [Granovetter’s threshold model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/granovetter-example-handout.ipynb): Granovetter’s threshold model in Python with Mesa
+2.1. [Granovetter’s threshold model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/granovetter-example-handout.ipynb): Granovetter’s threshold model in Python with Mesa [[Hints]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/granovetter-example-hints.ipynb
 
 # Appendix
