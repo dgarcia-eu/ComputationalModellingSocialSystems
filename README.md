@@ -39,7 +39,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ### Block 3: Network formation
 
-7. **Basic network models**  (28.04.2022)  
+7. [**Basic network models**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/07_NetworkModels/NetworkModels.html) [[Slides]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/07_NetworkModels/Slides/Slides.html)  (28.04.2022)  
 *Exercise 3: Bounded confidence (session 1)*
 
 8. **Modelling small worlds**  (05.05.2022)  
