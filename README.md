@@ -40,10 +40,10 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 ### Block 3: Network formation
 
 7. [**Basic network models**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/07_NetworkModels/NetworkModels.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/07_NetworkModels/Slides/Slides.html)  (28.04.2022)  
-*Exercise 3: Bounded confidence (session 1)*
+- [**Exercise 3: Bounded confidence (session 1)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/Excercise_Bounded-Confidence.md)
 
 8. **Modelling small worlds**  (05.05.2022)  
-*Exercise 3: Bounded confidence (session 2)*
+- [**Exercise 3: Bounded confidence (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/Excercise_Bounded-Confidence.md)
 
 9. **Scale-free networks**  (12.05.2022)  
 *Exercise 4: Scale-free networks and visualization (session 1)*
