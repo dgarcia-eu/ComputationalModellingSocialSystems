@@ -14,8 +14,8 @@ N/A
 
 The purpose of this model is to present results about continuous opinion dynamics when convergent opinion adjustments only proceed when opinion difference is below a given threshold.
 
-The content of the excercise is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_02_Granovetter)
+The content of the excercise is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_03_BoundedConfidence)
 
-2.1. [Bounded confidence model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_02_Granovetter/granovetter-example-handout.ipynb): Bounded confidence model in Python with Mesa
+2.1. [Bounded confidence model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/bounded-confidence-handout.ipynb): Bounded confidence model in Python with Mesa
 
 # Appendix
