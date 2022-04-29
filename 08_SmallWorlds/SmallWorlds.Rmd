@@ -1,0 +1,16 @@
+---
+title: "Modelling small worlds"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Collective dynamics of ‘small-world’ networks. Duncan J. Watts & Steven H. Strogatz. Nature (1998)](https://www.nature.com/articles/30918)
+
+### Additional readings
+
+- [Networks, Dynamics, and the Small‐World Phenomenon. Duncan J. Watts. American Journal of Sociology (1999)](https://www.jstor.org/stable/10.1086/210318?seq=1)
+
+- [Networks: An Introduction, Newman (2010) - Chapter 15.1 ](https://oxford.universitypressscholarship.com/view/10.1093/acprof:oso/9780199206650.001.0001/acprof-9780199206650-chapter-15)
