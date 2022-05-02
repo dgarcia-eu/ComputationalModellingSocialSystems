@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Modelling small worlds</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Modelling small worlds
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+### Computational Modelling of Social Systems
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+## So far
+
+- **Block 1: Fundamentals of agent-based modelling**
+  - Basics of agent-based modelling: the micro-macro gap
+  - Modelling segregation: Schelling's model
+  - Modelling cultures
+
+
+- **Block 2: Opinion dynamics**
+  - Basics of spreading: Granovetter's threshold model
+  - Opinion dynamics
+  - Modelling hyperpolarization and cognitive balance
+
+
+- **Block 3: Fundamentals of agent-based modelling**
+  - Basic network models
+  - **Today: Modelling small worlds**
+  - Scale-free networks
+  - Growth processes
+
+---
+
+# Overview
+
+## 1. The small world phenomenon
+
+## 2. The Watts-Strogatz model
+
+## 3. Social small world model
+
+---
+
+# The small world phenomenon
+
+## *1. The small world phenomenon*
+
+## 2. The Watts-Strogatz model
+
+## 3. Social small world model
+
+---
+
+# It's a small world!
+
+&lt;img src="Figures/Friends.png" width="800" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Six degrees of separation
+
+.pull-left[
+&lt;img src="Figures/SixDegrees.jpg" width="330" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+&lt;img src="Figures/Linked.jpg" width="300" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# The Bacon number
+
+&lt;img src="Figures/bacon.png" width="900" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+## Milgram's small world experiment
+
+.pull-left[
+
+- 160 people in Omaha try to reach one person in Boston by mail to their acquaintances
+
+- 44 letters reached the target with six steps on average
+
+- Short path length as evidence of small-world
+
+- However, some letters did not agree, are those paths infinite?
+]
+
+
+.pull-right[
+&lt;img src="Figures/map_us.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Refresher: Network distance
+
+.pull-left[
+
+The **distance** between nodes `\(v\)` and `\(w\)` is denoted as `\(dist(v,w)\)` and measures the minimum length among all the paths connecting `\(v\)` and `\(w\)`. 
+
+If there is no path between `\(v\)` and `\(w\)`, the distance between them is defined as `\(dist(v,w) := \infty\)`. 
+
+Example: `\(dist(b, e) = 2\)` 
+
+In directed networks, it might happen that `\(dist(v,w) \neq dist(w,v)\)`. 
+]
+
+.pull-right[
+&lt;img src="Figures/networkUndirected.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Average path length
+
+
+.pull-left[
+
+$$ \langle l \rangle = \frac{1}{N(N-1)}\sum_{u,v} dist(u,v) $$
+
+
+- Global metric for the whole network
+
+- It makes sense when network is connected, otherwise `\(\langle l \rangle= \infty\)`
+
+- In the example, `\(\langle l \rangle=1.7\)`
+
+
+]
+
+.pull-right[
+&lt;img src="Figures/networkUndirected.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Refresher: Clustering coefficient
+
+.pull-left[
+**Local clustering coefficient**:
+
+`$$C_i = \frac{2*t(i)}{d_i *(d_i−1)}$$`
+
+- `\(d_{out}(i)\)` is the degree of `\(i\)` (&gt;1) 
+- `\(t(i)\)` is the number of pairs of neighbors of `\(i\)` that are connected
+
+**Average clustering coefficient**:
+
+`$$C = \frac{1}{N} \sum_i C_i$$`
+
+
+]
+
+.pull-right[
+&lt;img src="Figures/closedTriad.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# The Watts-Strogatz model
+
+## 1. The small world phenomenon
+
+## *2. The Watts-Strogatz model*
+
+## 3. Social small world model
+
+*Collective dynamics of ‘small-world’ networks. Duncan J. Watts &amp; Steven H. Strogatz. Nature (1998)*
+
+
+---
+
+# Clustering versus small distances
+
+
+- Triangles reduce distances: all nodes in a triangle are at distance one
+
+- Clustering and short path lengths appear to be opposing properties
+
+- Social networks have high clustering (lots of triangles), can they also have short paths? Is the six degrees observation a robust one?
+
+** Research question: can a model produce networks with both high clustering and low average path distance?**
+
+Additional conditions:
+- Network is large ( `\(N \gg 1\)` )
+- Network is sparse, like a social network ( `\(\langle k \rangle \ll N\)` )
+
+---
+
+# The Watts-Strogatz model
+
+.pull-left[
+- Start with a fixed ring where `\(N\)` nodes are connected to `\(k\)` neighbors in the ring
+
+(example: `\(N=20\)`, `\(k=4\)`)
+
+- For each edge:
+  
+  - With probability `\(p\)`: rewire the edge uniformly at random
+  
+(two versions: only one endpoint or both are rewired)
+]
+
+.pull-right[
+&lt;img src="Figures/WS-1.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# From order to randomness
+
+&lt;img src="Figures/WS.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Properties of the lattice ( `\(p=0\)` )
+
+
+.pull-left[
+
+**Average clustering coefficient:**
+
+$$C(0) \sim 3/4   $$
+(tunable value of `\(C\)` based on `\(k\)`)
+
+** Average path length:**
+
+$$L(0) =  \frac{N}{2k} $$
+(very high path length, grows linearly with network size)
+
+]
+
+.pull-right[
+&lt;img src="Figures/WS-1.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# C(p) and L(p) versus C(0) and L(0)
+
+&lt;img src="Figures/WS-result.png" width="750" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Empirical versus random networks
+
+Empirical network analysis of `\(L\)` and `\(C\)` compared to random networks with the same number of nodes and edges (null model, `\(G(n,m)\)` )
+
+| Network | `\(L_{actual}\)` | `\(L_{random}\)` | `\(C_{actual}\)` | `\(C_{random}\)` |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| Film actors | 3.65 | 2.99 | 0.79 | 0.00027 |
+| Power grid | 18.7 | 12.4 | 0.080 | 0.005 |
+| C. elegans | 2.65 | 2.25 | 0.28 | 0.05 |
+
+**Evidence of small world networks: empirical networks have average path lenghts close to random networks but much higher average clustering**
+
+---
+
+#  Social small world model
+
+## 1. The small world phenomenon
+
+## 2. The Watts-Strogatz model
+
+## *3. Social small world model*
+
+*Networks, Dynamics, and the Small‐World Phenomenon. Duncan J. Watts. American Journal of Sociology (1999)*
+
+---
+
+# Social networks aren't lattices
+
+.pull-left[
+&lt;img src="Figures/Karate.jpg" width="750" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="Figures/Politnetz.png" width="750" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# The caveman model
+
+&lt;img src="Figures/Caveman.png" width="450" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Modeling propensity to triadic closure
+
+&lt;img src="Figures/Propensity.png" width="825" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Formalizing propensity to triadic closure
+
+&lt;img src="Figures/PropensityEquation.png" width="800" style="display: block; margin: auto;" /&gt;
+
+- `\(R_{i,j}\)`: propensity to connect of agents `\(i\)` and `\(j\)`
+- `\(m_{i,j}\)`: mutual friends between `\(i\)` and `\(j\)`
+- `\(p\)`: base probability to connect when no common friends
+- `\(k\)`: average degree of network
+- `\(\alpha\)`: exponent that defines curvature of `\(R_{i,j}\)` versus `\(m_{i,j}\)` 
+  - `\(0 \le \alpha \le \infty\)`
+---
+
+# `\(\alpha\)` in propensity
+
+&lt;img src="Figures/Propensity2.png" width="825" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Avg path length vs `\(\alpha\)`
+
+&lt;img src="Figures/CavemanPathLength.png" width="850" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Clustering coefficient vs `\(\alpha\)`
+
+&lt;img src="Figures/CavemanClustering.png" width="850" style="display: block; margin: auto;" /&gt;
+
+---
+
+# "Small-worldness" vs `\(\alpha\)`
+
+&lt;img src="Figures/CavemanResult.png" width="670" style="display: block; margin: auto;" /&gt;
+**For an intermediate range of values of `\(\alpha\)`, average path length is low while the clustering coefficient is high.**
+
+---
+
+## Summary
+
+
+-  The small world phenomenon
+  - Anecdotes and literature suggest that the distance between two random people in the world is not so large
+  - Refresher: average path length and average clustering coefficient
+
+
+- The Watts-Strogatz model
+  - From a regular lattice to a random network rewiring with probability `\(p\)`
+  - For a wide range of middle values of `\(p\)`, clustering is high and average path lengths are low
+  - Empirical networks show this when compared to random networks
+
+
+- Social small world model
+  - Cavemen rather than lattices as regular network
+  - `\(\alpha\)` modulates shape of propensity to connect vs friendships share
+  - Shows small-world behavior for an intermediate range of `\(\alpha\)`
+
+---
+# Quiz
+
+- What fraction of letters in Milgram's experiment reached their destination?
+
+- What is the average path length of a network with an isolated node?
+
+- What is the average clustering coefficient of a tree?
+
+- What is the null model to compare small-world measurements?
+
+- What is a better model of a social network, a lattice or a cavemen network?
+
+- if `\(\alpha\)` is zero, do you connect to the friends of your friends very often?
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
