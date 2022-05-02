@@ -300,10 +300,25 @@ Empirical network analysis of `\(L\)` and `\(C\)` compared to random networks wi
 
 ---
 
-# The caveman model
+# Extreme case: the caveman graph
 
 &lt;img src="Figures/Caveman.png" width="450" style="display: block; margin: auto;" /&gt;
 
+---
+
+# Modeling social small worlds
+
+- Start with a ring of n nodes
+
+- For each pair of nodes (in random order):
+      - Calculate number of shared friends `\(m_{i,j}\)`
+      - Calculate propensity to connect `\(R_{i,j}\)` based on `\(m_{i,j}\)`
+      - Connect them with probability `\(R_{i,j}\)`
+      
+      
+`\(R_{i,j}\)` has a non-zero but low base probability `\(p\)` of any two nodes connecting regardless of their number of shared friends
+
+The dependence of `\(R_{i,j}\)` on `\(m_{i,j}\)` interpolates between a regular (caveman network) and a random network. The reality should be somewhere in between
 ---
 
 # Modeling propensity to triadic closure
