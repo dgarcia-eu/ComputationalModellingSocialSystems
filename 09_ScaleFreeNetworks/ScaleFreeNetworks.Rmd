@@ -1,0 +1,17 @@
+---
+title: "Scale-free networks"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Readings
+
+- [Emergence of Scaling in Random Networks. Albert-László Barabási & Réka Albert. Science (1999)](https://www.science.org/doi/full/10.1126/science.286.5439.509)
+
+### Additional readings
+
+- [Network growth by copying. P. L. Krapivsky and S. Redner. Physical Review E (2005)](https://journals.aps.org/pre/abstract/10.1103/PhysRevE.71.036118)
+
+
+- [Critical Truths About Power Laws. Michael P. H. Stumpf and Mason A. Porter. Science (2012)](https://www.science.org/doi/epdf/10.1126/science.1216142)
