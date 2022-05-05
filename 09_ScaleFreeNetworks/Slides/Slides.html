@@ -87,7 +87,7 @@ layout: true
 Network visualization of the physical Internet (K. C. Claffy, CAIDA).
 ]
 
-.pull-left[
+.pull-right[
 &lt;img src="Figures/Friendster.png" width="450" style="display: block; margin: auto;" /&gt;
 Network visualization of Friendster
 ]
@@ -97,17 +97,56 @@ Network visualization of Friendster
 
 A node's **degree** measures the number of links connected to it. 
 
-In undirected networks there is only one measure of degree `\(d(i)\)`, which is exactly the number of edges connected to the node `\(i\)`. 
+In undirected networks there is only one measure of degree `\(k_i\)`, which is exactly the number of edges connected to the node `\(i\)`. 
 
 In directed networks there are two kinds of degree: 
-- **in-degree** `\(d_{in}(i)\)` that is the number of edges ending in `\(i\)`, i.e. `\((j,i)\)`
-- **out-degree** `\(d_{out}(i)\)` that is the number of edges leaving from `\(i\)`, i.e. `\((i,j)\)`. In the first network example above, `\(d_{in}(c) = 1\)` and `\(d_{out}(c) = 2\)`.
+- **in-degree** `\(k_{in}(i)\)` that is the number of edges ending in `\(i\)`, i.e. `\((j,i)\)`
+- **out-degree** `\(k_{out}(i)\)` that is the number of edges leaving from `\(i\)`, i.e. `\((i,j)\)`. In the first network example above, `\(k_{in}(c) = 1\)` and `\(k_{out}(c) = 2\)`.
 
 In weighted networks, **weighted node degrees** are sums of incoming and outgoing link weights. This way there are two weighted node degrees, the weighted in-degree and the weighted out-degree.
 
 ---
 
-- Degree distribution / histogram
+# Degree distribution
+
+.pull-left[
+
+The degree distribution `\(P(k)\)` of a network measures the relative frequency of degree `\(k\)` among the nodes of the network.
+
+In the example:
+- `\(P(0)=0\)`
+- `\(P(1)=1/5\)`
+- `\(P(2)=1/5\)`
+- `\(P(3)=3/5\)`
+- `\(P(4)=0\)`
+]
+
+.pull-right[
+&lt;img src="Figures/networkUndirected.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Histogram showing a degree distribution
+
+&lt;img src="Figures/Hist.png" width="650" style="display: block; margin: auto;" /&gt;
+Degree distribution of the physical internet (Newman, Ed.2, Chapter 10.3)
+---
+
+# Observing inequality: power-laws
+&lt;img src="Figures/IncomeDistribution.png" width="650" style="display: block; margin: auto;" /&gt;
+
+The Pareto Principle (80/20 rule): 20% of the people make 80% of the money
+
+---
+# Power-law distributions
+
+- **Probability Density Function (PDF)**: `\(P(x)\)` or `\(P(X=x)\)`
+- Relative likelihood that the value of the random variable `\(X\)` will be equal to `\(x\)`
+- Power-law PDF: `\(P(x) = \frac{\alpha-1}{{x_{min}}} \left ( \frac{x}{x_{min}} \right )^{-\alpha}\)`  or for shorter: `\(P(x)  \propto  x^{-\alpha}\)`
+- Look like lines of slope `\(-\alpha\)` in log-log plots  
+
+&lt;img src="Figures/powerLawPDF.png" width="490" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -117,19 +156,39 @@ In weighted networks, **weighted node degrees** are sums of incoming and outgoin
 
 ---
 
-# Power laws and power-law distributions
-
----
-
-## Density functions of power-law distributions
-
----
-
 # The scale-free property
+
+
+Power-law distributions are of the form:
+`$$P(x) \propto x^{-\alpha}$$`  
+If we multiply the random variable by a constant, the distribution is just multiplied too
+`$$P(Cx) = C^{-\alpha} P(x)$$`
+**Scale-free property:** The shape of the distribution is the same across different scales of the variable
+
+---
+# Fractals and the scale-free property
+
+&lt;img src="Figures/Fractal.jpg" width="500" style="display: block; margin: auto;" /&gt;
+
+- Fractals are scale-free: they look similar when you zoom in and out 
+- Sometimes it is also referred as self-similarity
 
 ---
 
 # Diverging moments
+
+The mean (first moment) and the variance (second moment) of a power law `\(P(x) \propto x^{-\alpha}\)` might grow with sample size.
+.pull-left[
+- If `\(\alpha \leq 2\)` the mean grows with sample size
+  - The larger the sample, the larger the mean
+- If `\(\alpha \leq 3\)` the variance grows with sample size
+  - The larger the sample, the values become more unequal and more disperse
+- Figures: example with `\(\alpha=1.5\)`
+
+]
+.pull-right[
+&lt;img src="Figures/Moments.png" width="500" style="display: block; margin: auto;" /&gt;
+]
 
 ---
 
@@ -190,11 +249,58 @@ In weighted networks, **weighted node degrees** are sums of incoming and outgoin
 
 ---
 
-- The power-law fad
-- Hamster power-law
-- Power-law vs log-normal
+# The power-law scientific fad
+
+
+.pull-left[
+&lt;img src="Figures/PowerLawScholar.png" width="500" style="display: block; margin: auto;" /&gt;
+Google scholar trend for "power law"
+]
+.pull-right[
+Along the 20th century, interest in power-laws was moderately increasing
+- In 1999, Barabási &amp; Albert published their famous model
+- The amount of papers with power-laws accelarated
+- Two papers in 2009 and 2012 showed that power-laws are hard to test
+- The amount of papers claiming power-laws is decreasing very fast
+]
+---
+
+- **Cumulative Distribution Function (CDF)**: `\(F_X(x) = P(X \leqslant x)\)`
+  -  Probability that `\(X\)` will be less than or equal to x. It is the area under the PDF from `\(-\infty\)` to x 
+- **Complementary CDF (CCDF)**: `\(\overline{F_X}(x) = 1- F_X(x) = P(X &gt; x)\)`
+
+---
+
+# The hamster power law
+
+&lt;img src="Figures/hamster.png" width="550" style="display: block; margin: auto;" /&gt;
+
+CCDF of the number of pets per household in "pet social media"
+
+---
+
+# Power-law or log-normal?
+
+Power-law and log-normal distributions can look very
+similar to each other
+• Only at the tail of the CCDF there is a large difference
+• Example: Returns of stock prices in the stock exchange
+• Thought to be power-law for many years
+• A log-normal distribution is a much better model
+• Still having a fat tail, but not scale-free
+• Strumpf &amp; Porter’s rule of thumb: If the line fits for
+less than two orders of magnitude, it’s not a power-law
+
+Not every distribution that looks like a line is a power-law
+
+
+&lt;img src="Figures/pwrvslog.png" width="550" style="display: block; margin: auto;" /&gt;
+---
+
 - Ref to Clauset 1: MLE
 - Ref to Clauset 2: rarer than thought
+
+- [Power-law distributions in empirical data. Aaron Clauset, Cosma Rohilla Shalizi, M. E. J. Newman. SIAM review (2009)](https://epubs.siam.org/doi/pdf/10.1137/070710111?casa_token=hnVnLw3C7gIAAAAA:w2d60SzJl4xl7LXDoMhqr0wlCOOcpbxaoYdPto9jWC1fxK1Ogue3BiHW8DR8sv7hVkdd46Ec-z4)
 
 
 ---
