@@ -48,17 +48,17 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 9. [**Scale-free networks**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/ScaleFreeNetworks.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/Slides/Slides.html)  (12.05.2022)  
 *Exercise 4: Scale-free networks and visualization (session 1)*
 
-10. **Growth processes**  (19.05.2022)  
+### Block 4: Behavior on networks
+
+11. **Modelling spreading in networks**  (19.05.2022)   
 *Exercise 4: Scale-free networks and visualization (session 2)*
 
 *No class on 26.05.2022: Ascension day*
 
-### Block 4: Behavior on networks
-
-11. **Modelling spreading in networks**  (02.06.2022)   
+12. **Modelling epidemics: the SEIRX model** (02.06.2022)  
 *Project guidance*  
 
-12. **Modelling epidemics: the SEIRX model** (09.06.2022)  
+10. **Growth processes**  (09.06.2022)  
 *Project guidance*  
 
 *No class on 16.06.2022: Corpus Christi*
