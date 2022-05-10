@@ -16,6 +16,6 @@ The purpose of this model is to present results about continuous opinion dynamic
 
 The content of the excercise is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_03_BoundedConfidence)
 
-2.1. [Bounded confidence model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/bounded-confidence-handout.ipynb): Bounded confidence model in Python with Mesa
+2.1. [Bounded confidence model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/bounded-confidence-handout.ipynb): Bounded confidence model in Python with Mesa [[Hints]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/bounded-confidence-handout-hints.ipynb)
 
 # Appendix
