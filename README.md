@@ -45,7 +45,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 8. [**Modelling small worlds**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/08_SmallWorlds/SmallWorlds.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/08_SmallWorlds/Slides/Slides.html)  (05.05.2022)  
 - [**Exercise 3: Bounded confidence (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/Excercise_Bounded-Confidence.md)
 
-9. **Scale-free networks**  (12.05.2022)  
+9. [**Scale-free networks**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/ScaleFreeNetworks.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/Slides/Slides.html)  (12.05.2022)  
 *Exercise 4: Scale-free networks and visualization (session 1)*
 
 10. **Growth processes**  (19.05.2022)  
