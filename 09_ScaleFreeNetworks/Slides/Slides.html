@@ -48,11 +48,10 @@ layout: true
   - Modelling hyperpolarization and cognitive balance
 
 
-- **Block 3: Fundamentals of agent-based modelling**
+- **Block 3: Network formation**
   - Basic network models
   - Modelling small worlds
   - **Today: Scale-free networks**
-  - Growth processes
 
 ---
 
@@ -64,7 +63,7 @@ layout: true
 
 ## 3. The Vertex copying model
 
-## 4. Fitting power laws
+## 4. Network data sources
 
 ---
 
@@ -77,7 +76,7 @@ layout: true
 
 ## 3. The Vertex copying model
 
-## 4. Fitting power laws
+## 4. Network data sources
 
 ---
 
@@ -131,6 +130,7 @@ In the example:
 
 &lt;img src="Figures/Hist.png" width="650" style="display: block; margin: auto;" /&gt;
 Degree distribution of the physical internet (Newman, Ed.2, Chapter 10.3)
+
 ---
 
 # Observing inequality: power-laws
@@ -150,10 +150,31 @@ The Pareto Principle (80/20 rule): 20% of the people make 80% of the money
 
 ---
 
+# Log-log plots of degree distributions
+
+.pull-left[
+&lt;img src="Figures/Hist.png" width="650" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;img src="Figures/Hist2.png" width="650" style="display: block; margin: auto;" /&gt;
+]
+
+Two histograms of the same degree distribution. The second one has log-transformed x and y axes and the same bins.
+---
+
+
+# Logarithmic binning
+
+&lt;img src="Figures/Hist3.png" width="630" style="display: block; margin: auto;" /&gt;
+Same log-log histogram but with logarithmic binning: the width of a bin is a multiple of the one on the left. Bin heights are divided by their width.
+
+---
+
 # Power-law degree distribution examples
 
 &lt;img src="Figures/Dists.png" width="900" style="display: block; margin: auto;" /&gt;
-
+[Emergence of Scaling in Random Networks. Barabási &amp; Albert. Science (1999)](https://www.science.org/doi/full/10.1126/science.286.5439.509)
 ---
 
 # The scale-free property
@@ -200,18 +221,91 @@ The mean (first moment) and the variance (second moment) of a power law `\(P(x) 
 
 ## 3. The Vertex copying model
 
-## 4. Fitting power laws
+## 4. Network data sources
 
 ---
 
-- ER and WS fail to get degree distributions
-- lack of growth and heterogeneity or preference in linking
-- Growth and preferential attachment
-- Degree distribution -&gt; gamma=3
-- Growth without preferential attachment (fig 2b)
-- Preferential attachment without growth (full net)
-- A.K.A. Simon model, rich-get-richer (age effect)
-- Issue: global information
+# Poisson degree distributions vs data
+
+&lt;img src="Figures/PoissonVsInternet.png" width="500" style="display: block; margin: auto;" /&gt;
+
+`\(G(n,m)\)` produces Poisson degree distributions, not power-laws. Similar problems with the Watts-Strogatz small world model.
+
+
+---
+
+# The Barabási-Albert model
+
+Mechanisms in the model:
+
+- **Growth:** stating from an empty network, add one node at each iteration
+
+- **Preferential attachment:** when a node is added, connect it to `\(m\)` neighbors chosen at random in the network. Neighbors to connect are chosen with probability proportional to their degree. 
+
+The probability `\(\Pi\)` that a new vertex will be connected to vertex `\(i\)` with degree `\(k_i\)`  is 
+
+$$ \Pi(k_i) = \frac{k_i}{\sum_j k_j} $$
+
+Online simulation of the BA model: https://sarah37.github.io/barabasialbert/
+
+---
+
+# Degree distribution in the BA model
+
+.pull-left[
+&lt;img src="Figures/BAdist.png" width="440" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Degree distribution of simulations with `\(m=5\)` for t=150,000 and t=200,000 (circles and squares, indistinguishable)
+
+- Line has slope -2.9 in log-log plot
+
+- The degree distribution in the BA model follows a power-law distributuion with `\(\alpha=3\)`: 
+
+$$ P(x) = \frac{2m^2}{x^3} \propto x^{-3} $$
+]
+
+---
+
+# Necessary conditions
+
+.pull-left[
+&lt;img src="Figures/notPA.png" width="420" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Growth without preferential attachment leads to Poisson distributions (x axis is not log-transformed)
+
+- Plot shows growth without preferential attachment for various `\(m\)` values
+
+- Preferential attachment without growth leads to a full network
+
+- Model is **minimal** to explain power-law degree distributions
+
+]
+
+---
+
+# The rich-get-richer effect
+
+.pull-left[
+&lt;img src="Figures/RGR.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Diagram of degree versus time for two nodes inserted at different times in the simulation
+
+- Age and degree are very strongly correlated
+
+- Similar model previously studied by Herbert Simon in the 1960s for income distributions
+
+- Model also previously discovered for citation networks in 1976 by Derek de Solla Price
+
+]
 
 ---
 
@@ -223,21 +317,77 @@ The mean (first moment) and the variance (second moment) of a power law `\(P(x) 
 
 ## *3. The Vertex copying model*
 
-## 4. Fitting power laws
+## 4. Network data sources
 
 ---
 
+## Global information and referential attachment
 
-- Rules: connect to a random node, copy its connections
-	Alternative copies fraction of R connections
-- Phys Rev case (Fig 3)
-- In-degree distribution as power law exp 2
-- Fig 6
-- Comment: based on local information only it generates power-law
+Remember the preferential attachment rule: The probability `\(\Pi\)` that a new vertex will be connected to vertex `\(i\)` with degree `\(k_i\)`  is 
+
+$$ \Pi(k_i) = \frac{k_i}{\sum_j k_j} $$
+
+The preferential attachment rule of the BA model assumes that nodes have access to global degree information and choose proportionally. Especially you need to know the sum of degrees in the denominator
+
+This is implausible for many social systems: new actors don't know the network connecting actors, new social media users don't know the number of friends of others, new school students neither, etc.
 
 ---
 
-# Fitting power laws
+# The vertex copying model
+.pull-left[
+&lt;img src="Figures/VertexCopying.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+- Start with one node and grow one node at a time
+
+- When a new node connects, it samples one node at random and connects to it
+
+- Then it copies all edges to neighbors of that node
+
+- Some versions copy only a random fraction R of neighbors
+]
+Network growth by copying. P. L. Krapivsky and S. Redner. Physical Review E (2005)
+
+
+---
+
+## Copying implies growing degrees with time
+
+.pull-left[
+&lt;img src="Figures/PRE.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+- Average number of references in the reference list of Physical Review papers published in each year
+
+-  Red curve is the logarithm of the cumulative number of Physical Review papers that were published up to each year
+
+- Degrees of new nodes grow with time (and logarithmically with network size)
+]
+
+---
+
+# Vertex copying degree distribution
+
+
+.pull-left[
+&lt;img src="Figures/VCdeg.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- Edges are directed from the youngest to the oldest linked node
+
+- In-degree distribution (blue) and out-degree distribution (green)
+
+- In-degree distribution follows a power-law with `\(\alpha=2\)`
+
+- Power-law generated with only random choice and local information
+
+]
+
+---
+
+# 4. Network data sources
 
 ## 1. Power laws
 
@@ -245,90 +395,86 @@ The mean (first moment) and the variance (second moment) of a power law `\(P(x) 
 
 ## 3. The Vertex copying model
 
-## *4. Fitting power laws*
+## **4. Network data sources**
 
 ---
 
-# The power-law scientific fad
+# Konect: The Koblenz Network Collection
 
+&lt;img src="Figures/Konect.png" width="935" style="display: block; margin: auto;" /&gt;
 
-.pull-left[
-&lt;img src="Figures/PowerLawScholar.png" width="500" style="display: block; margin: auto;" /&gt;
-Google scholar trend for "power law"
-]
-.pull-right[
-Along the 20th century, interest in power-laws was moderately increasing
-- In 1999, Barabási &amp; Albert published their famous model
-- The amount of papers with power-laws accelarated
-- Two papers in 2009 and 2012 showed that power-laws are hard to test
-- The amount of papers claiming power-laws is decreasing very fast
-]
----
-
-- **Cumulative Distribution Function (CDF)**: `\(F_X(x) = P(X \leqslant x)\)`
-  -  Probability that `\(X\)` will be less than or equal to x. It is the area under the PDF from `\(-\infty\)` to x 
-- **Complementary CDF (CCDF)**: `\(\overline{F_X}(x) = 1- F_X(x) = P(X &gt; x)\)`
+Handbook of Network Analysis. Jérôme Kunegis:http://konect.cc/
 
 ---
 
-# The hamster power law
+# Konect network statistics
 
-&lt;img src="Figures/hamster.png" width="550" style="display: block; margin: auto;" /&gt;
-
-CCDF of the number of pets per household in "pet social media"
+&lt;img src="Figures/konect2.png" width="950" style="display: block; margin: auto;" /&gt;
 
 ---
 
-# Power-law or log-normal?
+## Stanford Large Network Dataset Collection
 
-Power-law and log-normal distributions can look very
-similar to each other
-• Only at the tail of the CCDF there is a large difference
-• Example: Returns of stock prices in the stock exchange
-• Thought to be power-law for many years
-• A log-normal distribution is a much better model
-• Still having a fat tail, but not scale-free
-• Strumpf &amp; Porter’s rule of thumb: If the line fits for
-less than two orders of magnitude, it’s not a power-law
+&lt;img src="Figures/snap.png" width="1000" style="display: block; margin: auto;" /&gt;
 
-Not every distribution that looks like a line is a power-law
-
-
-&lt;img src="Figures/pwrvslog.png" width="550" style="display: block; margin: auto;" /&gt;
----
-
-- Ref to Clauset 1: MLE
-- Ref to Clauset 2: rarer than thought
-
-- [Power-law distributions in empirical data. Aaron Clauset, Cosma Rohilla Shalizi, M. E. J. Newman. SIAM review (2009)](https://epubs.siam.org/doi/pdf/10.1137/070710111?casa_token=hnVnLw3C7gIAAAAA:w2d60SzJl4xl7LXDoMhqr0wlCOOcpbxaoYdPto9jWC1fxK1Ogue3BiHW8DR8sv7hVkdd46Ec-z4)
-
+Available at: https://snap.stanford.edu/data/
 
 ---
+
+# ICON: Index of Complex Networks
+
+&lt;img src="Figures/ICON.png" width="840" style="display: block; margin: auto;" /&gt;
+
+Available at: https://icon.colorado.edu/
+
+---
+
+# Analysis of degree distributions at scale
+
+&lt;img src="Figures/Broido.png" width="1200" style="display: block; margin: auto;" /&gt;
+
+Analysis of the degree distribution of 928 networks from ICON.
+[Scale-free networks are rare. A. Broido &amp; A, Clauset. Nature Communications (2019)](https://www.nature.com/articles/s41467-019-08746-5)
+
+---
+
+
 
 ## Summary
 
 - Power laws
-  -
-  -
+  - A property of degree distributions with high heterogeneity
+  - scale-free property: the distribution is similar when networks are larger
 
-- The Barabási-Albert model
-  -
-  -
+
+- The Barabási-Albert model (complex networks)
+  - Generates networks with power-law degree distributions 
+  - Growth + preferential attachment
+
 
 - The Vertex copying model
-  -
-  -
+  - Growth where edges copy the links of a random existing edge
+  - Generates power-law degree distributions with degree 2
   
-- Fitting power laws
-  -
-  -
+  
+- Network data sources
+  - Many data sources in harmonized formats are out there
+  - Use them in your project if you model networks!
   
 
 ---
 
 # Quiz
 
----
+- What kind of distribution is the degree distribution of `\(G(n,p)\)`?
+
+- If a network has a degree distribution with exponent 2.5 and we double its size, can we expect a similar mean degree?
+
+- If Twitter follower counts follow a power-law with exponent 2 and Twitter grows to double its size, what can we expect about the inequality in number of followers?
+
+- Under what conditions is preferential attachment implausible?
+
+- What is the exponent of the degree distribution of the vertex copying model?
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
