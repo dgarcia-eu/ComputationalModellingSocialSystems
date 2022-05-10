@@ -50,7 +50,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ### Block 4: Behavior on networks
 
-11. **Modelling spreading in networks**  (19.05.2022)   
+11. **Growth processes and spreading in networks**  (19.05.2022)   
 *Exercise 4: Scale-free networks and visualization (session 2)*
 
 *No class on 26.05.2022: Ascension day*
@@ -58,7 +58,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 12. **Modelling epidemics: the SEIRX model** (02.06.2022)  
 *Project guidance*  
 
-10. **Growth processes**  (09.06.2022)  
+10. **Lecture Q&A session**  (09.06.2022)  
 *Project guidance*  
 
 *No class on 16.06.2022: Corpus Christi*
