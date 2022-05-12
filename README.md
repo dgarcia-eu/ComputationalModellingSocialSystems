@@ -46,12 +46,12 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 - [**Exercise 3: Bounded confidence (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_03_BoundedConfidence/Excercise_Bounded-Confidence.md)
 
 9. [**Scale-free networks**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/ScaleFreeNetworks.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/09_ScaleFreeNetworks/Slides/Slides.html)  (12.05.2022)  
-*Exercise 4: Scale-free networks and visualization (session 1)*
+- [**Exercise 4: Scale-free networks and visualization (session 1)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/Excercise_Scale_Free_Networks.md)
 
 ### Block 4: Behavior on networks
 
 10. **Growth processes and spreading in networks**  (19.05.2022)   
-*Exercise 4: Scale-free networks and visualization (session 2)*
+- [**Exercise 4: Scale-free networks and visualization (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/Excercise_Scale_Free_Networks.md)
 
 *No class on 26.05.2022: Ascension day*
 
