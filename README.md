@@ -97,6 +97,7 @@ The assessment for the course is based on four components:
   - Participation in group presentation sessions (both as presenter and discussant): **25% of final grade**
   - Project report and codes: **25% of final grade**
 
-More details about project report formats and presentation sessions will follow during the course.
+You can find more information about the project presentations and reports, including deadlines, in the [projects guide.](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsGuide.html)
+
 
 Graded exercises need to be submitted on teach center by the deadline (end of day in Graz time). We will provide solution files for ungraded exercises for you to check your progress. Nevertheless, we expect to see in your projects the techniques covered in the exercises, both graded and ungraded.
