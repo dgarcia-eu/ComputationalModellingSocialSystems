@@ -50,7 +50,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 ### Block 4: Behavior on networks
 
-10. **Growth processes and spreading in networks**  (19.05.2022)   
+10. [**Growth processes and spreading in networks**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/10_GrowthAndSpreading/GrowthAndSpreading.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/10_GrowthAndSpreading/Slides/Slides.html)  (19.05.2022)   
 - [**Exercise 4: Scale-free networks and visualization (session 2)**](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/Excercise_Scale_Free_Networks.md)
 
 *No class on 26.05.2022: Ascension day*
