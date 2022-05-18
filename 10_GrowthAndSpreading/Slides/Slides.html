@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Growth processes and spreading in networks</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Growth processes and spreading in networks
+]
+.author[
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+]
+.date[
+### Computational Modelling of Social Systems
+]
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+## So far
+
+- **Block 1: Fundamentals of agent-based modelling**
+
+- **Block 2: Opinion dynamics**
+
+- **Block 3: Network formation**
+
+
+- **Block 4: Behavior on networks**
+
+  - **Today: Growth processes and spreading in networks**
+
+  - *No class on 26.05.2022: Ascension day*
+
+  - 02.06: Modelling epidemics: the SEIRX model
+
+- 09.06: Lecture Q&amp;A session 
+
+---
+
+# Overview
+
+## 1. Collective aggregation: long and fat tails
+## 2. Growth processes
+## 3. Spreading models
+## 4. Spreading in networks
+
+---
+
+#  Collective aggregation: long and fat tails
+
+## *1. Collective aggregation: long and fat tails*
+## 2. Growth processes
+## 3. Spreading models
+## 4. Spreading in networks
+
+---
+
+# Collective Aggregation
+
+.pull-left[
+Traces of human behavior can aggregate at large scales
+
+Example: Monte Testaccio in Rome
+
+Made of ancient remains of clay vases (est. ∼ 53 Million amphorae)
+
+Collectively produced by a large group of people
+
+Individual contributions might be indistinguishable
+(or irrelevant)
+]
+.pull-right[
+&lt;img src="Figures/Testaccio.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+##  Collective aggregation examples
+
+
+&lt;img src="Figures/OnlineAggregation2.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+
+Examples of online aggregates: views in YouTube videos, ratings for Amazon products, searches for a term in Google...
+
+Examples of offline aggregates: population of cities, number of people with a disease, number of people who bought a product...
+
+---
+
+
+## Properties of collective aggregation: The fat tail
+
+**Fat tail behavior:** The existence of few objects with a very large aggregated size
+
+.pull-left[
+&lt;img src="Figures/FatTail.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+- Fat tails can be seen in the probability density function (PDF)
+
+- Using log-log scales, the Fat tail is easier to see
+
+- The probability of extremely large events is not
+negligible
+]
+
+---
+
+## Reminder: Fat-tail examples
+
+&lt;img src="Figures/Dists.png" width="900" style="display: block; margin: auto;" /&gt;
+[Emergence of Scaling in Random Networks. Barabási &amp; Albert. Science (1999)](https://www.science.org/doi/full/10.1126/science.286.5439.509)
+
+---
+
+
+## Properties of collective aggregation: The long tail
+
+&lt;img src="Figures/LongTailSchema.jpg" width="550" style="display: block; margin: auto;" /&gt;
+Long tail behavior: The existence of many objects with a small aggregated size
+- Can be seen in the size sequence, also known as rank-size plot
+- Example with products: collective aggregate size is amount of sold units
+- The long tail can account for a very large fraction of the total area of the curve 
+
+---
+
+# Examples of long tails
+
+.pull-left[
+&lt;img src="Figures/Rhapsody2.png" width="580" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="Figures/BabyLongTail.png" width="470" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+Songs in Rhapsody.com
+- Song in Wal-Mart do not have a
+long tail due to finite shelf size
+- Songs only available in Rhapsody
+account for 22% of the sales
+
+
+Baby names in the US (1960-2015)
+- A large amount of names is given
+to very few babies
+- The amount of babies per name
+displays long tail behavior
+]
+
+---
+# Long and fat tails
+
+
+A long tail:
+- appears on the right tail of the size sequence
+- shows the existence of frequent cases of small aggregates
+
+A fat tail:
+- appears on the right tail of the probability density function (PDF)
+- shows the probability of extremely large aggregates
+
+Different but non-exclusive phenomena:
+- A high head of the size sequence is a fat tail of the PDF
+- Sometimes are confused in the literature!
+
+
+---
+
+# Growth processes
+## 1. Collective aggregation: long and fat tails
+## *2. Growth processes*
+## 3. Spreading models
+## 4. Spreading in networks
+
+[A Brief History of Generative Models for Power Law and Lognormal Distributions. Michael Mitzenmacher. Internet Mathematics (2004)](https://www.eecs.harvard.edu/~michaelm/postscripts/im2004a.pdf)
+---
+
+
+#When aggregates change over time
+Growth Process: The dynamics driving how size changes over time
+
+Sometimes they strictly grow (e.g. total views of a video) or might decrease (e.g. social media users)
+
+.pull-left[
+We will study three types of growth processes for collective aggregates:
+- **Additive growth**
+- **Multiplicative growth with fixed age**
+- **Multiplicative growth with heterogeneous ages**
+]
+
+.pull-right[
+&lt;img src="Figures/treegrowth.jpg" width="400" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Additive growth
+
+.pull-left[
+An additive growth process has a growth rate that is independent of previous sizes:
+$$    X_{t+1} = X_t + \gamma + \epsilon $$
+
+-  `\(\gamma\)` is the growth rate (change in units over time)
+-  `\(\epsilon\)` is the stochastic term (e.g. `\(\sim N(0,1)\)`)
+
+The figure shows the simulation of `\(100\)` additive growth processes with `\(\gamma=1\)` and `\(\epsilon \sim N(0,1)\)`
+]
+.pull-right[
+&lt;img src="Figures/linear_growth.png" width="480" style="display: block; margin: auto;" /&gt;
+]
+
+---
+  
+
+# Size distribution under additive growth
+
+Additive growth processes produce aggregate sizes that follow a normal distribution:
+$$ N(\mu, \sigma^2): P(x) = \frac{1}{\sigma \sqrt{2 \pi}} exp(-\frac{(x - \mu)^2}{2\sigma^2})   $$
+
+.pull-left[
+- The figure shows the size distribution (PDF) after the simulation of `\(10000\)` processes as in the previous slide
+- Individual aggregation tends to follow additive growth
+- For example: a persons height
+]
+.pull-right[
+&lt;img src="Figures/NormalGrowth.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+
+---
+
+
+# Multiplicative growth
+
+Multiplicative growth processes have a growth rate proportional to the previous size.
+It follows the following equation:
+
+`$$X_{t+1} = X_t + \gamma * \epsilon * X_t$$`
+.pull-left[
+- `\(\gamma\)` is the proportional growth rate (\% change over time)
+- `\(\epsilon\)` is the stochastic term (e.g. `\(\sim N(1,1)\)`)
+- The figure shows the simulation of `\(100\)` multiplicative growth processes with `\(\gamma= 0.01\)` and `\(\epsilon \sim N(1,1)\)`
+]
+.pull-right[
+&lt;img src="Figures/MultGrowth.png" width="350" style="display: block; margin: auto;" /&gt;
+]
+---
+
+## Sized under multiplicative growth with fixed age
+  
+Multiplicative growth processes with fixed age produce aggregate sizes that follow a 
+log-normal distribution: `\(lnN(\mu, \sigma^2): P(x) = \frac{1}{x\sigma \sqrt{2 \pi}} exp(-\frac{(ln(x) - \mu)^2}{2\sigma^2}  )\)`
+
+.pull-left[
+
+- Final size distribution in `\(10000\)` simulations with the same ages
+
+- If `\(X\)` follows a log-normal distribution, then `\(log(X)\)` approximately follows a normal distribution
+]
+
+.pull-right[
+&lt;img src="Figures/MultGLin.svg" width="390" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Multiplicative growth with heterogeneous ages
+
+.pull-left[
+
+- Multiplicative growth the same way:
+
+`$$X_{t+1} = X_t + \gamma * \epsilon * X_t$$`
+
+- A Poisson birth process produces new elements at a constant rate
+
+- In that case objects have heterogeneous ages
+
+- Inset: vertical axis is log-transformed
+ ]
+ 
+.pull-right[
+
+&lt;img src="Figures/MultPois.svg" width="500" style="display: block; margin: auto;" /&gt;
+
+]
+
+---
+
+# Power-law size distributions 
+
+- Multiplicative growth processes with Poisson birth  produce aggregate sizes that follow a  power-law distribution:
+
+`\(pl(\alpha, x_{min}): P(x) \propto x^{-\alpha}\)` for `\(x\geq x_{min}\)`, otherwise `\(0\)` 
+
+.pull-left[
+- Results of simulating `\(100\)` processes with `\(\gamma=0.01\)`, 
+
+- Final size distribution (PDF) appears as a straight line towards the lower right corner in a log-log plot
+]
+.pull-right[
+&lt;img src="Figures/MultPoisDist.svg" width="400" style="display: block; margin: auto;" /&gt;
+]
+---
+
+# Novelty decay in online communities
+.pull-left[ 
+The three properties of online collective aggregation:
+
+- **Multiplicative growth:**  Each new element in the aggregate can bring new ones
+
+- **Heterogeneous ages:** Objects are produced in different moments of time
+
+- **Novelty decay:** Growth rates are not constant over time, they decrease very fast
+ 
+
+]
+
+.pull-right[
+&lt;img src="Figures/digg_distr1.jpg" width="400" style="display: block; margin: auto;" /&gt;
+
+Growth rate versus age in Digg submissions
+]
+---
+
+
+# Novelty decay in online communities
+.pull-left[ 
+
+Novelty decay bounds growth lifespan: similar to fixed ages
+
+Online aggregates tend to follow log-normal distributions
+ - tweets with a hashtag, views of YouTube videos, Digg votes for links...
+  - E.g. digg votes log-normal distribution
+
+[Fang Wu and Bernardo A. Huberman: Novelty and collective attention](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2077036/)
+
+]
+
+.pull-right[
+&lt;img src="Figures/digg_distr2.jpg" width="500" style="display: block; margin: auto;" /&gt;
+]
+---
+
+
+# Spreading models
+## 1. Collective aggregation: long and fat tails
+## 2. Growth processes
+## *3. Spreading models*
+## 4. Spreading in networks
+---
+
+# Compartmental models in epidemics
+
+&lt;img src="Figures/SIstates.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+[Modeling Epidemics With Compartmental Models. Juliana Tolles and ThaiBinh Luong, JAMA Guide to Statistics and Methods (2020)](https://jamanetwork.com/journals/jama/fullarticle/2766672)
+
+- Individuals are separated into *compartments* by their state of infection
+- Individuals are indistinguishable within compartments
+- Individuals transition between compartments when their state changes
+- Not really Agent-Based Model: population or equation-based model
+
+---
+
+## The Susceptible-Infected-Recovered model (SIR)
+
+- Three possible states:
+  - **Susceptible**: not infected but could be infected and is behaving as usual
+  - **Infected**: has disease, is contagious, and spreads disease
+  - **Recovered**: not sick nor contagious any more
+
+&lt;img src="Figures/SItrans.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+- Transitions between states:
+  - From S to I: infection from another infected individual.
+  - From I to R: recovery from disease, death, or permanent isolation such that individual cannot infect any other individual.
+  - Transitions happen with rates `\(\beta\)` and `\(\gamma\)` respectively
+  
+---
+
+# Transition equations in SIR model
+.pull-left[
+
+$$ \frac{dS}{dt} = - \frac{\beta IS}{N} $$
+
+$$  \frac{dI}{dt} = \frac{\beta IS}{N} - \gamma I $$
+$$ \frac{dR}{dt} =  \gamma I$$
+]
+
+.pull-right[
+
+- Susceptibles diminish as they get Infected ( `\(\beta I S\)` )
+- Infected increase the same way and diminish at a rate `\(\gamma I\)`
+- Recovered only increase from Infected
+- Parameters are not just a biological property of the disease, also depend on density of contacts, treatment, quarantines...
+]
+
+The basic reproduction number `\(R_0=\frac{\beta}{\gamma}\)` is the mean number of new infections caused by a single infected individual.
+
+---
+
+# Epidemic curves in SIR model
+
+&lt;img src="Figures/SIRcurve.png" width="700" style="display: block; margin: auto;" /&gt;
+
+---
+
+## The Susceptible-Infected-Susceptible model (SIS)
+
+- Only two possible states:
+  - **Susceptible**: not infected but could be infected and is behaving as usual
+  - **Infected**: has disease, is contagious, and spreads disease
+
+&lt;img src="Figures/SIStrans.svg" width="800" style="display: block; margin: auto;" /&gt;
+
+- Transitions between states:
+  - From S to I: infection from another infected individual.
+  - From I to S: recovery from disease but reinfection is possible
+  - Transitions happen with rates `\(\beta\)` and `\(\nu\)` respectively
+  
+---
+
+# Transition equations in SIS model
+
+.pull-left[
+
+$$ \frac{dS}{dt} = - \frac{\beta IS}{N} + \nu I$$
+
+$$  \frac{dI}{dt} = \frac{\beta IS}{N} - \nu I $$
+]
+
+.pull-right[
+
+- Susceptibles diminish as they get Infected ( `\(\beta I S\)` ) and increase from infected ( `\(\nu I\)` )
+
+- Infected increase the same way and diminish at a rate `\(\nu I\)`
+]
+
+- if `\(\beta \leq \nu\)`, the disease dies out and `\(I\)` approaches zero over time
+
+-  if `\(\beta \gt \nu\)`, then `\(I\)` approaches `\((1 - \frac{\nu}{\beta}) N\)` over time
+
+---
+
+# Epidemic curves in SIS model ( `\(\beta &gt; \nu\)` )
+
+&lt;img src="Figures/SISres.png" width="650" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# Spreading in networks
+## 1. Collective aggregation: long and fat tails
+## 2. Growth processes
+## 3. Spreading models
+## *4. Spreading in networks*
+---
+
+# Network position and influence
+
+.pull-left[
+
+Which nodes are the most influential in a network?
+
+- Viral marketing: optimising the reach of a marketing campaign
+through social influence
+
+- Cascade prevention: resilience against random failures and
+targeted attacks
+
+- Epidemic spreading: locating individuals that should be immunized
+first
+]
+.pull-right[
+
+&lt;img src="Figures/Spreading1.png" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# Refresher: The k-core decomposition
+
+The graph remaining after the cascade above is what is called a k-core
+
+&gt; **k-core**: A k-core of a graph `\(G\)` is a maximal connected subgraph of `\(G\)` in which all vertices have degree at least k.
+
+For any network, you can calculate its k-core decomposition as follows:  
+
+- Start with `\(k_s=1\)`  
+- Remove all nodes with degree less than or equal to `\(k_s\)` and their links  
+- Repeat until all nodes have degree larger than `\(k_s\)`  
+- Increase `\(k_s\)` by one and repeat until no nodes are left
+
+The nodes and the edges removed for certain of `\(k_s=k\)` is called the **k-shell**.  
+A **k-core** is the set of all k-shells with `\(k_s \geq k\)`  
+Nodes have **coreness centrality** as the number of their k-core
+---
+
+# Spreading and centralities example
+
+&lt;img src="Figures/KcoreSpread.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Network centrality measures in simulations
+
+Which centrality measure is the best to find nodes that create large cascades?
+
+
+Comparison of the role of degree centrality `\(k\)` and coreness centrality `\(k_s\)`
+
+Average cascade sizes comparison:
+
+`$$M(k, k_s) = \sum_{i \in \Psi(k, k_s)} \frac{M_i}{N(k, k_s)}$$`
+
+- `\(M_i\)` : average size of SIR simulated cascades starting at node `\(i\)`
+- `\(\Psi(k, k_s)\)` is the set of nodes with degree `\(k\)` coreness `\(k_s\)`
+- `\(N(k, k_s)\)` is the number of nodes in `\(\Psi(k, k_s)\)`
+
+
+---
+
+# Results for a hospital network
+.pull-left[
+
+- Network data: Contacts in Swedish hospital
+  - Nodes are patients
+  - Edges connect patients that have been in the same room at the same time
+
+- `\(M(k, k_s)\)` for Swedish hospital patients
+
+- Degree centrality cannot distinguish middle-sized and large cascades
+]
+.pull-right[
+&lt;img src="Figures/Mkks_swedish.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+---
+
+
+# Results for an adult movie network
+.pull-left[
+
+- `\(M(k, k_s)\)` for actors of adult movies in IMDB
+
+- Nodes are actors of adult movies in IMDB
+
+- Edges connect actors who appear in the same
+movie (disease spread risk)
+
+- Similar result as for hospital
+]
+.pull-right[
+&lt;img src="Figures/Mkks_imdb.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+---
+
+
+# Results for an online social network
+.pull-left[
+
+- Livejournal is a social network for blogs
+
+- `\(M(k, k_s)\)` of the users of Livejournal
+
+- Nodes are users of Livejournal
+
+- Edges exist between blogs that have links to
+each other
+
+- Cascades are information or behavior cascades
+]
+.pull-right[
+&lt;img src="Figures/Mkks_livejournal.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# A closer look to cascade distributions
+
+.pull-left[
+
+&lt;img src="Figures/Mdists.png" width="420" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- `\(k = 96\)`
+- `\(k_s=63\)` (orange) and `\(k_s=26\)` (yellow)
+
+- Lower: same histogram in a random network
+with the same degree sequence
+
+- Nodes with low coreness have high chances of
+creating cascades of negligible size (cascade distributions are not unimodal)
+
+
+]
+
+---
+
+## Summary
+  - Collective aggregation
+    - Fat tails: Extremely large sizes can happen
+    - Long tails: Very small sizes are frequent
+
+
+  - Growth processes
+    - Additive and multiplicative growth
+    - Heterogeneous ages + multiplicative growth: power-law aggregates
+
+
+  - Spreading models
+    - Compartments where agents are indistinguishable
+    - Transition equations with parameters
+
+
+  - Spreading in networks
+    - Running SIR models on empirical network data
+    - Degreee is not sufficient: the role of coreness
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+---
+title: "Growth processes and spreading in networks"
+subtitle: "Computational Modelling of Social Systems"
+author: "David Garcia and Petar Jerčić, 2022"
+output: html_document
+---
+
+### Optional readings
+
+- [A Brief History of Generative Models for Power Law and Lognormal Distributions. Michael Mitzenmacher. Internet Mathematics (2004)](https://www.eecs.harvard.edu/~michaelm/postscripts/im2004a.pdf)
+
+- [Modeling Epidemics With Compartmental Models. Juliana Tolles and ThaiBinh Luong, JAMA Guide to Statistics and Methods (2020)](https://jamanetwork.com/journals/jama/fullarticle/2766672)
+
+
+### Additional readings
+
+- [Identification of influential spreaders in complex networks. Maxim Kitsak et al. Nature Physics (2010)](https://www.nature.com/articles/nphys1746)
