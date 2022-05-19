@@ -256,7 +256,7 @@ It follows the following equation:
 
 `$$X_{t+1} = X_t + \gamma * \epsilon * X_t$$`
 .pull-left[
-- `\(\gamma\)` is the proportional growth rate (\% change over time)
+- `\(\gamma\)` is the proportional growth rate (% change over time)
 - `\(\epsilon\)` is the stochastic term (e.g. `\(\sim N(1,1)\)`)
 - The figure shows the simulation of `\(100\)` multiplicative growth processes with `\(\gamma= 0.01\)` and `\(\epsilon \sim N(1,1)\)`
 ]
@@ -394,7 +394,7 @@ Online aggregates tend to follow log-normal distributions
 - Transitions between states:
   - From S to I: infection from another infected individual.
   - From I to R: recovery from disease, death, or permanent isolation such that individual cannot infect any other individual.
-  - Transitions happen with rates `\(\beta\)` and `\(\gamma\)` respectively
+  - Transitions happen based on parameters `\(\beta\)` and `\(\gamma\)` respectively
   
 ---
 
@@ -409,7 +409,7 @@ $$ \frac{dR}{dt} =  \gamma I$$
 
 .pull-right[
 
-- Susceptibles diminish as they get Infected ( `\(\beta I S\)` )
+- Susceptibles diminish as they get Infected ( `\(\beta IS/N\)` )
 - Infected increase the same way and diminish at a rate `\(\gamma I\)`
 - Recovered only increase from Infected
 - Parameters are not just a biological property of the disease, also depend on density of contacts, treatment, quarantines...
@@ -468,12 +468,34 @@ $$  \frac{dI}{dt} = \frac{\beta IS}{N} - \nu I $$
 
 ---
 
+# SIS example: Corrupted blood in WoW
+
+.pull-left[
+&lt;img src="Figures/CorruptedBlood.jpg" width="450" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+- [A Boss in World of Warcraft casted the ’Corrupted Blood’ virus]( http://news.bbc.co.uk/2/hi/health/6951918.stm)
+- Infected characters could infect other characters for some time
+- Low infection rate, but it created a pandemic that kept infecting active users in subgroups
+- Infected characters recover after death, but could become infected again: SIS case
+]
+
+[Modeling infectious diseases dissemination through online role-playing games. RD Balicer, Epidemiology (2007)](https://journals.lww.com/epidem/fulltext/2007/03000/modeling_infectious_diseases_dissemination_through.15.aspx)
+
+
+---
+
 
 # Spreading in networks
 ## 1. Collective aggregation: long and fat tails
 ## 2. Growth processes
 ## 3. Spreading models
 ## *4. Spreading in networks*
+
+
+[Identification of influential spreaders in complex networks. Maxim Kitsak et al. Nature Physics (2010)](https://www.nature.com/articles/nphys1746)
+
 ---
 
 # Network position and influence
@@ -519,6 +541,9 @@ Nodes have **coreness centrality** as the number of their k-core
 # Spreading and centralities example
 
 &lt;img src="Figures/KcoreSpread.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+
+[Identification of influential spreaders in complex networks. Maxim Kitsak et al. Nature Physics (2010)](https://www.nature.com/articles/nphys1746)
 
 ---
 
