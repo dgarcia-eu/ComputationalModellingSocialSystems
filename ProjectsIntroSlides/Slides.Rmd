@@ -1,0 +1,132 @@
+---
+title: "Projects in Computational Modelling of Social Systems"
+author: "David Garcia, Petar Jerčić, Jana Lasser <br><br> *TU Graz*"
+date: "Computational Modelling of Social Systems"
+output:
+  xaringan::moon_reader:
+    lib_dir: libs 
+    css: [xaringan-themer.css, "libs/footer.css"]
+    nature:
+      beforeInit: ["libs/perc.js"]
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+#This block contains the theme configuration for the CSS lab slides style
+library(xaringanthemer)
+library(showtext)
+style_mono_accent(
+  base_color = "#5c5c5c",
+  text_font_size = "1.5rem",
+  header_font_google = google_font("Arial"),
+  text_font_google   = google_font("Arial", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+layout: true
+
+<div class="my-footer"><span>David Garcia - Computational Modelling of Social Systems</span></div> 
+
+---
+
+# Project basics
+
+- Participation in group presentation sessions (both as presenter and discussant): 25% of final grade
+
+- Project report and codes: 25% of final grade
+
+- Timeline:
+  - 2.06: First project feedback exercise session
+  - 9.06: Second project feedback exercise session and general Q&A session
+  - 10.06: last chance to get any feedback from lecturers online via discord
+  - 11.06: Deadline to register your group in Teach Center.
+  - 23.06: First presentations session
+  - 30.06: Second presentations session
+  - 10.07: Project report deadline
+
+
+---
+
+# Projects objectives
+
+With the projects, we want to evaluate the following skills and learning:
+
+- Planning a computational project as in the exercises and course examples: model, simulation, analysis, interpretation
+
+- Describing a model in detail, referring to other relevant models (especially if covered by the course)
+
+- Ability to implement and code the model, showing it works as designed with visualizations and other outputs
+
+- Assessing the project question with systematic analysis of simulations
+
+---
+
+# Project routes
+
+A) Reproducing the analysis of a research paper
+  - Example: Reproducing the results of Axelrod's culture model paper
+  - Reflect on similarities or differences in your results
+  - If paper is short, explore a small extra question or analysis
+  
+B) Extending a model from the course
+  - Example: Neighbor overlap in the Barabasi-Albert model
+    - Motivation: online we don't only interact with our friends in a direct manner, but also through common friends. Users with larger and more clustered neighborhoods will be less likely to leave
+    - Analysis: measuring average neighbor overlap as network grows
+    - Question: does overlap change with node age and network size?
+
+
+---
+# Project routes (II)
+
+C) Designing and analyzing a new model
+  - Example: privacy concerns in social resilience
+    - Model probability to leave a social network increasing with too many friends
+    - Study % of users leaving with value of parameter of that increase
+    - Check previous work! Is this really a new model?
+    - Can be the most challenging approach
+
+** Data is not always necessary but desirable in some cases**
+  - Data-driven simulations (e.g. using network data)
+  - Comparing outcomes with empirical data (hard)
+  - Quantitatively validating outcomes (harder)
+  - Calibrating dynamics (hardest)
+---
+
+# Modeling project pitfalls
+
+- **Not understanding your question**
+
+  - Bad: *I want to model how people play Pokemon Go*
+  - Good: *I want to understand the role of city size in Pokemon Go players using only two teams*
+  - Risk: not knowing when you are done and if you are doing it right
+
+
+- **Not searching for previous work**
+  - Bad: *Here is the first model ever for fashion*
+  - Good: *My model is similar to (cite,cite) in this and that aspect*
+  - Risk: specifying the problem wrong or missing interesting parts
+  
+---
+
+# Modeling project pitfalls (II)
+
+- **Not being systematic**
+  - Bad: *I made some simulations and they look like this*
+  - Good: *Outcome measure X grows with parameter Y as shown in the boxplot*
+  - Risks: Not having any substantial analysis and just anecdotes. Going back and forth between model and simulations in an endless loop.
+
+
+- **Being too ambitious**
+  - Bad: *I want to explain polarization*
+  - Good: *I want to understand how the strength of social influence affects polarization of opinions in the social network of German politicians on Twitter*
+  - Risks: Too much work and open paths, large models lead to complicated analyses. Might have too much previous work behind.
+
+
