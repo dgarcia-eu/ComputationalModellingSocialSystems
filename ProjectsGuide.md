@@ -14,7 +14,7 @@ Some basic information:
 
 - Every student has to attend to **both sessions** because each student will be presenter in one session and discussant in the other one. 
 
-- We will prepare an entry in Teach Center for you to register your group and after all groups are registered, we will announce the agenda for each session including which group presents and which is the discussant. The deadline for group registrations is **11.06**.  The agenda will be announced over the following week.
+- We will prepare an entry in Teach Center for you to register your group and after all groups are registered, we will announce the agenda for each session including which group presents and which is the discussant. **The deadline for group registrations is 11.06. The agenda with times and who presents will be announced over the following week, after the groups have been registered**.
 
 - Discussants only need to pay attention to the presentation and ask questions or propose improvements afterwards. To qualify for the full grade, each student in your group has to ask a question when you are a discussant. After that, lecturers might ask questions and also make comments.
 

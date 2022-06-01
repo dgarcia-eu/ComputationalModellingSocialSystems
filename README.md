@@ -64,8 +64,11 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 *No class on 16.06.2022: Corpus Christi*
 
 13. **Project presentations**  (23.06.2022)
+- Make sure your whole group is available between 16:15 and 19:00
 
 14. **Project presentations**  (30.06.2022)
+- Make sure your whole group is available between 16:15 and 19:00
+- **The deadline to submit your final report is July 10th (end of day). You can submit over Teach Center. [projects guide](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsGuide.html)**
 
 ## Where to access materials
 
