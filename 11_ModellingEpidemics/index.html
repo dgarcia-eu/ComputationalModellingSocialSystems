@@ -1,0 +1,852 @@
+<!doctype html>
+
+<html>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script>
+	  Reveal.initialize({
+	    plugins: [ RevealMarkdown ]
+	  });
+	</script>
+	<script src="plugin/math/math.js"></script>
+	<script>
+	  Reveal.initialize({
+	    math: {
+	      mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+	      config: 'TeX-AMS_HTML-full',
+	      // pass other options into `MathJax.Hub.Config()`
+	      TeX: { Macros: { RR: "{\\bf R}" } }
+	    },
+	    plugins: [ RevealMath ]
+	  });
+	</script>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" id="highlight-theme">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p style="padding-bottom:50px">Agent-based simulations to assess the effectiveness of COVID-19 intervention measures</p>
+					<p style="color:#63676A"><small>  Graz University of Technology &#8287&#8287&#8287 | &#8287&#8287&#8287 Complexity Science Hub Vienna </small>
+					<p style="color:#63676A"><small> Jana Lasser &#8287&#8287&#8287 | &#8287&#8287&#8287 jana.lasser@tugraz.at &#8287&#8287&#8287 | &#8287&#8287&#8287 @janalasser</small></p>
+				</section>
+
+				<section>
+					<section>
+						<h3>Research questions</h3>
+						<p style="font-size:31px; padding-bottom:20px; padding-top:20px; text-align:left">(1) Can outbreaks be controlled with (non-pharmaceutical) measures?</p>
+						<p style="font-size:31px; padding-bottom:20px; text-align:left">(2) What measures and measure combinations work best?</p>
+						<p style="font-size:31px; text-align:left">(3) How does the situation change with different virus variants?</p>
+					</section>
+					<section>
+						<h3>Application scenarios</h3>
+						<p style="font-size:31px; padding-top:20px; text-align: left; margin-bottom: 0px;">(1) <b>Nursing homes</b>: keeping inhabitants safe without vaccinations</p>
+						<p style="font-size:26px; padding-bottom:20px; text-align: left; padding-left: 60px; margin-top: 0px;"><em><a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2021.0608">Agent-based simulations for protecting nursing homes with prevention and vaccination strategies</a></em> Lasser et al. (2021).</p>
+						<p style="font-size:31px; padding-top:20px; text-align: left; margin-bottom: 0px;">(2) <b>Schools</b>: different measures for different school types</p>
+						<p style="font-size:26px; padding-bottom:20px; text-align: left; padding-left: 60px; margin-top: 0px;"><em><a href="https://doi.org/10.1038/s41467-022-28170-6">Assessing the impact of SARS-CoV-2 prevention measures in schools by means of agent-based simulations calibrated to cluster tracing data</a></em> Lasser et al. (2022).</p>
+						<p style="font-size:31px; padding-top:20px; text-align: left; margin-bottom: 0px;">(3) <b>Universities (TU Graz)</b>: presence lectures during Omicron?</p>
+						<p style="font-size:26px; padding-bottom:20px; text-align: left; padding-left: 60px; margin-top: 0px;"><em><a href="https://academic.oup.com/cid/advance-article/doi/10.1093/cid/ciac340/6577094">Assessment of the effectiveness of Omicron transmission mitigation strategies for European universities using an agent-based network model</a></em> Lasser et al. (2022).</p>
+					</section>
+					<section>
+						<h3>Why agent-based simulations?</h3>
+						<p style="font-size:31px; text-align: left;">Compartment models assume <b>homogeneous</b> distributions and attributes. The reality is often very <b>heterogeneous</b> in</p>
+						<p class="fragment" data-fragment-index="1" style="font-size:31px; padding-top:10px; text-align: left; margin-bottom: 0px;"><b>Space</b></p>
+						<p class="fragment" data-fragment-index="1" style="font-size:26px; text-align: left; padding-left: 60px; margin-top: 0px;"><em>The number of contacts (node degree) is not uniform. Different agent types have different contact patterns. Example: employees and inhabitants in nursing homes.</em></p>
+						<p class="fragment" data-fragment-index="2" style="font-size:31px; padding-top:20px; text-align: left; margin-bottom: 0px;"><b>Time</b></p>
+						<p class="fragment" data-fragment-index="2" style="font-size:26px; padding-bottom:20px; text-align: left; padding-left: 60px; margin-top: 0px;"><em>Contact patterns and measures vary in time. Example: students in school.</em></p>
+						<p class="fragment" data-fragment-index="3" style="font-size:31px; padding-top:20px; text-align: left; margin-bottom: 0px;"><b>Agent attributes</b></p>
+						<p class="fragment" data-fragment-index="3" style="font-size:26px; padding-bottom:20px; text-align: left; padding-left: 60px; margin-top: 0px;"><em>A variety of attributes can differ between agents and crucially influence infection transmission. Example: vaccination status, age, epidemiological parameters, ...</em></p>
+					</section>
+
+					<section data-transition="slide-in none">
+						<h4>Ingredients for agent based models of SARS-CoV-2</h4>
+						<img src="img/model_overview_1.svg">
+					</section>
+					<section data-transition="none">
+						<h4>Ingredients for agent based models of SARS-CoV-2</h4>
+						<img src="img/model_overview_2.svg">
+					</section>
+					<section data-transition="none">
+						<h4>Ingredients for agent based models of SARS-CoV-2</h4>
+						<img src="img/model_overview_3.svg">
+					</section>
+					<section data-transition="none">
+						<h4>Ingredients for agent based models of SARS-CoV-2</h4>
+						<img src="img/model_overview_4.svg">
+					</section>
+				</section>
+
+				<section>
+					<section data-transition="slide-in none">
+						<h3> Model of the infection </h3>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+							<p style="font-size: 31px; text-align:left; padding-top: 120px"> When is an agent infectious?</p>
+							<p style="font-size: 31px; text-align:left; padding-top: 50px"> How infectious is an agent at a point in time?</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 50px"> When does an agent show symptoms?</p>
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:0px; margin-top: 0px; padding-left: 60px;">
+								<img src="img/agent_infection.svg", width="200" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+
+				  	<section data-transition="fade-in none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/viral_load.svg" width="750" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px;">Walsh K. A., Jordan K., Clyne B., et al. <em>SARS-CoV-2 detection, viral load and infectivity over the course of an infection: SARS-CoV-2 detection, viral load and infectivity</em>. <a href="https://doi.org/10.1016/j.jinf.2020.06.067">Journal of Infection</a> (2020).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/infection_states_1.svg" width="750" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px;">Lasser, J. <em>Small community SEIRX package v1.4.2</em>. <a href="https://pypi.org/project/scseirx/">Python Package Index</a> (2022).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/infection_states_3.svg" width="750" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px;">Lasser, J. <em>Small community SEIRX package v1.4.2</em>. <a href="https://pypi.org/project/scseirx/">Python Package Index</a> (2022).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/infection_states_4.svg" width="750" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px;">Lasser, J. <em>Small community SEIRX package v1.4.2</em>. <a href="https://pypi.org/project/scseirx/">Python Package Index</a> (2022).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/infection_states_and_quarantine.svg" width="750" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px;">Lasser, J. <em>Small community SEIRX package v1.4.2</em>. <a href="https://pypi.org/project/scseirx/">Python Package Index</a> (2022).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/epi_param_distributions_1.svg" width="650" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">Ferretti, L. et al. <em>Quantifying SARS-COV-2 transmission suggests epidemic control with digital contact tracing</em>. <a href="https://www.science.org/doi/full/10.1126/science.abb6936">Science</a> (2020).</p>
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">Linton, M. N. et al. <em>Incubation period and other epidemiological characteristics of 2019 novel coronavirus infections with right truncation: a statistical analysis of publicly available case data</em>. <a href="https://www.mdpi.com/2077-0383/9/2/538">Journal of Clinical Medicine</a> (2020).</p>
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">Lauer, S. A. et al. <em> The incubation period of coronavirus disease 2019 (Covid-19) from publicly reported confirmed cases: estimation and application.</em>. <a href="https://www.acpjournals.org/doi/full/10.7326/M20-0504">Annals of Internal Medicine</a> (2020).</p>
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of the infection </h3>
+				  		<img src="img/epi_param_distributions_2.svg" width="650" style="margin-bottom:0px; padding-bottom:0px; margin-top:0px">
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">Ferretti, L. et al. <em>Quantifying SARS-COV-2 transmission suggests epidemic control with digital contact tracing</em>. <a href="https://www.science.org/doi/full/10.1126/science.abb6936">Science</a> (2020).</p>
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">Linton, M. N. et al. <em>Incubation period and other epidemiological characteristics of 2019 novel coronavirus infections with right truncation: a statistical analysis of publicly available case data</em>. <a href="https://www.mdpi.com/2077-0383/9/2/538">Journal of Clinical Medicine</a> (2020).</p>
+				  		<p style="font-size: 16px; text-align:left; margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">Lauer, S. A. et al. <em> The incubation period of coronavirus disease 2019 (Covid-19) from publicly reported confirmed cases: estimation and application.</em>. <a href="https://www.acpjournals.org/doi/full/10.7326/M20-0504">Annals of Internal Medicine</a> (2020).</p>
+				  	</section>
+				</section>
+
+				<section>
+					<section data-transition="slide-in none">
+						<h3> Contact networks</h3>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+							<p style="font-size: 31px; text-align:left; padding-top: 50px"> Which other agents does an agent meet?</p>
+							<p style="font-size: 31px; text-align:left; padding-top: 50px"> When do the contacts occur?</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 50px"> How intense are the contacts?</p>
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:70px; margin-top: 0px; padding-left: 60px;">
+								<img src="img/contact_network.svg", width="400" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_floor_plan_1.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_floor_plan_2.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_floor_plan_3.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_floor_plan_4.svg" height="600">
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_floor_plan_5.svg" height="600">
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_network_1.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_network_2.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_network_3.svg" height="600">
+					</section>
+					<section data-transition="none">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_network_4.svg" height="600">
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Model of a nursing home</h3>
+				  		<img src="img/nursing_home_network_5.svg" height="600">
+					</section>
+
+				  	<section data-transition="slide-in none">
+				  		<h3> Model of a primary school </h3>
+				  		<img src="img/primary_dc_circular_visualization_1_1.svg" height="600">
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of a primary school </h3>
+				  		<img src="img/primary_dc_circular_visualization_2.svg" height="600">
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of a primary school </h3>
+				  		<img src="img/primary_dc_circular_visualization_3.svg" height="600">
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of a primary school </h3>
+				  		<img src="img/primary_dc_circular_visualization_4.svg" height="600">
+				  	</section>
+				  	<section data-transition="none">
+				  		<h3> Model of a primary school </h3>
+				  		<img src="img/primary_dc_circular_visualization_5.svg" height="600">
+				  	</section>
+				  	<section data-transition="none slide-out">
+				  		<h3> Model of a secondary school </h3>
+				  		<img src="img/secondary_circular_visualization_5.svg" height="600">
+				  	</section>
+					<section data-transition="slide-in none">
+						<h3> Contact types </h3>
+						<font size="6">
+							<table>
+						    	<thead><tr>
+						            <th>Interaction</th>
+						            <th>Duration</th>
+						            <th>Proximity</th>
+						            <th>Type</th>
+						        </tr></thead>
+						        <tbody>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#864000">household</span></td>
+						            <td><span style="color:#864000">very long</span></td>
+						            <td><span style="color:#864000">very close</span></td>
+						            <td><span style="color:#864000">household</span></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#D44000">table neighbours</span></td>
+						            <td><span style="color:#D44000">long</span></td>
+						            <td><span style="color:#D44000">close</span></td>
+						            <td><span style="color:#D44000">K1</span></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#D44000">teachers, long meeting</span></td>
+						            <td><span style="color:#D44000">long</span></td>
+						            <td><span style="color:#D44000">close</span></td>
+						            <td><span style="color:#D44000">K1</span></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#D44000">teaching, supervision</span></td>
+						            <td><span style="color:#D44000">long</span></td>
+						            <td><span style="color:#D44000">close</span></td>
+						            <td><span style="color:#D44000">K1</span></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#FF7A00">classmates, daycare mates</span></td>
+						            <td><span style="color:#FF7A00">long</span></td>
+						            <td><span style="color:#FF7A00">far</span></td>
+						            <td><span style="color:#FF7A00">K2</span></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#FF7A00">teachers, short meeting</span></td>
+						            <td><span style="color:#FF7A00">short</span></td>
+						            <td><span style="color:#FF7A00">close</span></td>
+						            <td><span style="color:#FF7A00">K2</span></td>
+						        </tr>
+						    	</tbody>
+						    </table>
+						</font>
+					</section>
+					<section>
+						<h3> Model of TU Graz </h3>
+						<p style="font-size: 31px; text-align:left"><em>Idea: use TU Graz online to re-construct the student contact network.</em></p>
+				  		<img src="img/uni_network_data.svg" height="500">
+					</section>
+					<section>
+						<h3> Model of TU Graz </h3>
+				  		<img src="img/network_uni.svg" height="600">
+					</section>
+					<section>
+						<h3 style="padding-bottom: 30px;"> Different contact networks</h3>
+						<font size="6">
+							<table>
+						    	<thead><tr>
+						            <th>application</th>
+						            <th>agent types</th>
+						            <th>number of agents</th>
+						            <th>repository</th>
+						        </tr></thead>
+						        <tbody>
+						      	<tr style="background-color:white">
+						            <td>nursing home</td>
+						            <td>residents, employees</td>
+						            <td>~50</td>
+						            <td><a href="https://osf.io/hyd4r/">https://osf.io/hyd4r/</a></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>primary school</td>
+						            <td>students, teachers</td>
+						            <td>~200</td>
+						            <td><a href="https://osf.io/mde4k/">https://osf.io/mde4k/</a></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>secondary school</td>
+						            <td>students, teachers</td>
+						            <td>~800</td>
+						            <td><a href="https://osf.io/mde4k/">https://osf.io/mde4k/</a></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>university</td>
+						            <td>students, lecturers</td>
+						            <td>~15.000</td>
+						            <td><a href="https://osf.io/upx7r/">https://osf.io/upx7r/</a></td>
+						        </tr>
+						    	</tbody>
+						    </table>
+						</font>
+					</section>
+					<section data-transition="slide-in none">
+						<h3>simulation of infection dynamics</h3>
+				  		<img src="img/basic_simulation_functionality_1.svg" width="1200">
+				  	</section>
+					<section data-transition="none slide-out">
+						<h3>simulation of infection dynamics</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_1.svg" width="1200">
+				  	</section>
+				  	<section>
+						<h3>simulation of infection dynamics</h3>
+				  		<img src="img/results_nursing_home_0.svg" width="1200">
+				  		<p class="fragment" style="font-size: 31px;">How do we make sure that what we simulate reflects reality? </p>
+				  	</section>
+				</section>
+				<section>
+					<section>
+						<h3> Calibration</h3>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+							<p style="font-size: 31px; text-align:left; padding-top: 50px"> Which are the free parameters in our model?</p>
+							<p style="font-size: 31px; text-align:left; padding-top: 50px"> How do outbreaks look in reality?</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 50px"> Which parameter values reproduce the "real" outbreaks?</p>
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:70px; margin-top: 0px; padding-left: 60px;">
+								<img src="img/calibration.svg", width="400" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+					<section data-transition="slide-in none">
+						<h3>simulation of infection dynamics</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_1a.svg" width="1200">
+				  		<p style="font-size: 45px; color:#D22779">Which <b>mechanisms</b> influence the transmission probability?</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_2.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px; color:white"> [1] He et al. 2020 Temporal dynamics in viral shedding and transmissibility of Covid-19.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_3.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px; color:white"> [1] He et al. 2020 Temporal dynamics in viral shedding and transmissibility of Covid-19.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_4.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px; color:white"> [1] He et al. 2020 Temporal dynamics in viral shedding and transmissibility of Covid-19.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_5.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px"> [1] <a href="https://www.nature.com/articles/s41591-020-0869-5?origen=app">He et al. 2020</a> Temporal dynamics in viral shedding and transmissibility of Covid-19.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_6.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px; margin-top:0px; padding-top:0px"> [1] <a href="https://jammi.utpjournals.press/doi/full/10.3138/jammi-2020-0030">Byambasuren, O. et al. 2020</a> Estimating the extent of asymptomatic Covid-19 and its potential for community transmission: systematic review and metaanalysis.</p>
+				  	</section>
+					<section data-transition="none slide-out">
+						<h3>Transmission probability</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_7.svg" width="1200">
+				  		<p style="text-align: left; font-size:20px; color:white"> [1] He et al. 2020 Temporal dynamics in viral shedding and transmissibility of Covid-19.</p>
+				  	</section>
+		
+					<section data-transition="slide-in none">
+						<h3> Calibration of household SAR </h3>
+						<img src="img/household_transmission_risk_1.svg" width="800">
+						<p style="text-align: right; font-size:20px"> [1] <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2774102">Madwell et al. 2020</a> Household Transmission of SARS-CoV-2 A Systematic Review and Meta-analysis.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Calibration of household SAR </h3>
+						<img src="img/household_transmission_risk_2.svg" width="800">
+						<p style="text-align: right; font-size:20px; color: white"> [1] Madwell et al. 2020 Household Transmission of SARS-CoV-2 A Systematic Review and Meta-analysis.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Calibration of household SAR </h3>
+						<img src="img/household_transmission_risk_3.svg" width="800">
+						<p style="text-align: right; font-size:20px; color: white"> [1] Madwell et al. 2020 Household Transmission of SARS-CoV-2 A Systematic Review and Meta-analysis.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Calibration of household SAR </h3>
+						<img src="img/household_transmission_risk_4.svg" width="800">
+						<p style="text-align: right; font-size:20px; color: white"> [1] Madwell et al. 2020 Household Transmission of SARS-CoV-2 A Systematic Review and Meta-analysis.</p>
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Calibration of household SAR </h3>
+						<img src="img/household_transmission_risk_5.svg" width="800">
+						<p style="text-align: right; font-size:20px; color: whilte"> [1] <a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2774102">Madwell et al. 2020</a> Household Transmission of SARS-CoV-2 A Systematic Review and Meta-analysis.</p>
+					</section>
+
+					<section>
+						<h3>Remaining free parameters</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_8.svg" width="1200">
+				  	</section>
+
+					<section data-transition="slide-in none">
+						<h3>Empirical outbreak data</h3>
+				  		<img src="img/nursing_home_outbreak_sizes_1.svg" width="1200">
+				  		<p style="font-size: 31px"><b>Circumstances at time of data collection:</b> <br> no vaccinations, no masks, no testing, wild type virus.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Empirical outbreak data</h3>
+				  		<img src="img/nursing_home_outbreak_sizes_2.svg" width="1200">
+				  		<p style="font-size: 31px"><b>Circumstances at time of data collection:</b> <br> no vaccinations, no masks, no testing, wild type virus.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Empirical outbreak data</h3>
+				  		<img src="img/nursing_home_outbreak_sizes_3.svg" width="1200">
+				  		<p style="font-size: 31px"><b>Circumstances at time of data collection:</b> <br> no vaccinations, no masks, no testing, wild type virus.</p>
+				  	</section>
+					<section data-transition="none">
+						<h3>Empirical outbreak data</h3>
+				  		<img src="img/nursing_home_outbreak_sizes_4.svg" width="1200">
+				  		<p style="font-size: 31px;">Non-room contacts are 87% less likely to transmit an infection. <br>Tried to differentiate table & ward contacts: doesn't work.</p>
+				  	</section>
+					<section data-transition="none slide-out">
+						<h3>Empirical outbreak data</h3>
+				  		<img src="img/nursing_home_outbreak_sizes_5.svg" width="1200">
+				  		<p style="font-size: 31px;">Non-room contacts are 87% less likely to transmit an infection. <br>Tried to differentiate table & ward contacts: doesn't work.</p>
+				  	</section>
+
+					<section>
+						<h3>No remaining free parameters</h3>
+				  		<img src="img/basic_simulation_functionality_nursing_home_9.svg" width="1200">
+				  	</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h3> Intervention measures nursing homes</h3>
+						<p style="font-size: 30px; padding-top:20px"><b>Aim: find an optimal testing strategy</b></p>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+							<p style="font-size: 31px; text-align:left; padding-top: 30px"> <b>Preventive testing</b>: tests every X days, positive agents are isolated.</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Vaccinations</b>: reduce infection and transmission probability.</p>
+				  			<img src="img/p_vaccination.svg", width="650" style="padding-bottom: 0px; margin-bottom:0px">
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:50px; margin-top: 0px; padding-left: 20px;">
+								<img src="img/measures_nursing_homes.svg", width="300" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+					<section data-transition="slide-in none">
+						<h3>Nursing home: testing strategy</h3>
+				  		<img src="img/nursing_home_results_1.svg" width="700">
+				  	</section>
+					<section data-transition="none slide-out">
+						<h3>Nursing home: testing strategy</h3>
+				  		<img src="img/nursing_home_results_2.svg" width="700">
+				  	</section>
+					<section data-transition="slide-in none">
+						<h3 style="padding-bottom: 50px;">Nursing home: testing & vaccinations</h3>
+				  		<img src="img/nursing_home_results_3.svg" width="1000">
+				  	</section>
+					<section data-transition="none slide-out">
+						<h3 style="padding-bottom: 50px;">Nursing home: testing & vaccinations</h3>
+				  		<img src="img/nursing_home_results_4.svg" width="1000">
+				  	</section>
+					<section>
+						<h3 style="padding-bottom: 50px;">Nursing home: virus variants</h3>
+				  		<img src="img/nursing_home_results_5.svg" width="1000">
+				  	</section>
+				</section>
+
+				<section>
+					<section>
+						<h3> school model </h3>
+						<p style="font-size: 45px; padding-top: 70px"><b>Additional model components</b></p>
+						<p style="font-size: 31px; text-align: left; padding-top: 20px">Infection dynamics involve children: age-dependence of transmission risk.</p>
+						<p style="font-size: 31px; text-align: left; padding-top: 30px">Additional measures: masks, room ventilation.</p>
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Calibration of the school model </h3>
+						<img src="img/basic_simulation_functionality_school_1.svg" width="1000"><br>
+						<p style="font-size: 30px; text-align: left; padding-bottom:20px; color:white"> Assumption: q<sub>2</sub> = q<sub>3</sub> = q<sub>age</sub>.</p>
+						<p style="font-size: 30px; text-align: left; color:white"> Model q<sub>age</sub> as linear decrease in infection risk for every year younger than 18.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Calibration of the school model </h3>
+						<img src="img/basic_simulation_functionality_school_2.svg" width="1000"><br>
+						<p style="font-size: 30px; text-align: left; padding-bottom:20px; color:white"> Assumption: q<sub>2</sub> = q<sub>3</sub> = q<sub>age</sub>.</p>
+						<p style="font-size: 30px; text-align: left; color:white"> Model q<sub>age</sub> as linear decrease in infection risk for every year younger than 18.</p>
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Calibration of the school model </h3>
+						<img src="img/basic_simulation_functionality_school_2.svg" width="1000"><br>
+						<p style="font-size: 30px; text-align: left; padding-bottom:20px"> Assumption: q<sub>2</sub> = q<sub>3</sub> = q<sub>age</sub>.</p>
+						<p style="font-size: 30px; text-align: left"> Model q<sub>age</sub> as linear decrease in infection risk for every year younger than 18.</p>
+					</section>
+					<section>
+						<h3> The data </h3>
+						<p style="font-size: 30px;"><em>536 clusters* with 3342 cases recorded in Austrian schools between <br>2020-08-31 and 2020-11-02 collected by <a href="https://www.ages.at/">AGES</a>.</em></p>
+						<font size="6">
+							<table>
+						    	<thead><tr>
+						            <th>Age</th>
+						            <th>School type</th>
+						            <th>Clusters</th>
+						            <th>Cases</th>
+						        </tr></thead>
+						        <tbody>
+						      	<tr style="background-color:white">
+						            <td>< 10 years </td>
+						            <td>primary</td>
+						            <td>67</td>
+						            <td>286</td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>10-15 years</td>
+						            <td>lower secondary</td>
+						            <td>180</td>
+						            <td>762</td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>> 15 years</td>
+						            <td>upper secondary</td>
+						            <td>116</td>
+						            <td>388</td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td>> 10 years</td>
+						            <td>secondary</td>
+						            <td>70</td>
+						            <td>810</td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><span style="color:#808080">otherwise</span></td>
+						            <td><span style="color:#808080">inconclusive</span></td>
+						            <td><span style="color:#808080">103</span></td>
+						            <td><span style="color:#808080">1097</span></td>
+						        </tr>
+						    	</tbody>
+						    </table>
+						</font>
+						<p style="font-size: 20px; padding-top: 30px;">*"school cluster": at least two cases of which at least one transmission ocurred in a school context.</p>
+						<p style="font-size: 20px; padding-top: 10px;">Data available at <a href="https://doi.org/10.5281/zenodo.4706876">https://doi.org/10.5281/zenodo.4706876</a></p>
+					</section>
+					<section>
+						<h3> Cluster size distributions </h3>
+						<img src="img/cluster_size_distribution.svg" width="1050">
+						<p style="font-size: 31px;">Clusters in secondary schools are much larger than in other school types.</p>
+					</section>
+					<section>
+						<h3 style="padding-bottom: 30px;"> Student case distributions </h3>
+						<img src="img/student_case_distributions.svg" width="950">
+					</section>
+					<section>
+						<h3> Ratio of asymptomatic cases* </h3>
+						<img src="img/ratio_of_asymptomatic_cases.svg" width="600">
+						<p style="font-size: 20px;">*Follow-up to exclude initially pre-symptomatic cases.</p>
+					</section>
+					<section>
+						<h3> Conditions in autumn 2020 </h3>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px; padding-top:30px">Infection detected: isolation and quarantine of all K1 contacts.</li>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px;">Rigorous testing of K2 contacts: all students in the same class.</li>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px"><b>No</b> mask mandate in schools yet.</li>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px"><b>No</b> air ventilation, preventive testing or class cohorting.</li>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px">Strict measures to prevent mixing between classes.</li>
+						<li style="font-size: 35px; text-align: left; padding-bottom:35px">Original SARS-CoV-2 strain was circulating.</li>
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Error term to optimize </h3><br>
+						<img src="img/error_term_1.svg" width="550">
+						<p class="fragment" style="font-size: 30px; text-align: left"> <b>Simulations for all school types:</b><br>
+						(-) Draw source cases from known distribution of teachers and students.<br>
+						(-) Use known age-dependence of asymptomatic courses.<br>
+						(-) Simulate with known conditions at data collection time.<br></p>
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Error term to optimize </h3><br>
+						<img src="img/error_term_2.svg" width="550">
+						<p style="font-size: 30px; text-align: left"> <b>Simulations for all school types:</b><br>
+						(-) Draw source cases from known distribution of teachers and students.<br>
+						(-) Use known age-dependence of asymptomatic courses.<br>
+						(-) Simulate with known conditions at data collection time.<br></p>
+					</section>
+					<section data-transition="slide-in none">
+						<h4> Calibration of contact strength & age dependence </h3>
+						<img src="img/distances_heatmap_1.svg" width="1000">
+						<p style="font-size: 31px; color: white;">The minimum represents the optimal parameter combination.</p>
+					</section>
+					<section data-transition="none">
+						<h4> Calibration of contact strength & age dependence </h3>
+						<img src="img/distances_heatmap_2.svg" width="1000">
+						<p style="font-size: 31px">The minimum represents the optimal parameter combination.</p>
+					</section>
+					<section data-transition="none slide-out">
+						<h4> Calibration of contact strength & age dependence </h3>
+						<img src="img/distances_heatmap_3.svg" width="1000">
+						<p style="font-size: 31px">The location of the minimum is very noisy.</p>
+					</section>
+					<section>
+						<h4> Calibration of contact strength & age dependence </h3>
+						<img src="img/parameter_confidence_intervals.svg" width="700">
+						<p style="font-size: 35px; text-align: left">Contact weight: 0.30 [0.26; 0.34].</p>
+						<p style="font-size: 35px; text-align: left">Age dependence: -0.005 [-0.0225; 0.0] per year younger than 18.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3> Intervention measures schools</h3>
+						<p style="font-size: 40px; padding-top:20px"><b>Aim: find optimal measure combinations</b></p>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+							<p style="font-size: 31px; text-align:left; padding-top: 20px"> <b>Preventive testing</b>: teachers and/or students are tested 1x or 2x a week.</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Cohorting</b>: Only 50% of students are present, cohorts alternate.</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Ventilation</b>: Airing rooms for 10 min every hour.</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Masks</b>: teachers and/or students wear masks.</p>
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:80px; margin-top: 0px; padding-left: 60px;">
+								<img src="img/measures_schools.svg", width="500" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Results (delta)</h3>
+						<img src="img/measure_packages_primary_1.svg" width="850">
+						<p style="font-size: 31px; color:white">Two measures are enough to prevent large outbreaks.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Results (delta) </h3>
+						<img src="img/measure_packages_primary_2.svg" width="850">
+						<p style="font-size: 31px; color:white">Two measures are enough to prevent large outbreaks.</p>
+					</section>
+					<section data-transition="none">
+						<h3> Results (delta) </h3>
+						<img src="img/measure_packages_primary_3.svg" width="850">
+						<p style="font-size: 31px; color:white">Two measures are enough to prevent large outbreaks.</p>
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Results (delta) </h3>
+						<img src="img/measure_packages_primary_4.svg" width="850">
+						<p style="font-size: 31px;">Two measures on top of TTI are enough to prevent large outbreaks.</p>
+					</section>
+					<section>
+						<h3> Results (delta) </h3>
+						<img src="img/measure_packages_secondary_delta.svg" width="850">
+						<p style="font-size: 31px;">Secondary schools need three measures on top of TTI or seasonal effects.</p>
+					</section>	
+					<section data-transition="slide-in none">
+						<h3> Comparison Delta vs. Omicron </h3>
+						<img src="img/measure_packages_secondary_omicron_1.svg" width="700">
+					</section>	
+					<section data-transition="none slide-out">
+						<h3> Comparison Delta vs. Omicron </h3>
+						<img src="img/measure_packages_secondary_omicron_2.svg" width="700">
+					</section>	
+				</section>
+				<section>
+					<section>
+						<h3> Intervention measures university</h3>
+						<p style="font-size: 40px; padding-top:20px"><b>Is presence teaching feasible during Omicron?</b></p>
+						<style>
+							.container{
+							    display: flex;
+							}
+							.col{
+							    flex: 1;
+							}
+						</style>
+						<div class="container">
+							<div class="col-md-auto">
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Occupancy reduction</b>: lecture halls are occupied to 25%, 50% or 100% (blue dots, green dots).</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Masks</b>: students and lecturers all wear masks (or don't wear masks).</p>
+				  			<p style="font-size: 31px; text-align:left; padding-top: 20px; padding-bottom:0px; margin-bottom:0px"> <b>Vaccination</b>: Almost everybody is vaccinated but omicron evades immunity -> different vaccine effectiveness levels.</p>
+						</div>
+							<div class="col-md-auto">
+								<p style="font-size: 13px; padding-top:40px; margin-top: 0px; padding-left: 60px;">
+								<img src="img/measures_university.svg", width="500" style="padding-bottom: 0px; margin-bottom:0px">
+								</p>
+							</div>
+						</div>
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Results (omicron)</h3>
+						<img src="img/uni_results_1.svg" width="850">
+					</section>
+					<section data-transition="none">
+						<h3> Results (omicron) </h3>
+						<img src="img/uni_results_2.svg" width="850">
+					</section>
+					<section data-transition="none">
+						<h3> Results (omicron) </h3>
+						<img src="img/uni_results_3.svg" width="850">
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Results (omicron) </h3>
+						<img src="img/uni_results_4.svg" width="850">
+					</section>
+					<section data-transition="slide-in none">
+						<h3> Reproduction number R</h3>
+						<img src="img/uni_Reff_1.svg" width="850">
+					</section>
+					<section data-transition="none">
+						<h3> Reproduction number R</h3>
+						<img src="img/uni_Reff_2.svg" width="850">
+					</section>
+					<section data-transition="none">
+						<h3> Reproduction number R</h3>
+						<img src="img/uni_Reff_3.svg" width="850">
+					</section>
+					<section data-transition="none slide-out">
+						<h3> Reproduction number R</h3>
+						<img src="img/uni_Reff_4.svg" width="850">
+					</section>
+				</section>
+
+				<section>
+					<section>
+					    <h3>Summary of results</h3>
+					    <p style="font-size:32px; padding-bottom:15px; padding-top: 50px;text-align: left; padding-bottom:0px; margin-bottom: 0px;"> Agent-based simulations are useful when things are inhomogeneous.</p>
+					    <p style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Heterogeneous contact patterns.</p>
+					    <p style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Complex intervention scenarios.</p>
+					    <p style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Time variation in contact patterns and measures.</p>
+					    <p class="fragment" data-fragment-index="2" style="font-size:32px; padding-bottom:15px; text-align: left; padding-bottom:0px; margin-bottom: 0px;"> Empirical data is key to make sure simulations reflect reality.</p>
+					    <p class="fragment" data-fragment-index="2" style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Modelling choices should be informed by domain experts.</p>
+					    <p class="fragment" data-fragment-index="2" style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Contact networks should be empirically measured.</p>
+					    <p class="fragment" data-fragment-index="2" style="font-size: 24px; text-align: left; padding-left:60px; padding-top:0px; margin-top: 0px; padding-bottom:0px; margin-bottom:0px; color:grey">Simulation parameters have to be calibrated to empirical observations.</p>
+					    <p class="fragment" data-fragment-index="3" style="font-size:32px; padding-bottom:15px; text-align: left; padding-bottom:0px; margin-bottom: 0px;"> Agent-based simulations are good for systems with 10 - 100,000 agents. Larger systems become challenging.</p>
+
+					</section>
+					<section>
+						<h3 style="padding-bottom: 50px;">Materials</h3>
+						<font size="5">
+							<table>
+						    	<thead><tr>
+						            <th>Publication</th>
+						            <th>Code</th>
+						            <th>Data</th>
+						        </tr></thead>
+						        <tbody>
+						      	<tr style="background-color:white">
+						            <td><a href="https://pypi.org/project/scseirx/">Python package SCSEIRX</a></td>
+						            <td><a href="https://github.com/JanaLasser/agent_based_COVID_SEIRX">GitHub agent_based_COVID_SEIRX</a></td>
+						            <td>-</td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><a href="https://royalsocietypublishing.org/doi/10.1098/rsif.2021.0608">Agent-based simulations for protecting nursing homes with prevention and vaccination strategies</a></td>
+						            <td><a href="https://github.com/JanaLasser/nursing_home_SEIRX">GitHub nursing_home_SEIRX</a></td>
+						            <td><a href="https://osf.io/hyd4r/">https://osf.io/hyd4r/</a></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><a href="https://doi.org/10.1038/s41467-022-28170-6">Assessing the impact of SARS-CoV-2 prevention measures in schools by means of agent-based simulations calibrated to cluster tracing data</a></td>
+						            <td><a href="https://github.com/JanaLasser/school_SEIRX">GitHub school_SEIRX</a></td>
+						            <td><a href="https://osf.io/mde4k/">https://osf.io/mde4k/</a></td>
+						        </tr>
+						      	<tr style="background-color:white">
+						            <td><a href="https://academic.oup.com/cid/advance-article/doi/10.1093/cid/ciac340/6577094">Assessment of the effectiveness of Omicron transmission mitigation strategies for European universities using an agent-based network model</a></td>
+						            <td><a href="https://github.com/JanaLasser/uni_SEIRX">GitHub uni_SEIRX</a></td>
+						            <td><a href="https://osf.io/upx7r/">https://osf.io/upx7r/</a></td>
+						        </tr>
+						    	</tbody>
+						    </table>
+						</font>
+					</section>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
