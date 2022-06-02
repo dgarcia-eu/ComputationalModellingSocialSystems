@@ -55,7 +55,7 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 *No class on 26.05.2022: Ascension day*
 
-11. [**Modelling epidemics: the SEIRX model**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/ModellingEpidemics.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/index.html)  (06.02.2022) 
+11. [**Modelling epidemics: the SEIRX model**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/blob/main/11_ModellingEpidemics/ModellingEpidemics.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/index.html)  (06.02.2022) 
 
 12. **Lecture Q&A session**  (09.06.2022)  
 *Project guidance*  
