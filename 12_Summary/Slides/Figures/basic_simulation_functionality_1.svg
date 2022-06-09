@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="312.26193mm"
+   height="172.33966mm"
+   viewBox="0 0 312.26193 172.33966"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="basic_simulation_functionality_1.svg"
+   inkscape:version="1.1 (1:1.1+202105261518+ce6663b3b7)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.77593294"
+     inkscape:cx="375.67679"
+     inkscape:cy="255.82108"
+     inkscape:window-width="2560"
+     inkscape:window-height="1440"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(46.843814,-61.212953)">
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;word-spacing:0px;stroke-width:0.264583"
+       x="63.1436"
+       y="75.894135"
+       id="text2343"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="63.1436"
+         y="75.894135"
+         id="tspan2345">Do agents meet?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;word-spacing:0px;stroke-width:0.264583"
+       x="48.084339"
+       y="143.89685"
+       id="text3607"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="48.084339"
+         y="143.89685"
+         id="tspan3605">Is there a transmission?</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:10.5833px;line-height:1.25;font-family:arial;-inkscape-font-specification:arial;word-spacing:0px;stroke-width:0.264583"
+       x="33.025532"
+       y="109.50497"
+       id="text4906"><tspan
+         sodipodi:role="line"
+         style="stroke-width:0.264583"
+         x="33.025532"
+         y="109.50497"
+         id="tspan4904">Is one of the agents infectious?</tspan></text>
+  </g>
+</svg>

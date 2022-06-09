@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Course Summary and Q&amp;A Session</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="David Garcia, Petar Jerčić, Jana Lasser    TU Graz" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="libs/footer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Course Summary and Q&amp;A Session
+]
+.author[
+### David Garcia, Petar Jerčić, Jana Lasser <br><br> <em>TU Graz</em>
+]
+.date[
+### Computational Modelling of Social Systems
+]
+
+---
+
+
+
+
+
+
+layout: true
+
+&lt;div class="my-footer"&gt;&lt;span&gt;David Garcia - Computational Modelling of Social Systems&lt;/span&gt;&lt;/div&gt; 
+
+---
+
+# Course overview
+
+- **Block 1: Fundamentals of Agent-Based Modelling**
+  - Micro-macro gap
+  - Segregation and culture
+  
+  
+- **Block 2: Opinion dynamics**
+  - Granovetter's spreading model
+  - Voter models and bounded confidence
+
+
+- **Block 3: Network formation**
+  - Random graphs and phase transitions
+  - Small Worlds and Scale-free networks
+
+
+- **Block 4: Processes on networks**
+  - Epidemic models: SIR
+  - Epidemics in practice: SEIRX
+
+---
+  
+
+
+# The macro-micro gap
+
+&lt;img src="Figures/Boat.png" width="900" style="display: block; margin: auto;" /&gt;
+
+*Causal Mechanisms in the Social Sciences. Peter Hedström and Petri Ylikoski. Annual Review of Sociology, 2010.*
+---
+
+## Interdisciplinarity in complex social behavior
+&lt;img src="Figures/Interdisciplinarity.svg" width="1200" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Kalick &amp; Hamilton dating model
+
+.pull-left[
+&lt;img src="Figures/preference.png" width="400" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- % matched couples for the case of preferring attractive partners
+
+- Correlation starts low but raises pretty fast up to about 0.55, closer to empirical values than the matching attractiveness case
+
+- **Main result:** attractiveness matching is not necessary for observed correlations
+
+]
+
+*The matching hypothesis reexamined. Michael Kalick and Thomas Hamilton. Journal of Personality and Social Psychology, 1986.*
+
+---
+
+
+# Schelling's segregation model
+
+.pull-left[
+&lt;img src="Figures/RND.png" width="350" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Agents are aware of the fraction of similar agents in their neighborhood: `\(f\)`
+
+
+- Agents are satisfied with `\(f \geq F\)`, otherwise they relocate to a position in which they are satisfied
+  - `\(F\)` measures intolerance
+
+
+- Outcome: Segregation measured with Moran's I
+
+]
+
+*Dynamic Models of Segregation. Thomas Schelling. Journal of Mathematical Sociology, 1971*
+---
+
+
+## Segregation versus tolerance in Schelling's model
+
+.pull-left[
+&lt;img src="Figures/IvsF.png" width="750" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- 3x3 neighborhood (up to 8 neighbors), torus edges
+
+- Boxplots of I after convergence in several simulations
+
+- Moran's I stays low for low F values
+
+- Sharp increase above two neighbors for F
+
+- Substantial segregation for F&gt;0.33
+
+]
+---
+
+
+# Axelrod's culture model
+
+.pull-left[
+
+1. Choose a cell (agent) uniformly at random to be the active agent
+
+2. Choose at random one of its neighbors
+
+3. With probability equal to their cultural similarity:
+  
+  - Active agent copies a random feature of its neighbor in which they differed
+
+- Key parameters: size, `\(F\)` and `\(k\)`
+
+
+
+]
+.pull-right[
+&lt;img src="Figures/AxelrodSim.png" width="420" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# The role of grid size in Axelrod's model
+
+&lt;img src="Figures/Size.png" width="700" style="display: block; margin: auto;" /&gt;
+*The Dissemination of Culture: A Model with Local Convergence and Global Polarization. Robert Axelrod, Journal of Conflict Resolution 41(20), 1997*
+
+---
+
+
+# Cultural affinity eurovision model
+
+&lt;img src="Figures/AffinityModel.png" width="850" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+## `\(FoF\)` distribution in affinity model
+
+&lt;img src="Figures/AffinityFoF.png" width="1000" style="display: block; margin: auto;" /&gt;
+
+*Measuring cultural dynamics through the Eurovision song contest. David Garcia and Dorian Tanase. Advances in Complex Systems, 16 (2013)*
+---
+
+
+
+# Granovetter's threshold model
+
+.pull-left[
+Net benefit =  benefit - costs
+
+- Threshold to join: Net benefit is &gt;0
+
+- benefits increase and costs decrease with more people in the action (monotonic net benefit)
+
+- weaker assumption: there is only one crossing of zero in the function of net benefit vs people in action
+
+]
+
+.pull-right[
+&lt;img src="Figures/Benefit.png" width="800" style="display: block; margin: auto;" /&gt;
+Example of net benefit function from Granovetter (1978)
+]
+
+*Threshold Models of Collective Behavior. Mark Granovetter. American Journal of Sociology (1978)*
+---
+
+# `\(r_e\)` versus `\(\sigma\)` in Granovetter's model
+
+.pull-left[
+&lt;img src="Figures/STD.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+
+- Assumption: Thresholds follow normal distribution with `\(\mu\)` and `\(\sigma\)`
+- `\(r_e\)`: equilibrium number of active agents (simulation ended)
+- `\(\sigma\)`: standard deviation of distribution of thresholds
+- Number of agents is constant: 100
+- `\(\mu\)` is constant: 25
+
+
+- Sharp increase in `\(r_e\)` at a critical `\(\sigma\)` value: phase transition
+- Diversity-induced collective behavior
+]
+
+
+---
+
+## Opinion dynamics: bounded confidence model
+
+- Consider a population of `\(N\)` agents `\(i\)` with continuous opinions `\(x_i\)`
+- At each time step any two randomly chosen agents meet
+- Re-adjust opinion if absolute opinion difference is smaller than a threshold `\(\epsilon\)`
+  - In other words: agents `\(i\)` and `\(j\)` with opinions `\(x_i\)` and `\(x_j\)` interact if:
+`$$|x_i-x_j|&lt;\epsilon$$`
+- New opinions are adjusted according to
+`$$x_i(t+1)=x_i(t)+ \zeta \cdot (x_j(t)-x_{i}(t))$$`
+`$$x_j(t+1)=x_j(t)+ \zeta \cdot (x_i(t)-x_j(t))$$`
+
+- `\(\zeta\)` is the convergence parameter: measures speed of opinions approaching
+
+---
+
+
+# Final opinions vs initial opinions
+
+.pull-left[
+&lt;img src="Figures/basic3.svg" width="500" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+- qualitative dynamics mostly depend on the threshold `\(\epsilon\)`:
+  - controls the number of peaks of the final distribution of opinions
+  - The final expected number of groups is `\(\frac{1}{2\epsilon}\)`
+
+
+- `\(\zeta\)` and `\(N\)` only influence convergence time and width of the
+  distribution of final opinions
+]
+
+*Mixing beliefs among interacting agents. Guillaume Deffuant, David Neau, Frederic Amblard and Gerard Weisbuch. Advances in Complex Systems (2000)*
+---
+
+
+# Hyperpolarization
+
+&lt;img src="Figures/Hyperpolarization.png" width="950" style="display: block; margin: auto;" /&gt;
+&lt;center&gt;
+*Hyperpolarization: Opinion extremeness x Opinion constraint*
+
+---
+
+## Weighted Balance Theory and hyperpolarization
+
+.pull-left[
+- Cognitive balance +   
+ evaluative extremeness
+
+- ABM show emergence of hyperpolarization
+
+- Filter bubbles and echo chambers are not a necessary condition
+
+- **Predicts that issues become aligned and polarized over time**
+]
+
+.pull-right[
+&lt;img src="Figures/WBT.png" width="450" /&gt;
+]
+
+[A Weighted Balance Model of Opinion Hyperpolarization. Schweighofer, Schweitzer &amp; Garcia, JASSS (2020)](http://jasss.soc.surrey.ac.uk/23/3/5.html)
+
+---
+class:center
+
+## Hyperpolarization in Weighted Balance Theory
+
+
+&lt;iframe width="800" height="500" src="https://www.youtube.com/embed/y4rvLMgqwXQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+
+---
+
+
+# G(n,p) ensamble
+
+- Probability of such G(n,p) networks `\(P(G)\)`:
+  - `\(P(G) = p^m(1-p)^{(\frac{n}{2})-m}\)` , for such networks
+  - `\(P(G)=0\)` , for non-simple graphs
+
+.pull-left[
+- p = 0.1
+&lt;img src="Figures/g_n_p_0_1.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+.pull-right[
+- p = 0.05
+&lt;img src="Figures/g_n_p_0_0_5.png" width="300" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Phase transition of largest component size with `\(p\)`
+
+&lt;img src="Figures/phase_transition_graph.png" width="550" style="display: block; margin: auto;" /&gt;
+
+*Kang, M., &amp; Petrášek, Z. (2014). Random graphs: Theory and applications from nature to society to the brain*
+
+---
+
+# Watts &amp; Strogatz Small World model
+
+&lt;img src="Figures/WS.png" width="850" style="display: block; margin: auto;" /&gt;
+
+*Collective dynamics of ‘small-world’ networks. Duncan J. Watts &amp; Steven H. Strogatz. Nature (1998)*
+---
+
+# Clustering and average path length
+
+&lt;img src="Figures/WS-result.png" width="750" style="display: block; margin: auto;" /&gt;
+
+---
+
+
+# The scale-free property
+
+
+Power-law distributions are of the form:
+`$$P(x) \propto x^{-\alpha}$$`  
+If we multiply the random variable by a constant, the distribution is just multiplied too
+`$$P(Cx) = C^{-\alpha} P(x)$$`
+**Scale-free property:** The shape of the distribution is the same across different scales of the variable
+
+---
+
+
+# Poisson degree distributions vs data
+
+&lt;img src="Figures/PoissonVsInternet.png" width="500" style="display: block; margin: auto;" /&gt;
+
+`\(G(n,m)\)` produces Poisson degree distributions, not power-laws. Similar problems with the Watts-Strogatz small world model.
+
+---
+
+# The Barabási-Albert model
+
+- **Growth:** stating from an empty network, add one node at each iteration
+
+- **Preferential attachment:** when a node is added, connect it to `\(m\)` neighbors chosen at random in the network. Neighbors to connect are chosen with probability proportional to their degree. 
+
+The probability `\(\Pi\)` that a new vertex will be connected to vertex `\(i\)` with degree `\(k_i\)`  is 
+
+$$ \Pi(k_i) = \frac{k_i}{\sum_j k_j} $$
+
+*Emergence of Scaling in Random Networks. Albert-László Barabási &amp; Réka Albert. Science (1999)*
+---
+
+# Degree distribution in the BA model
+
+.pull-left[
+&lt;img src="Figures/BAdist.png" width="440" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+- Degree distribution of simulations with `\(m=5\)` for t=150,000 and t=200,000 (circles and squares, indistinguishable)
+
+- Line has slope -2.9 in log-log plot
+
+- The degree distribution in the BA model follows a power-law distributuion with `\(\alpha=3\)`: 
+
+$$ P(x) = \frac{2m^2}{x^3} \propto x^{-3} $$
+]
+
+---
+
+
+# The vertex copying model
+.pull-left[
+&lt;img src="Figures/VertexCopying.png" width="500" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+- Start with one node and grow one node at a time
+
+- When a new node connects, it samples one node at random and connects to it
+
+- Then it copies all edges to neighbors of that node
+
+- Some versions copy only a random fraction R of neighbors
+]
+*Network growth by copying. P. L. Krapivsky and S. Redner. Physical Review E (2005)*
+
+---
+
+## Multiplicative growth with heterogeneous ages
+
+.pull-left[
+
+- Multiplicative growth:
+
+`$$X_{t+1} = X_t + \gamma * \epsilon * X_t$$`
+
+- A Poisson birth process produces new elements at a constant rate: Aggregates have heterogeneous ages
+
+- Inset: vertical axis is log-transformed
+ ]
+ 
+.pull-right[
+
+&lt;img src="Figures/MultPois.svg" width="480" style="display: block; margin: auto;" /&gt;
+
+]
+
+*A Brief History of Generative Models for Power Law and Lognormal Distributions. Michael Mitzenmacher. Internet Mathematics (2004)*
+---
+
+# Compartmental models: SIR
+
+&lt;img src="Figures/SIstates.svg" width="1000" style="display: block; margin: auto;" /&gt;
+
+- Individuals are separated into *compartments* by their state of infection
+- Individuals are indistinguishable within compartments
+- Individuals transition between compartments when their state changes
+- Not really Agent-Based Model: population or equation-based model
+
+
+*Modeling Epidemics With Compartmental Models. Juliana Tolles and ThaiBinh Luong, JAMA Guide to Statistics and Methods (2020)*
+
+
+---
+# Epidemic models in practice: SEIRX
+&lt;img src="Figures/SEIRX.png" width="700" style="display: block; margin: auto;" /&gt;
+---
+
+## Outbreak distributions in the TU Graz network
+
+&lt;img src="Figures/Outbreaks.png" width="840" style="display: block; margin: auto;" /&gt;
+---
+
+# Wrap-up
+
+1. Fundamentals of Agent-Based Modelling
+2. Opinion dynamics
+3. Network formation
+4. Processes on networks
+
+Final notes and announcements:
+
+- Register your group soon
+
+- Presentation schedule will be published early next week
+
+- Looking forward to your projects!
+
+- **Course evaluation open from 14.06, please help us improve our courses!** Your opinion is very important, especially for younger lecturers
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script src="libs/perc.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
