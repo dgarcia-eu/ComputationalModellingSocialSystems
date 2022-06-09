@@ -2,7 +2,7 @@
 [David Garcia](http://dgarcia.eu), 2022
 
 Welcome to the online materials for Computational Modelling of Social Systems. 
-In this course, you will learn how to formulate and analyze computational models of social systems, in particular to study social interaction and the behavior of large groups of people and whole societiess. The course integrates content about social dynamics and analytic tools to understand the complex behavior of social systems. After this course, you will acquire programming skills to implement, simulate, and visualize these models.
+In this course, you will learn how to formulate and analyze computational models of social systems, in particular to study social interaction and the behavior of large groups of people and whole societiess. The course integrates contentz about social dynamics and analytic tools to understand the complex behavior of social systems. After this course, you will acquire programming skills to implement, simulate, and visualize these models.
 
 ## Who am I?
 
@@ -55,9 +55,9 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 *No class on 26.05.2022: Ascension day*
 
-11. [**Modelling epidemics: the SEIRX model**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/ModellingEpidemics.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/index.html)  (06.02.2022) 
+11. [**Modelling epidemics: the SEIRX model**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/index.html) [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/11_ModellingEpidemics/index.html)  (06.02.2022) 
 
-12. **Lecture Q&A session**  (09.06.2022)  
+12. [**Lecture Q&A session**](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/12_Summary/Slides/Slides.html)  [[Slides]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/12_Summary/Slides/Slides.html)  (09.06.2022)  
 *Project guidance*  
 
 *No class on 16.06.2022: Corpus Christi*
@@ -99,7 +99,7 @@ The assessment for the course is based on four components:
   - Participation in group presentation sessions (both as presenter and discussant): **25% of final grade**
   - Project report and codes: **25% of final grade**
 
-You can find more information about the project presentations and reports, including deadlines, in the [projects guide.](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsGuide.html)
+You can find more information about the project presentations and reports, including deadlines, in the [projects guide.](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsGuide.html) You can also find some guidance and recommendations in the [slides of the project support session.](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsIntroSlides/Slides.html)
 
 
 Graded exercises need to be submitted on teach center by the deadline (end of day in Graz time). We will provide solution files for ungraded exercises for you to check your progress. Nevertheless, we expect to see in your projects the techniques covered in the exercises, both graded and ungraded.
