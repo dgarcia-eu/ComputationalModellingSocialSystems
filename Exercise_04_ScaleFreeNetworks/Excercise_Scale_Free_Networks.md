@@ -16,6 +16,6 @@ Small-world networks accord with some empirically observed properties of social 
 
 The content of the excercise is as follows: [[Download material]](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/tree/main/Exercise_04_ScaleFreeNetworks)
 
-2.1. [Barabási-Albert model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/scale-free-networks-handout.ipynb): Barabási-Albert model in Python with Mesa [[Hints]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/scale-free-networks-hints.ipynb)
+2.1. [Barabási-Albert model](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/scale-free-networks-handout.ipynb): Barabási-Albert model in Python with Mesa [[Solution]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/Exercise_04_ScaleFreeNetworks/scale-free-networks-solution.ipynb)
 
 # Appendix
