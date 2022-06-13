@@ -62,10 +62,10 @@ The course is organized in 12 lectures grouped together in 4 blocks, plus two se
 
 *No class on 16.06.2022: Corpus Christi*
 
-13. **Project presentations** [[Agenda]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/final_project_agenda.pdf) (23.06.2022)
+13. **Project presentations** [[Agenda]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/final_project_agenda.pdf) (23.06.2022)
 - Make sure your whole group is available between 16:00 and 19:00
 
-14. **Project presentations** [[Agenda]](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/final_project_agenda.pdf) (30.06.2022)
+14. **Project presentations** [[Agenda]](https://github.com/dgarcia-eu/ComputationalModellingSocialSystems/blob/main/final_project_agenda.pdf) (30.06.2022)
 - Make sure your whole group is available between 16:00 and 19:00
 - **The deadline to submit your final report is July 10th (end of day). You can submit over Teach Center. [projects guide](https://dgarcia-eu.github.io/ComputationalModellingSocialSystems/ProjectsGuide.html)**
 
